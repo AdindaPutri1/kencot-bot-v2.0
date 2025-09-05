@@ -37,39 +37,38 @@ Siapkan file .env:
 Buat file bernama .env di folder utama. File ini untuk menyimpan rahasia dan tidak akan di-push ke GitHub.
 
 Code snippet
-
-# .env
-# Tidak ada token yang dibutuhkan untuk whatsapp-web.js
-# Cukup siapkan file kosong atau isi dengan SECRET_KEY
-SECRET_KEY=kunci-rahasia-bebas
-Setup Backend Python:
+.env
+Tidak ada token yang dibutuhkan untuk whatsapp-web.js
+- Cukup siapkan file kosong atau isi dengan SECRET_KEY
+  SECRET_KEY=kunci-rahasia-bebas
+  Setup Backend Python:
 
 Bash
 
-# Buat dan aktifkan virtual environment
+#### Buat dan aktifkan virtual environment
 python -m venv .venv
 
-# Windows (PowerShell)
+#### Windows (PowerShell)
 .\.venv\Scripts\Activate.ps1
 
-# Mac/Linux
+#### Mac/Linux
 source .venv/bin/activate
 
-# Install semua library Python
+#### Install semua library Python
 pip install -r requirements.txt
 Setup Konektor Node.js:
 
 Bash
 
-# Masuk ke folder konektor
+#### Masuk ke folder konektor
 cd whatsapp-connector
 
-# Install semua library Node.js
+#### Install semua library Node.js
 npm install
 ### 2. Jalankan Bot
 Sekarang, jalankan kedua server di dua terminal terpisah.
 
-Terminal 1: Jalankan API Python 
+#### Terminal 1: Jalankan API Python 
 Pastikan kamu berada di folder utama kencot-bot dan .venv sudah aktif.
 
 Bash
@@ -77,7 +76,7 @@ Bash
 python main.py
 Biarkan terminal ini berjalan. Server API-mu sekarang aktif di http://localhost:5000.
 
-Terminal 2: Jalankan Konektor WhatsApp 
+#### Terminal 2: Jalankan Konektor WhatsApp 
 Buka terminal baru, lalu masuk ke folder whatsapp-connector.
 
 Bash
