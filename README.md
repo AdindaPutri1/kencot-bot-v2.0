@@ -18,53 +18,52 @@ Bot ini menggunakan arsitektur hybrid yang efisien:
 Untuk menjalankan bot ini di komputermu, kamu perlu menjalankan dua server secara bersamaan di dua terminal terpisah.
 
 ### Pra-syarat
-Python (versi 3.8+)
-
-Node.js (versi 18+)
-
-Akun WhatsApp yang akan dijadikan nomor bot
+- Python (versi 3.8+)
+- Node.js (versi 18+)
+- Akun WhatsApp yang akan dijadikan nomor bot
 
 ### 1. Setup Proyek
 Pertama, siapkan proyek dan install semua dependensi yang dibutuhkan.
 
-Clone repository ini:
+- Clone repository ini:
+  Bash
+  git clone https://github.com/fatimahnadiaekaputri/kencot-bot.git
+  cd kencot-bot
 
-Bash
-
-git clone https://github.com/namamu/kencot-bot.git
-cd kencot-bot
-Siapkan file .env:
+- Siapkan file .env:
 Buat file bernama .env di folder utama. File ini untuk menyimpan rahasia dan tidak akan di-push ke GitHub.
 
-Code snippet
-.env
-Tidak ada token yang dibutuhkan untuk whatsapp-web.js
-- Cukup siapkan file kosong atau isi dengan SECRET_KEY
+- Code snippet
+  .env
+  Tidak ada token yang dibutuhkan untuk whatsapp-web.js
+  Cukup siapkan file kosong atau isi dengan SECRET_KEY
   SECRET_KEY=kunci-rahasia-bebas
   Setup Backend Python:
 
-Bash
+  Bash
+  
+  #### Buat dan aktifkan virtual environment
+  python -m venv .venv
+  
+  #### Windows (PowerShell)
+  .\.venv\Scripts\Activate.ps1
+  
+  #### Mac/Linux
+  source .venv/bin/activate
+  
+  #### Install semua library Python
+  pip install -r requirements.txt
 
-#### Buat dan aktifkan virtual environment
-python -m venv .venv
+#### Setup Konektor Node.js:
 
-#### Windows (PowerShell)
-.\.venv\Scripts\Activate.ps1
-
-#### Mac/Linux
-source .venv/bin/activate
-
-#### Install semua library Python
-pip install -r requirements.txt
-Setup Konektor Node.js:
-
-Bash
-
-#### Masuk ke folder konektor
-cd whatsapp-connector
-
-#### Install semua library Node.js
-npm install
+  Bash
+  
+  #### Masuk ke folder konektor
+  cd whatsapp-connector
+  
+  #### Install semua library Node.js
+  npm install
+  
 ### 2. Jalankan Bot
 Sekarang, jalankan kedua server di dua terminal terpisah.
 
@@ -82,7 +81,8 @@ Buka terminal baru, lalu masuk ke folder whatsapp-connector.
 Bash
 
 node index.js
-Pada saat pertama kali menjalankan, sebuah QR code akan muncul di terminal. Scan QR code tersebut menggunakan aplikasi WhatsApp di HP-mu (Pengaturan > Perangkat tertaut > Tautkan perangkat).
+Pada saat pertama kali menjalankan, sebuah QR code akan muncul di terminal. 
+Scan QR code tersebut menggunakan aplikasi WhatsApp di HP-mu (Pengaturan > Perangkat tertaut > Tautkan perangkat).
 
 Setelah berhasil, bot-mu akan ONLINE dan siap menerima pesan!
 
