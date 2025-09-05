@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node.js
+node_modules/
+.wwebjs_auth/
+
+# File Rahasia
+.env
+
+# Log files
+*.log

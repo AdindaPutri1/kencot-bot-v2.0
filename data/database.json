@@ -1,0 +1,159 @@
+{
+  "ugm_canteens": [
+    {
+      "canteen_name": "Kantin Teknik Mesin",
+      "canteen_alias": ["Kantin Mesin", "KM"],
+      "faculty_proximity": ["Teknik"],
+      "gmaps_link": "https://maps.app.goo.gl/wY6v4WwE4iY2E2yT8",
+      "price_range_min": 12000,
+      "price_range_max": 20000,
+      "menus": [
+        { "name": "Ayam Geprek", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Rames", "price": 14000, "category": "makanan_berat", "suitability": ["pagi", "siang"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin Teknik Sipil",
+      "canteen_alias": ["Kantin Sipil", "KMSL"],
+      "faculty_proximity": ["Teknik"],
+      "gmaps_link": "https://maps.app.goo.gl/8e2XhJzKz4XqH1yQ8",
+      "price_range_min": 12000,
+      "price_range_max": 20000,
+      "menus": [
+        { "name": "Soto", "price": 12000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
+        { "name": "Gado-gado", "price": 13000, "category": "makanan_berat", "suitability": ["siang"] },
+        { "name": "Nasi Ramesan", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Jajanan & Gorengan", "price": 2000, "category": "cemilan", "suitability": ["pagi", "siang", "sore"] },
+        { "name": "Aneka Jus", "price": 8000, "category": "minuman", "suitability": ["pagi", "siang", "sore", "malam"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin Teknik Arsitektur",
+      "canteen_alias": ["Kantin Arsi", "DTAP"],
+      "faculty_proximity": ["Teknik"],
+      "gmaps_link": "https://maps.app.goo.gl/K2D4y4X4zX3qQc8TA",
+      "price_range_min": 5000,
+      "price_range_max": 15000,
+      "menus": [
+        { "name": "Nasi Sayur", "price": 5000, "category": "makanan_ringan", "suitability": ["pagi", "siang"] },
+        { "name": "Mama Mie (Indomie)", "price": 8000, "category": "makanan_ringan", "suitability": ["pagi", "siang", "sore", "malam"] },
+        { "name": "Nasi Ayam/Lele", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Gorengan", "price": 1000, "category": "cemilan", "suitability": ["pagi", "siang", "sore"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin SGLC",
+      "canteen_alias": ["SGLC"],
+      "faculty_proximity": ["Teknik", "MIPA"],
+      "gmaps_link": "https://maps.app.goo.gl/M4rA1v2bC3d2Yf3g7",
+      "price_range_min": 12000,
+      "price_range_max": 25000,
+      "menus": [
+        { "name": "Batagor", "price": 15000, "category": "makanan_ringan", "suitability": ["siang", "sore"] },
+        { "name": "Dimsum", "price": 18000, "category": "cemilan", "suitability": ["siang", "sore"] },
+        { "name": "Bakso", "price": 16000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Mie Ayam", "price": 14000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Ayam Geprek", "price": 20000, "category": "makanan_berat", "suitability": ["siang", "malam"] }
+      ]
+    },
+    {
+      "canteen_name": "Pujale (Pusat Jajanan Lembah)",
+      "canteen_alias": ["Pujale"],
+      "faculty_proximity": ["Peternakan", "Kedokteran Hewan", "Kehutanan", "FEB", "Filsafat", "Hukum"],
+      "gmaps_link": "https://maps.app.goo.gl/9ZpP5E7vB6yXf1vK8",
+      "price_range_min": 10000,
+      "price_range_max": 20000,
+      "menus": [
+        { "name": "Ayam Geprek (Warung Bu Saijo)", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Goreng Seafood (Warung Bu Saijo)", "price": 16000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Chicken Steak (Angkringan Steak)", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Paket Chicken Katsu + Nasi + Teh", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Gado-gado (Warung Bu Saijo)", "price": 10000, "category": "makanan_berat", "suitability": ["siang"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin Fisipol (Fisipoint)",
+      "canteen_alias": ["Kafis", "Fisipoint", "Digilib Cafe"],
+      "faculty_proximity": ["Fisipol", "Psikologi", "Pascasarjana"],
+      "gmaps_link": "https://maps.app.goo.gl/N5D4Q8uG7r1sC3qZ8",
+      "price_range_min": 18000,
+      "price_range_max": 25000,
+      "menus": [
+        { "name": "Mie Goreng", "price": 20000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Sayur Lodeh", "price": 18000, "category": "makanan_berat", "suitability": ["siang"] },
+        { "name": "Nasi Pecel Tahu Tempe", "price": 18000, "category": "makanan_berat", "suitability": ["siang"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin Sehat Pertanian (Mororere)",
+      "canteen_alias": ["Mororere", "Kantin Pertanian"],
+      "faculty_proximity": ["Pertanian", "Teknologi Pertanian", "Kehutanan"],
+      "gmaps_link": "https://maps.app.goo.gl/e8aM5F3M4b6fC3c48",
+      "price_range_min": 10000,
+      "price_range_max": 18000,
+      "menus": [
+        { "name": "Soto Ayam Campur", "price": 10000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
+        { "name": "Soto Sapi Pisah", "price": 15000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
+        { "name": "Nasi Ayam Bakar", "price": 13000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Tongseng", "price": 13000, "category": "makanan_berat", "suitability": ["siang", "malam"] }
+      ]
+    },
+    {
+      "canteen_name": "Kantin Aldhan Fakultas Filsafat",
+      "canteen_alias": ["Bonbin", "Kantin Filsafat"],
+      "faculty_proximity": ["Filsafat", "Ilmu Budaya", "FEB", "Hukum"],
+      "gmaps_link": "https://maps.app.goo.gl/E4L8b7S7X7b9uS2f8",
+      "price_range_min": 8000,
+      "price_range_max": 15000,
+      "menus": [
+        { "name": "Sego Yu Par", "price": 10000, "category": "makanan_berat", "suitability": ["siang"] },
+        { "name": "Nasi Rames", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Waffle Es Krim", "price": 13000, "category": "cemilan", "suitability": ["siang", "sore"] }
+      ]
+    },
+    {
+      "canteen_name": "Angkringan Peyek Bunderan UGM",
+      "canteen_alias": ["Angkringan Bundaran", "Angkringan Pak Peyek"],
+      "faculty_proximity": ["Gedung Pusat", "MIPA", "Teknik", "FKKMK"],
+      "gmaps_link": "https://maps.app.goo.gl/3wA2RkYt7wN2zT7c8",
+      "price_range_min": 3000,
+      "price_range_max": 15000,
+      "menus": [
+        { "name": "Nasi Bungkus Teri", "price": 3000, "category": "makanan_ringan", "suitability": ["pagi", "sore", "malam"] },
+        { "name": "Nasi Bungkus Ayam", "price": 3000, "category": "makanan_ringan", "suitability": ["pagi", "sore", "malam"] },
+        { "name": "Sate Usus Bakar", "price": 3000, "category": "cemilan", "suitability": ["sore", "malam"] },
+        { "name": "Sate Telur Bakar", "price": 3000, "category": "cemilan", "suitability": ["sore", "malam"] },
+        { "name": "Kopi Jos", "price": 5000, "category": "minuman", "suitability": ["malam"] }
+      ]
+    },
+    {
+      "canteen_name": "Warung Makan Bu Har",
+      "canteen_alias": ["Bu Har Gelanggang"],
+      "faculty_proximity": ["Gelanggang Mahasiswa", "FKKMK", "Pascasarjana"],
+      "gmaps_link": "https://maps.app.goo.gl/y2X8mH7vR1yZzF6s6",
+      "price_range_min": 12000,
+      "price_range_max": 18000,
+      "menus": [
+        { "name": "Nasi Pecel + Telur Ceplok", "price": 14500, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
+        { "name": "Gado-gado + Telur", "price": 15000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
+        { "name": "Lotek", "price": 13000, "category": "makanan_berat", "suitability": ["siang"] },
+        { "name": "Soto Ayam", "price": 12000, "category": "makanan_berat", "suitability": ["pagi", "siang"] }
+      ]
+    },
+    {
+      "canteen_name": "Penyetan Bu Lastri",
+      "canteen_alias": ["Bu Lastri"],
+      "faculty_proximity": ["MIPA", "Teknik"],
+      "gmaps_link": "https://maps.app.goo.gl/wJk4gX2fV3yT5aR67",
+      "price_range_min": 10000,
+      "price_range_max": 18000,
+      "menus": [
+        { "name": "Nasi Ayam Geprek", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Telur Penyet", "price": 10000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
+        { "name": "Nasi Goreng", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] },
+        { "name": "Magelangan", "price": 14000, "category": "makanan_berat", "suitability": ["malam"] },
+        { "name": "Mie Dok-Dok", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] }
+      ]
+    }
+  ]
+}
