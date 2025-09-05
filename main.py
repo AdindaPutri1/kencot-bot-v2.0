@@ -1,9 +1,3 @@
-# main.py
-"""
-Kencot Bot - API Server
-Provides an API endpoint for the bot logic.
-"""
-
 import os
 import logging
 from flask import Flask, request, jsonify

@@ -1,8 +1,3 @@
-"""
-Rule Engine for Kencot Bot
-Handles filtering logic based on location, time, hunger level, and budget
-"""
-
 import json
 import random
 from datetime import datetime

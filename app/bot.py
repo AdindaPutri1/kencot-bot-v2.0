@@ -1,9 +1,3 @@
-# app/bot.py
-"""
-Kencot Bot - Main bot logic with conversation flow management.
-This class handles the user's conversation state and calls utility functions.
-"""
-
 import logging
 import re
 import random  # <-- TAMBAHKAN INI
