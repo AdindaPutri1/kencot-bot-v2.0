@@ -172,3 +172,28 @@ def find_recommendations(all_canteens: List[Dict], faculty: str, budget: int, hu
     random.shuffle(matching_menus)
     logger.info(f"Found {len(matching_menus)} matching items. Returning up to 2.")
     return matching_menus[:2]
+
+def find_nearby_menus(canteens_db: List[Dict], faculty: str, limit: int = 5) -> List[Dict]:
+    """Mengambil beberapa menu dari kantin yang namanya mengandung nama fakultas."""
+    menus = []
+    faculty_lower = faculty.lower()
+
+    for canteen in canteens_db:
+        if (faculty_lower in str(canteen.get("canteen_name", "")).lower() or
+            any(faculty_lower in str(alias).lower() for alias in canteen.get("canteen_alias", []))):
+            
+            for menu in canteen.get("menus", []):
+                if isinstance(menu, dict):
+                    menu_with_info = menu.copy()
+                    menu_with_info['canteen_name'] = canteen.get("canteen_name", "Unknown")
+                    menu_with_info['menu_name'] = menu.get("name", "Unknown")  # ✅ pastikan key ada
+                    menu_with_info['menu_price'] = menu.get("price", 0)
+                    menus.append(menu_with_info)
+
+                    if len(menus) >= limit:
+                        return menus
+
+    return menus
+
+
+
