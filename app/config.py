@@ -13,16 +13,15 @@ class Config:
     
     # --- FLASK SETTINGS ---
     # Used for session security, etc.
-    SECRET_KEY = os.getenv('SECRET_KEY', 'a-very-secret-key-for-kencot-bot')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'a-very-secret-key-for-kencot-bot') # not used
     
     # --- WHATSAPP BUSINESS API SETTINGS ---
     # Get these from your Meta for Developers App dashboard
     WHATSAPP_TOKEN = os.getenv('WHATSAPP_TOKEN')
     PHONE_NUMBER_ID = os.getenv('PHONE_NUMBER_ID')
-    WEBHOOK_VERIFY_TOKEN = os.getenv('WEBHOOK_VERIFY_TOKEN', 'kencot-bot-secret-token')
+    WEBHOOK_VERIFY_TOKEN = os.getenv('WEBHOOK_VERIFY_TOKEN', 'kencot-bot-secret-token') # not used
 
     # --- LLM API SETTINGS (Optional for future use) ---
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
     
     # --- FILE PATHS ---
@@ -32,4 +31,4 @@ class Config:
     
     # --- LOGGING SETTINGS ---
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
-    LOG_FILE = 'kencot-bot.log'
+    LOG_FILE = 'logs/kencot-bot.log'
