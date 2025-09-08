@@ -59,39 +59,40 @@ def load_responses(file_path: str) -> Dict[str, Any]:
 # --- Entity Extraction Functions ---
 
 def extract_faculty_from_text(text: str) -> Optional[str]:
-    """Extract and normalize faculty name from user input."""
     faculty_mapping = {
-        'teknik': 'Teknik', 'ft': 'Teknik',
-        'mipa': 'MIPA', 'fmipa': 'MIPA',
-        'fkkmk': 'FKKMK', 'kedokteran': 'FKKMK', 'fk': 'FKKMK',
-        'pertanian': 'Pertanian', 'faperta': 'Pertanian',
-        'filsafat': 'Filsafat', 'bonbin': 'Filsafat',
-        'pascasarjana': 'Pascasarjana', 'pasca': 'Pascasarjana',
-        'psikologi': 'Psikologi', 'psiko': 'Psikologi',
-        'farmasi': 'Farmasi',
-        'kehutanan': 'Kehutanan', 'fkt': 'Kehutanan',
-        'peternakan': 'Peternakan', 'fapet': 'Peternakan',
-        'geografi': 'Geografi',
-        'feb': 'FEB', 'ekonomi': 'FEB',
-        'hukum': 'Hukum', 'fh': 'Hukum',
-        'isipol': 'Fisipol', 'fisipol': 'Fisipol',
-        'budaya': 'Ilmu Budaya', 'fib': 'Ilmu Budaya',
-        'gelanggang': 'Gelanggang Mahasiswa',
-        'gsp': 'GSP',
-        'vokasi': 'Sekolah Vokasi', 'sv': 'Sekolah Vokasi'
+        'Teknik': [r'\bteknik\b', r'\bft\b'],
+        'MIPA': [r'\bmipa\b', r'\bfmipa\b'],
+        'FKKMK': [r'\bfkkmk\b', r'\bkedokteran\b', r'\bfk\b'],
+        'Pertanian': [r'\bpertanian\b', r'\bfaperta\b'],
+        'Filsafat': [r'\bfilsafat\b', r'\bbonbin\b'],
+        'Pascasarjana': [r'\bpascasarjana\b', r'\bpasca\b'],
+        'Psikologi': [r'\bpsikologi\b', r'\bpsiko\b'],
+        'Farmasi': [r'\bfarmasi\b'],
+        'Kehutanan': [r'\bkehutanan\b', r'\bfkt\b'],
+        'Peternakan': [r'\bpeternakan\b', r'\bfapet\b'],
+        'Geografi': [r'\bgeografi\b'],
+        'FEB': [r'\bfeb\b', r'\bekonomi\b'],
+        'Hukum': [r'\bhukum\b', r'\bfh\b'],
+        'Fisipol': [r'\bisipol\b', r'\bfisipol\b'],
+        'Ilmu Budaya': [r'\bbudaya\b', r'\bfib\b'],
+        'Gelanggang Mahasiswa': [r'\bgelanggang\b'],
+        'GSP': [r'\bgsp\b'],
+        'Sekolah Vokasi': [r'\bvokasi\b', r'\bsv\b'],
     }
     text_lower = text.lower()
-    for keyword, faculty in faculty_mapping.items():
-        if keyword in text_lower:
-            return faculty
+    for faculty, patterns in faculty_mapping.items():
+        for pattern in patterns:
+            if re.search(pattern, text_lower):
+                return faculty
     return None
+
 
 def extract_budget_from_text(text: str) -> Optional[int]:
     """Extract a numerical budget from user text (e.g., '15k', '20rb', 'dibawah 20000')."""
     text_lower = text.lower().replace(" ", "")
     
     # Regex to find numbers followed by 'k', 'rb', or 'ribu'
-    match = re.search(r'(\d+)(k|rb|ribu)', text_lower)
+    match = re.search(r'(\d+)(k|rb|ribu)\b', text_lower)
     if match:
         return int(match.group(1)) * 1000
 
@@ -105,15 +106,15 @@ def extract_budget_from_text(text: str) -> Optional[int]:
     return None
 
 def extract_hunger_level_from_text(text: str) -> Optional[str]:
-    """Extract hunger level and map it to a standard category: 'brutal', 'standar', 'iseng'."""
     text_lower = text.lower()
-    if any(x in text_lower for x in ['a', 'brutal', 'banget', 'parah', 'kuli']):
-        return 'brutal'
-    if any(x in text_lower for x in ['b', 'standar', 'biasa', 'normal', 'kenyang']):
-        return 'standar'
-    if any(x in text_lower for x in ['c', 'iseng', 'ngunyah', 'ngemil', 'ringan']):
-        return 'iseng'
+    if re.search(r"\b(brutal|banget|parah|kuli|a)\b", text_lower):
+        return "brutal"
+    if re.search(r"\b(standar|biasa|normal|kenyang|b)\b", text_lower):
+        return "standar"
+    if re.search(r"\b(iseng|ngunyah|ngemil|ringan|c)\b", text_lower):
+        return "iseng"
     return None
+
 
 # --- Core Logic Functions ---
 
