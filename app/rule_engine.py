@@ -3,8 +3,10 @@ import random
 from datetime import datetime
 from typing import List, Dict, Optional
 import logging
+from .utils import load_responses
 
 logger = logging.getLogger(__name__)
+RESPONSES = load_responses("data/response.json")
 
 class RuleEngine:
     def __init__(self, database_path: str = 'data/database.json'):
@@ -24,7 +26,7 @@ class RuleEngine:
         """Determine time category based on current hour"""
         hour = datetime.now().hour
         
-        if 7 <= hour <= 10:
+        if 4 <= hour <= 10:
             return "pagi"
         elif 11 <= hour <= 15:
             return "siang" 
@@ -71,7 +73,7 @@ class RuleEngine:
         """Filter canteens by proximity to user's faculty"""
         faculty_proximity_map = {
             "Teknik": ["Kantin Teknik", "Kantin FKKMK", "Kantin Filsafat", "Penyetan Bu Lastri"],
-            "MIPA": ["Penyetan Bu Lastri", "Kantin MIPA", "Kantin Teknik", "Warung Makan Bu Har"],
+            "MIPA": ["Penyetan Bu Lastri", "Kantin Fakultas Geografi", "Kantin MIPA", "Warung Makan Bu Har"],
             "FKKMK": ["Kantin FKKMK", "Kantin Teknik", "Kantin Filsafat"],
             "Pertanian": ["Kantin Pertanian", "Warung Makan Bu Har", "Kantin Filsafat"],
             "Filsafat": ["Kantin Filsafat", "Kantin FKKMK", "Kantin Teknik"],
