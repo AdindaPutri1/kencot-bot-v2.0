@@ -8,9 +8,11 @@ import re
 import json
 import random
 import logging
-from .config import Config # Jika kamu butuh config di sini
+from .config import Config 
+from difflib import get_close_matches
 from datetime import datetime
 from typing import Dict, List, Optional, Any
+
 
 logger = logging.getLogger(__name__)
 
@@ -58,33 +60,62 @@ def load_responses(file_path: str) -> Dict[str, Any]:
 
 # --- Entity Extraction Functions ---
 
+# --- Entity Extraction Functions ---
+
+def make_flexible_pattern(word: str) -> str:
+    """
+    Bikin regex fleksibel:
+    - Huruf bisa dobel/triple.
+    - Huruf boleh hilang (kurang satu).
+    """
+    pattern = "".join([f"{c}+" if c.isalpha() else c for c in word])
+    return r"\b" + pattern + r"\b"
+
+
+FACULTY_PATTERNS = {
+    "Teknik": [make_flexible_pattern("teknik"), r"\bft\b", r"\bdteti\b"],
+    "MIPA": [make_flexible_pattern("mipa"), r"\bfmipa\b"],
+    "FKKMK": [make_flexible_pattern("fkkmk"), make_flexible_pattern("kedokteran"), make_flexible_pattern("fk")],
+    "Pertanian": [make_flexible_pattern("pertanian"), r"\bfaperta\b"],
+    "Filsafat": [make_flexible_pattern("filsafat"), r"\bbonbin\b"],
+    "Pascasarjana": [make_flexible_pattern("pascasarjana"), make_flexible_pattern("pasca")],
+    "Psikologi": [make_flexible_pattern("psikologi"), make_flexible_pattern("psiko")],
+    "Farmasi": [make_flexible_pattern("farmasi"), make_flexible_pattern("pharmasi")],
+    "Kehutanan": [make_flexible_pattern("kehutanan"), r"\bfkt\b"],
+    "Peternakan": [make_flexible_pattern("peternakan"), r"\bfapet\b"],
+    "Geografi": [make_flexible_pattern("geografi"), make_flexible_pattern("geographi")],
+    "FEB": [make_flexible_pattern("feb"), make_flexible_pattern("ekonomi"), make_flexible_pattern("ekon")],
+    "Hukum": [make_flexible_pattern("hukum"), r"\bfh\b"],
+    "Fisipol": [make_flexible_pattern("fisipol"), make_flexible_pattern("fisip")],
+    "Ilmu Budaya": [make_flexible_pattern("budaya"), r"\bfib\b"],
+    "Gelanggang Mahasiswa": [make_flexible_pattern("gelanggang")],
+    "GSP": [make_flexible_pattern("gsp"), r"\bgedung\s?pusat\b"],
+    "Sekolah Vokasi": [make_flexible_pattern("vokasi"), r"\bsv\b"]
+}
+
+
 def extract_faculty_from_text(text: str) -> Optional[str]:
-    faculty_mapping = {
-        'Teknik': [r'\bteknik\b', r'\bft\b'],
-        'MIPA': [r'\bmipa\b', r'\bfmipa\b'],
-        'FKKMK': [r'\bfkkmk\b', r'\bkedokteran\b', r'\bfk\b'],
-        'Pertanian': [r'\bpertanian\b', r'\bfaperta\b'],
-        'Filsafat': [r'\bfilsafat\b', r'\bbonbin\b'],
-        'Pascasarjana': [r'\bpascasarjana\b', r'\bpasca\b'],
-        'Psikologi': [r'\bpsikologi\b', r'\bpsiko\b'],
-        'Farmasi': [r'\bfarmasi\b'],
-        'Kehutanan': [r'\bkehutanan\b', r'\bfkt\b'],
-        'Peternakan': [r'\bpeternakan\b', r'\bfapet\b'],
-        'Geografi': [r'\bgeografi\b'],
-        'FEB': [r'\bfeb\b', r'\bekonomi\b'],
-        'Hukum': [r'\bhukum\b', r'\bfh\b'],
-        'Fisipol': [r'\bisipol\b', r'\bfisipol\b'],
-        'Ilmu Budaya': [r'\bbudaya\b', r'\bfib\b'],
-        'Gelanggang Mahasiswa': [r'\bgelanggang\b'],
-        'GSP': [r'\bgsp\b'],
-        'Sekolah Vokasi': [r'\bvokasi\b', r'\bsv\b'],
-    }
-    text_lower = text.lower()
-    for faculty, patterns in faculty_mapping.items():
-        for pattern in patterns:
-            if re.search(pattern, text_lower):
+    text_lower = text.lower().strip()
+
+    # Cek alias manual dulu
+    if text_lower in FACULTY_PATTERNS:
+        return FACULTY_PATTERNS[text_lower]
+
+    # Cek regex dulu
+    for faculty, patterns in FACULTY_PATTERNS.items():
+        for pat in patterns:
+            if re.search(pat, text_lower, re.IGNORECASE):
                 return faculty
+
+    # Kalau ga nemu, coba fuzzy
+    all_keywords = list(FACULTY_PATTERNS.keys())
+    match = get_close_matches(text_lower, all_keywords, n=1, cutoff=0.85)
+    if match:
+        return match[0]
+
     return None
+
+
 
 
 def extract_budget_from_text(text: str) -> Optional[int]:
@@ -102,17 +133,39 @@ def extract_budget_from_text(text: str) -> Optional[int]:
         num = int(match.group(1))
         # If number is small (e.g., 15), assume it's in thousands. If large (15000), use as is.
         return num * 1000 if num < 1000 else num
-        
+    
+    # Format dengan kata (dua puluh ribu, sepuluh ribu)
+    WORD_NUMS = {
+        "sepuluh": 10000, "sebelas": 11000,
+        "dua puluh": 20000, "tiga puluh": 30000,
+        "seratus": 100000
+    }
+    for word, val in WORD_NUMS.items():
+        if word in text_lower:
+            return val
     return None
 
 def extract_hunger_level_from_text(text: str) -> Optional[str]:
+    """Extract hunger level with regex and map to brutal/standar/iseng."""
+    patterns = {
+        "brutal": [
+            r"\ba\b", r"\bbrutal\b", r"\bbanget\b", r"\bparah\b", r"\bkuli\b"
+        ],
+        "standar": [
+            r"\bb\b", r"\bstandar\b", r"\bbiasa\b", r"\bnormal\b", r"\bkenyang\b"
+        ],
+        "iseng": [
+            r"\bc\b", r"\biseng\b", r"\bngunyah\b", r"\bngemil\b", r"\bringan\b"
+        ]
+    }
+
     text_lower = text.lower()
-    if re.search(r"\b(brutal|banget|parah|kuli|a)\b", text_lower):
-        return "brutal"
-    if re.search(r"\b(standar|biasa|normal|kenyang|b)\b", text_lower):
-        return "standar"
-    if re.search(r"\b(iseng|ngunyah|ngemil|ringan|c)\b", text_lower):
-        return "iseng"
+    if any(x in text_lower for x in ['a', 'brutal', 'banget', 'parah', 'kuli']):
+        return 'brutal'
+    if any(x in text_lower for x in ['b', 'standar', 'biasa', 'normal', 'kenyang']):
+        return 'standar'
+    if any(x in text_lower for x in ['c', 'iseng', 'ngunyah', 'ngemil', 'ringan']):
+        return 'iseng'
     return None
 
 
@@ -195,6 +248,8 @@ def find_nearby_menus(canteens_db: List[Dict], faculty: str, limit: int = 5) -> 
                         return menus
 
     return menus
+
+
 
 
 

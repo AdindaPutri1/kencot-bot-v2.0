@@ -1,30 +1,26 @@
 import logging
 import re
-import random  # <-- TAMBAHKAN INI
-from datetime import datetime
+import random
 from typing import Any, Dict, List
 from . import utils
 from . import llm
-
 
 logger = logging.getLogger(__name__)
 
 class KencotBot:
     def __init__(self, config):
-        """Initializes the bot with configuration and data."""
         self.config = config
         self.conversation_states: Dict[str, Dict] = {}
         self.responses = utils.load_responses(config.RESPONSES_PATH)
         self.canteens_db = utils.load_database(config.DATABASE_PATH)
-        
-        # Simple regex for initial trigger and reset
+
+        # Regex triggers
         self.triggers = {
             'food': re.compile(r'\b(laper|lapar|hungry|kencot|makan|mam|rekomen)\b', re.IGNORECASE),
             'reset': re.compile(r'\b(ulang|reset|restart|mulai lagi|cancel|batal)\b', re.IGNORECASE)
         }
 
     def _reset_conversation(self, user_id: str) -> str:
-        """Resets the conversation state for a user."""
         self.conversation_states[user_id] = {'phase': 'idle', 'data': {}}
         return "Siap! Udah direset nih. Kalau laper lagi tinggal bilang aja ya! 😊"
 
@@ -39,15 +35,38 @@ class KencotBot:
         return slots
 
     def handle_message(self, user_id: str, message: str) -> str:
-        """Main message handler that routes to the correct conversation phase."""
+        """Main handler dengan smart check kalau semua info udah ada."""
         state = self.conversation_states.get(user_id, {'phase': 'idle', 'data': {}})
-        
-        # Handle reset command anytime
+
+        # Reset command
         if self.triggers['reset'].search(message):
             return self._reset_conversation(user_id)
 
+        # --- Smart check: coba ekstrak semua langsung ---
+        faculty = utils.extract_faculty_from_text(message)
+        hunger_level = utils.extract_hunger_level_from_text(message)
+        budget = utils.extract_budget_from_text(message)
+
+        if faculty and hunger_level and budget:
+            logger.info(f"All info detected langsung: {faculty}, {hunger_level}, {budget}")
+            
+            # --- Tambahin check budget kecil ---
+            if budget <= 1500:
+                self._reset_conversation(user_id)
+                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲"
+
+            recs = utils.find_recommendations(self.canteens_db, faculty, budget, hunger_level)
+            self._reset_conversation(user_id)
+            if not recs:
+                return random.choice(self.responses['no_result'])
+            return self._format_recommendations_response(recs, {
+                "faculty": faculty,
+                "hunger_level": hunger_level,
+                "budget": budget
+            })
+
+        # Kalau ga lengkap, jalanin state machine biasa
         phase = state['phase']
-        
         try:
             if phase == 'idle':
                 return self._handle_idle_phase(user_id, message)
@@ -62,13 +81,13 @@ class KencotBot:
             elif phase == 'recommendation_given':
                 return self._handle_recommendation_phase(user_id, message, state)
         except Exception as e:  
-            logger.error(f"Error in phase '{phase}' for user {user_id}: {e}")
-            self.conversation_states[user_id] = {'phase': 'idle', 'data': {}} # Reset state on error
+            logger.error(f"Error in phase '{phase}' for user {user_id}: {e}", exc_info=True)
+            self.conversation_states[user_id] = {'phase': 'idle', 'data': {}}
             return self.responses.get("error", ["Aduh, mamang lagi error nih, coba lagi ya."])[0]
 
-        # Default fallback
         return self._handle_idle_phase(user_id, message)
 
+    # --- State Handlers ---
     def _handle_idle_phase(self, user_id: str, message: str) -> str:
         """Handles the initial interaction when user is idle"""
         
@@ -137,21 +156,17 @@ class KencotBot:
         return random.choice(self.responses['location_ask'])
     
     def _handle_location_phase(self, user_id: str, message: str, state: Dict) -> str:
-        """Handles the location input phase."""
         faculty = utils.extract_faculty_from_text(message)
         if faculty:
             state['data']['faculty'] = faculty
             state['phase'] = 'waiting_hunger'
             self.conversation_states[user_id] = state
-
             hunger_ask_data = self.responses['hunger_level_ask']
-            question = hunger_ask_data['question']
-            options = "\n".join([f"{key}. {value}" for key, value in hunger_ask_data['options'].items()])
-            return f"Siap, {faculty} noted! 📍\n\n{question}\n{options}"
+            options = "\n".join([f"{k}. {v}" for k, v in hunger_ask_data['options'].items()])
+            return f"Siap, {faculty} noted! 📍\n\n{hunger_ask_data['question']}\n{options}"
         return random.choice(self.responses['location_ask_fail'])
 
     def _handle_hunger_phase(self, user_id: str, message: str, state: Dict) -> str:
-        """Handles the hunger level input phase."""
         hunger_level = utils.extract_hunger_level_from_text(message)
         if hunger_level:
             state['data']['hunger_level'] = hunger_level
@@ -161,7 +176,6 @@ class KencotBot:
         return random.choice(self.responses['hunger_ask_fail'])
 
     def _handle_budget_phase(self, user_id: str, message: str, state: Dict) -> str:
-        """Handles the budget input and generates the final recommendation."""
 
     # === AI fallback: kalau user sudah di fase waiting_budget_ai ===
         if state.get("phase") == "waiting_budget_ai":
@@ -188,6 +202,11 @@ class KencotBot:
     # === Normal flow: parsing budget ===
         budget = utils.extract_budget_from_text(message)
         if budget:
+            # --- Tambahin check dulu ---
+            if budget <= 1500:
+                self._reset_conversation(user_id)
+                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲"
+            
             state['data']['budget'] = budget
 
         # Cari rekomendasi dari DB
@@ -209,26 +228,9 @@ class KencotBot:
             return "Yah, ga ada yang cocok euy. Mau aku cariin aja nih pake AI Mamang? (Ya/Tidak)"
 
         return random.choice(self.responses['budget_ask_fail'])
-    
-    def _handle_recommendation_phase(self, user_id: str, message: str, state: Dict) -> str:
-        """Handles setelah kasih rekomendasi"""
-        if any(word in message.lower() for word in ["ya", "lagi", "boleh"]):
-        # Balik ke nanya lokasi lagi
-            self.conversation_states[user_id] = {'phase': 'waiting_location', 'data': {}}
-            return "Oke siap! Mau makan di fakultas mana kali ini? 🍽️"
-        elif "wareg" in message.lower() or "kenyang" in message.lower():
-            self._reset_conversation(user_id)
-            return "Sip, wareg tenan! Kalau laper tinggal bilang ya."
-        else:
-            return "Gimana, mau rekomendasi lagi atau udah wareg? 😋"
-
         
     def _format_recommendations_response(self, recommendations: List[Dict], user_data: Dict) -> str:
-        """Formats the final recommendation message in Gen Z style."""
-        # This is where you would call an LLM in the future.
-        # For now, we use a dynamic template.
         header = f"Gini deh, karena kamu lagi di {user_data.get('faculty')} dan lagi {user_data.get('hunger_level')}, ini 2 opsi paling mantul buat kamu: ✨\n"
-        
         body = ""
         for i, rec in enumerate(recommendations):
             emoji = "🍽️" if i == 0 else "🍜"
@@ -238,6 +240,6 @@ class KencotBot:
                 f"   📍 Cus kesini: {rec['gmaps_link']}\n"
             )
             
-        footer = "\nGaskeun cobain salah satunya! Butuh rekomendasi Mamang lagi, nggak nih? 😋"
+        footer = "\nGaskeun cobain salah satunya! Kalau butuh lagi, tinggal chat mamang aja ya! 😋"
         
         return header + body + footer
