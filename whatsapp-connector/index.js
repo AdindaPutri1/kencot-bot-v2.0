@@ -47,8 +47,9 @@ client.on('message', async (message) => {
 
     if (!text || text.trim() === '') return;
 
-    try {
+      try {
         // Kirim pesan ke API Python untuk diproses
+        console.log("🔄 Mengirim pesan ke API Python untuk diproses...");
         const response = await axios.post(PYTHON_API_URL, {
             user_id: senderId,
             message: text
@@ -57,10 +58,22 @@ client.on('message', async (message) => {
         const botReply = response.data.response;
 
         if (botReply) {
-            console.log(`🤖 Mengirim balasan ke ${senderId}: "${botReply.substring(0, 60)}..."`);
+            console.log(`🤖 Balasan dari API Python: "${botReply}"`);
+
+            // Tambahan debug: cek isi flow conversation
+            if (botReply.toLowerCase().includes("posisi kamu") || botReply.toLowerCase().includes("fakultas")) {
+                console.log("➡️ Flow: User lagi di fase **waiting_location**");
+            } else if (botReply.toLowerCase().includes("tingkat kelaparan") || botReply.toLowerCase().includes("brutal")) {
+                console.log("➡️ Flow: User lagi di fase **waiting_hunger**");
+            } else if (botReply.toLowerCase().includes("budget") || botReply.toLowerCase().includes("berapa")) {
+                console.log("➡️ Flow: User lagi di fase **waiting_budget**");
+            } else if (botReply.toLowerCase().includes("opsi paling mantul")) {
+                console.log("✅ Flow: Rekomendasi sudah dikirim ke user");
+            }
+
             await client.sendMessage(senderId, botReply);
         } else {
-            console.warn(`Tidak ada balasan dari API Python untuk pesan: "${text}"`);
+            console.warn(`⚠️ Tidak ada balasan dari API Python untuk pesan: "${text}"`);
         }
 
     } catch (error) {
