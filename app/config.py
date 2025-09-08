@@ -31,4 +31,4 @@ class Config:
     
     # --- LOGGING SETTINGS ---
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
-    LOG_FILE = 'kencot-bot.log'
+    LOG_FILE = 'logs/kencot-bot.log'

@@ -8,7 +8,6 @@ import re
 import json
 import random
 import logging
-from .config import Config 
 from difflib import get_close_matches
 from datetime import datetime
 from typing import Dict, List, Optional, Any
@@ -54,11 +53,10 @@ def load_responses(file_path: str) -> Dict[str, Any]:
             "hunger_ask_fail": ["Pilih A, B, atau C aja ya bestie! 😊\nA. Laper brutal\nB. Laper standar\nC. Cuma iseng"],
             "budget_ask": ["Okay noted! Terakhir nih, budget kamu berapaan? Tenang, aku cariin yang paling worth it 💰"],
             "budget_ask_fail": ["Hmm, ga kedetect budgetnya. Coba bilang angkanya ya, misal: 10k, 20 ribu, atau 15000."],
+            "agree_ask_fail": ["Mamang ga ngerti maksudmu 🤔. Coba jawab *iya* atau *nggak* aja ya!"],
             "no_result": ["Waduh, kayaknya kombinasi pencarianmu ga nemu apa-apa nih 😢. Coba deh ganti kriteria, mungkin budgetnya digedein dikit?"],
             "error": ["Aduh, mamang lagi error nih 😵 Coba chat lagi dalam beberapa saat ya!"]
         }
-
-# --- Entity Extraction Functions ---
 
 # --- Entity Extraction Functions ---
 
@@ -115,9 +113,6 @@ def extract_faculty_from_text(text: str) -> Optional[str]:
 
     return None
 
-
-
-
 def extract_budget_from_text(text: str) -> Optional[int]:
     """Extract a numerical budget from user text (e.g., '15k', '20rb', 'dibawah 20000')."""
     text_lower = text.lower().replace(" ", "")
@@ -146,7 +141,7 @@ def extract_budget_from_text(text: str) -> Optional[int]:
     return None
 
 def extract_hunger_level_from_text(text: str) -> Optional[str]:
-    """Extract hunger level with regex and map to brutal/standar/iseng."""
+    """Extract hunger level dengan regex dan mapping ke brutal/standar/iseng."""
     patterns = {
         "brutal": [
             r"\ba\b", r"\bbrutal\b", r"\bbanget\b", r"\bparah\b", r"\bkuli\b"
@@ -160,13 +155,45 @@ def extract_hunger_level_from_text(text: str) -> Optional[str]:
     }
 
     text_lower = text.lower()
-    if any(x in text_lower for x in ['a', 'brutal', 'banget', 'parah', 'kuli']):
-        return 'brutal'
-    if any(x in text_lower for x in ['b', 'standar', 'biasa', 'normal', 'kenyang']):
-        return 'standar'
-    if any(x in text_lower for x in ['c', 'iseng', 'ngunyah', 'ngemil', 'ringan']):
-        return 'iseng'
+
+    for level, regex_list in patterns.items():
+        for regex in regex_list:
+            if re.search(regex, text_lower):
+                return level
+
     return None
+
+def agree_response(text: str) -> Optional[bool]:
+    """Deteksi jawaban setuju/tidak pakai flexible pattern."""
+    base_yes = ["ya", "iya", "ok", "sip", "boleh", "yoi", "lagi"]
+    base_no = ["ga", "gak", "nggak", "engga", "tidak", "no"]
+
+    patterns_yes = [make_flexible_pattern(w) for w in base_yes]
+    patterns_no = [make_flexible_pattern(w) for w in base_no]
+
+    text_lower = text.lower()
+
+    for pat in patterns_yes:
+        if re.search(pat, text_lower):
+            return True
+    for pat in patterns_no:
+        if re.search(pat, text_lower):
+            return False
+    return None
+
+
+def is_full_response(text: str) -> bool:
+    """Deteksi kenyang/wareg dengan pola fleksibel."""
+    words = ["wareg", "kenyang", "full"]
+    patterns_full: List[str] = [make_flexible_pattern(w) for w in words]
+    return any(re.search(p, text.lower()) for p in patterns_full)
+
+
+def is_thank_you(text: str) -> bool:
+    """Deteksi ucapan terima kasih dengan pola fleksibel."""
+    words = ["makasi", "makasih", "terima kasih", "suwun", "thanks"]
+    patterns_thanks: List[str] = [make_flexible_pattern(w) for w in words]
+    return any(re.search(p, text.lower()) for p in patterns_thanks)
 
 
 # --- Core Logic Functions ---
@@ -227,23 +254,46 @@ def find_recommendations(all_canteens: List[Dict], faculty: str, budget: int, hu
     logger.info(f"Found {len(matching_menus)} matching items. Returning up to 2.")
     return matching_menus[:2]
 
-def find_nearby_menus(canteens_db: List[Dict], faculty: str, limit: int = 5) -> List[Dict]:
-    """Mengambil beberapa menu dari kantin yang namanya mengandung nama fakultas."""
+def find_nearby_menus(
+    canteens_db: List[Dict], faculty: str, limit: int = 5, allow_fallback: bool = True
+) -> List[Dict]:
+    """Ambil beberapa menu dari kantin dekat fakultas tertentu. 
+       Kalau tidak ada, ambil dari fakultas lain kalau allow_fallback=True.
+    """
     menus = []
     faculty_lower = faculty.lower()
 
+    #  Cari berdasarkan fakultas dulu
     for canteen in canteens_db:
-        if (faculty_lower in str(canteen.get("canteen_name", "")).lower() or
-            any(faculty_lower in str(alias).lower() for alias in canteen.get("canteen_alias", []))):
+        if (faculty_lower in canteen.get("canteen_name", "").lower() or
+            any(faculty_lower in alias.lower() for alias in canteen.get("canteen_alias", []))):
             
             for menu in canteen.get("menus", []):
                 if isinstance(menu, dict):
-                    menu_with_info = menu.copy()
-                    menu_with_info['canteen_name'] = canteen.get("canteen_name", "Unknown")
-                    menu_with_info['menu_name'] = menu.get("name", "Unknown")  # ✅ pastikan key ada
-                    menu_with_info['menu_price'] = menu.get("price", 0)
+                    menu_with_info = {
+                        "canteen_name": canteen.get("canteen_name", "Unknown"),
+                        "menu_name": menu.get("menu_name") or menu.get("name", "Unknown"),
+                        "menu_price": menu.get("menu_price") or menu.get("price", 0),
+                        "suitability": menu.get("suitability", []),
+                        "gmaps_link": canteen.get("gmaps_link", None)
+                    }
                     menus.append(menu_with_info)
+                    if len(menus) >= limit:
+                        return menus
 
+    #  Kalau kosong & fallback diizinkan → ambil menu umum dari kantin lain
+    if not menus and allow_fallback:
+        for canteen in canteens_db:
+            for menu in canteen.get("menus", []):
+                if isinstance(menu, dict):
+                    menu_with_info = {
+                        "canteen_name": canteen.get("canteen_name", "Unknown"),
+                        "menu_name": menu.get("menu_name") or menu.get("name", "Unknown"),
+                        "menu_price": menu.get("menu_price") or menu.get("price", 0),
+                        "suitability": menu.get("suitability", []),
+                        "gmaps_link": canteen.get("gmaps_link", None)
+                    }
+                    menus.append(menu_with_info)
                     if len(menus) >= limit:
                         return menus
 

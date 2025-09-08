@@ -24,16 +24,6 @@ class KencotBot:
         self.conversation_states[user_id] = {'phase': 'idle', 'data': {}}
         return "Siap! Udah direset nih. Kalau laper lagi tinggal bilang aja ya! 😊"
 
-    def extract_slots(self, message: str) -> Dict[str, str]:
-        slots = {}
-        if (faculty := utils.extract_faculty_from_text(message)):
-            slots['faculty'] = faculty
-        if (hunger := utils.extract_hunger_level_from_text(message)):
-            slots['hunger_level'] = hunger
-        if (budget := utils.extract_budget_from_text(message)):
-            slots['budget'] = budget
-        return slots
-
     def handle_message(self, user_id: str, message: str) -> str:
         """Main handler dengan smart check kalau semua info udah ada."""
         state = self.conversation_states.get(user_id, {'phase': 'idle', 'data': {}})
@@ -47,16 +37,34 @@ class KencotBot:
         hunger_level = utils.extract_hunger_level_from_text(message)
         budget = utils.extract_budget_from_text(message)
 
-        if faculty and hunger_level and budget:
+        if faculty and not hunger_level and not budget:
+        # Hanya tau fakultas → simpan dulu, minta hunger_level
+            state['phase'] = 'waiting_hunger'
+            state['data']['faculty'] = faculty
+            self.conversation_states[user_id] = state
+            return "Oke, kamu di fakultas {}. Lagi lapernya segimana nih? 🤔".format(faculty)
+
+        elif faculty and hunger_level and not budget:
+        # Tau fakultas + hunger_level → minta budget
+            state['phase'] = 'waiting_budget'
+            state['data']['faculty'] = faculty
+            state['data']['hunger_level'] = hunger_level
+            self.conversation_states[user_id] = state
+            return "Noted, lapar {} di fakultas {}. Budget makanmu berapa nih? 💸".format(hunger_level, faculty)
+
+        # jika yang diketahui fakultas, hunger_level, dan budget
+        elif faculty and hunger_level and budget:
             logger.info(f"All info detected langsung: {faculty}, {hunger_level}, {budget}")
             
             # --- Tambahin check budget kecil ---
             if budget <= 1500:
-                self._reset_conversation(user_id)
-                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲"
+                state['phase'] = "waiting_budget"
+                self.conversation_states[user_id] = state
+                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲\n\nBercanda, coba budget di atas 10ribu"
 
+            state['phase'] = "recommendation_given"
+            self.conversation_states[user_id] = state
             recs = utils.find_recommendations(self.canteens_db, faculty, budget, hunger_level)
-            self._reset_conversation(user_id)
             if not recs:
                 return random.choice(self.responses['no_result'])
             return self._format_recommendations_response(recs, {
@@ -89,71 +97,10 @@ class KencotBot:
 
     # --- State Handlers ---
     def _handle_idle_phase(self, user_id: str, message: str) -> str:
-        """Handles the initial interaction when user is idle"""
-        
-        state: Dict[str, Dict[str, str]] = self.conversation_states.get(
-            user_id, {'phase': 'idle', 'data': {}}
-        )
-
         if self.triggers['food'].search(message):
-
-           # === Extract semua slot dulu ===
-            slots = self.extract_slots(message)
-            state['data'].update(slots)
-
-            # === Kalau user cuma trigger doang (laper, kencot, dll) ===
-            if state['phase'] == 'idle' and not state['data']:
-                self.conversation_states[user_id] = {'phase': 'waiting_location', 'data': {}}
-                greeting = random.choice(self.responses['greetings'])
-                location_ask = random.choice(self.responses['location_ask'])
-                return f"{greeting}\n\n{location_ask}"
-
-            # === Cek apakah slot udah lengkap / masih kurang ===
-            return self._check_and_recommend(user_id, state)
+            self.conversation_states[user_id] = {'phase': 'waiting_location', 'data': {}}
+            return f"{random.choice(self.responses['greetings'])}\n\n{random.choice(self.responses['location_ask'])}"
         return "Hai! Aku Mamang UGM, siap bantu kamu cari makan. Bilang aja 'laper' buat mulai! 😉"
-
-    def _check_and_recommend(self, user_id: str, state: Dict) -> str:
-        """Helper untuk cek slot mana yang udah lengkap dan tentuin phase selanjutnya."""
-
-        data = state['data']
-
-        # Kalau lengkap semua → kasih rekomendasi
-        if all(k in data for k in ['faculty', 'hunger_level', 'budget']):
-            recommendations = utils.find_recommendations(
-                self.canteens_db,
-                data['faculty'],
-                data['budget'],
-                data['hunger_level']
-            )
-            if recommendations:
-                state['phase'] = "recommendation_given"
-                self.conversation_states[user_id] = state
-                return self._format_recommendations_response(recommendations, data)
-            else:
-                state['phase'] = "waiting_budget_ai"
-                self.conversation_states[user_id] = state
-                return "Yah, ga ada yang cocok euy. Mau aku cariin aja nih pake AI Mamang? (Ya/Tidak)"
-
-        # Kalau baru faculty aja → nanya hunger
-        if "faculty" in data and "hunger_level" not in data:
-            state['phase'] = "waiting_hunger"
-            self.conversation_states[user_id] = state
-            hunger_ask_data: Dict[str, Any] = self.responses['hunger_level_ask']
-            question = hunger_ask_data['question']
-            options_dict: Dict[str, str] = hunger_ask_data['options']
-            options = "\n".join([f"{k}. {v}" for k, v in options_dict.items()])
-            return f"Siap, {data['faculty']} noted! 📍\n\n{question}\n{options}"
-
-        # Kalau faculty + hunger udah ada tapi budget belum
-        if "faculty" in data and "hunger_level" in data and "budget" not in data:
-            state['phase'] = "waiting_budget"
-            self.conversation_states[user_id] = state
-            return random.choice(self.responses['budget_ask'])
-
-        # Kalau belum ada apa-apa → fallback
-        state['phase'] = "waiting_location"
-        self.conversation_states[user_id] = state
-        return random.choice(self.responses['location_ask'])
     
     def _handle_location_phase(self, user_id: str, message: str, state: Dict) -> str:
         faculty = utils.extract_faculty_from_text(message)
@@ -179,33 +126,43 @@ class KencotBot:
 
     # === AI fallback: kalau user sudah di fase waiting_budget_ai ===
         if state.get("phase") == "waiting_budget_ai":
-            if message.lower() in ["ya", "ok", "boleh"]:
+            agree = utils.agree_response(message)
+
+            if agree is True:
                 user_data = {
                     "faculty": state['data']['faculty'],
                     "hunger_level": state['data']['hunger_level'],
                     "budget": state['data']['budget'],
                     "time_category": utils.get_current_time_period()
-            }
+                } 
                 nearby_menus = utils.find_nearby_menus(self.canteens_db, user_data['faculty'])
                 llm_response = llm.ask_gemini(user_data, nearby_menus)
 
-                 # selesai kasih rekomendasi → balik ke recommendation phase
+                waiting_msg = (
+                    "Sek, mamang pikirin dulu yaa... 🤔\n"
+                    "Mungkin mamang mikirnya agak lama nih, tapi demi kamu apasih yang engga ❤️\n\n"
+                )
+
                 state['phase'] = "recommendation_given"
                 self.conversation_states[user_id] = state
-                return llm_response + "\n\nMau Mamang kasih rekomendasi lagi nggak nih? 😋"
-            
-            state['phase'] = "waiting_budget"
-            self.conversation_states[user_id] = state
-            # Kalau jawabannya bukan "ya"
-            return "Oke, kalau gitu Mamang nggak maksa 😅. Coba sebutin budget lain aja ya!"
+                return waiting_msg + llm_response + "\n\nMau Mamang kasih rekomendasi lagi nggak nih? 😋"
+
+            elif agree is False:
+                state['phase'] = "waiting_budget"
+                self.conversation_states[user_id] = state
+                return "Oke, kalau gitu Mamang nggak maksa 😅. Coba sebutin budget lain aja ya!"
+
+            else:  # None → gagal deteksi
+                return random.choice(self.responses['agree_ask_fail'])
 
     # === Normal flow: parsing budget ===
         budget = utils.extract_budget_from_text(message)
         if budget:
             # --- Tambahin check dulu ---
             if budget <= 1500:
-                self._reset_conversation(user_id)
-                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲"
+                state['phase'] = "waiting_budget"
+                self.conversation_states[user_id] = state
+                return f"Aduh in this economy gada makanan harganya {budget}. Kamu puasa aja dulu yah 🥲\n\nBercanda, coba budget di atas 10ribu"
             
             state['data']['budget'] = budget
 
@@ -228,9 +185,36 @@ class KencotBot:
             return "Yah, ga ada yang cocok euy. Mau aku cariin aja nih pake AI Mamang? (Ya/Tidak)"
 
         return random.choice(self.responses['budget_ask_fail'])
-        
+    
+    def _handle_recommendation_phase(self, user_id: str, message: str, state: Dict) -> str:
+        """Handles setelah kasih rekomendasi"""
+
+        agree = utils.agree_response(message)
+
+        if agree is True:
+        # Balik ke nanya lokasi lagi
+            self.conversation_states[user_id] = {'phase': 'waiting_location', 'data': {}}
+            return "Oke siap! Mau makan di fakultas mana kali ini? 🍽️"
+
+        elif utils.is_full_response(message):
+            self._reset_conversation(user_id)
+            return "Sip, wareg tenan! Kalau laper tinggal bilang ya. 😋"
+
+        elif utils.is_thank_you(message):
+            self._reset_conversation(user_id)
+            return "Sama-sama 🙌. Makasi juga udah pakai bot punya Mamang. Semoga rekomendasinya bisa buat makan bareng doimu wkwk. Kalau laper tinggal bilang, ya! 😉"
+
+        elif agree is None:
+        # kalau ga kedetect → fallback ke agree_ask_fail
+            return random.choice(self.responses['agree_ask_fail'])
+
+        else:
+        # aman fallback kalau unexpected
+            return "Gimana, mau rekomendasi lagi atau udah wareg? Kalau udah wareg tinggal bilang wareg atau kenyang!😋"
+
+
     def _format_recommendations_response(self, recommendations: List[Dict], user_data: Dict) -> str:
-        header = f"Gini deh, karena kamu lagi di {user_data.get('faculty')} dan lagi {user_data.get('hunger_level')}, ini 2 opsi paling mantul buat kamu: ✨\n"
+        header = f"Gini deh, karena kamu lagi di {user_data.get('faculty')} dan lagi {user_data.get('hunger_level')}, ini opsi paling mantul buat kamu: ✨\n"
         body = ""
         for i, rec in enumerate(recommendations):
             emoji = "🍽️" if i == 0 else "🍜"
@@ -240,6 +224,6 @@ class KencotBot:
                 f"   📍 Cus kesini: {rec['gmaps_link']}\n"
             )
             
-        footer = "\nGaskeun cobain salah satunya! Kalau butuh lagi, tinggal chat mamang aja ya! 😋"
+        footer = "\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? 😋"
         
         return header + body + footer
