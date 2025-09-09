@@ -8,6 +8,7 @@ node_modules/
 .wwebjs_auth/
 .wwebjs_cache/*.html
 
+
 # File Rahasia
 .env
 
