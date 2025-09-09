@@ -299,6 +299,40 @@ def find_nearby_menus(
 
     return menus
 
+# untuk testing functional flow
+def ask_user_budget():
+    return input("Budgetnya berapa?")
+
+def ask_user_ai():
+    return input("Mau dicari pake AI? (ya/tidak)")
+
+def ask_user_repeat():
+    return input("Mau rekomendasi lagi? (ya/tidak)")
+
+def reset_state():
+    return None
+
+# untuk functional test
+def ask_user_budget():
+    pass
+
+def ask_user_ai():
+    pass
+
+def ask_user_repeat():
+    pass
+
+def ask_user_faculty():
+    pass
+
+def ask_user_hunger():
+    pass
+
+def ai_recommendation(faculty, budget, hunger):
+    pass
+
+
+
 
 
 
