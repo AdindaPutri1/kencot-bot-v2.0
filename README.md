@@ -128,6 +128,9 @@ kencot-bot/
 │  ├─ config.py
 │  ├─ llm.py            # openai bot
 │  └─ utils.py
+├─ test/                # test code
+│  ├─ functional_test.py           
+│  └─ unit_test.py
 └─ database/            # Data kantin
 ```
 
