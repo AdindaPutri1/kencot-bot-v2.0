@@ -1,7 +1,6 @@
 # Kencot Bot - Mamang UGM 🤖🍽️
 
-Kencot Bot adalah chatbot WhatsApp **teman terbaikmu saat kencot (lapar berat)** di sekitar kampus UGM.
-Cukup chat "laper", dan Mamang UGM akan menanyakan lokasi, tingkat kelaparan, dan budget-mu untuk memberikan **rekomendasi makanan paling mantul**.
+Kencot Bot adalah chatbot WhatsApp **teman terbaikmu saat kencot (lapar berat)** di sekitar kampus UGM. Cukup chat "laper", dan Mamang UGM akan menanyakan lokasi, tingkat kelaparan, dan budget-mu untuk memberikan **rekomendasi makanan paling mantul**.
 
 Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cerdas.
 
@@ -47,17 +46,7 @@ Bot ini menggunakan **arsitektur hybrid** yang efisien:
 
 ---
 
-## Pra-syarat
-
-Pastikan sebelum mulai, kamu sudah menyiapkan:
-
-* **Python 3.8+**
-* **Node.js 18+**
-* **Akun WhatsApp** yang akan dijadikan bot
-
----
-
-## Setup Proyek
+## Setup & Run
 
 ### 1. Clone Repository
 
@@ -66,15 +55,15 @@ git clone https://github.com/fatimahnadiaekaputri/kencot-bot.git
 cd kencot-bot
 ```
 
-### 2. Siapkan file `.env`
+### 2. Konfigurasi `.env`
 
-Buat file `.env` di folder utama. Tidak perlu token khusus untuk WhatsApp. `.env` digunakan untuk token API GEMINI yang bisa didapatkan di [Google AI Studio]](https://aistudio.google.com/)
+Buat file `.env` di folder utama. Tidak perlu token khusus untuk WhatsApp. `.env` digunakan untuk token API GEMINI yang bisa didapatkan di [Google AI Studio](https://aistudio.google.com/)
 
 ```bash
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
 
-### 3. Setup Backend Python
+### 3. Setup Backend Python (CLI)
 
 ```bash
 # Buat virtual environment
@@ -90,47 +79,38 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Setup Konektor Node.js
+#### Jalankan Backend
+
+```bash
+python main.py
+```
+
+> API server aktif di `http://localhost:5000`.
+
+### 4. Setup Konektor WhatsApp
 
 ```bash
 cd whatsapp-connector
 npm install
 ```
 
----
-
-## Menjalankan Bot
-
-Kamu perlu **dua terminal**: satu untuk backend Python, satu untuk konektor WhatsApp.
-
-### Terminal 1: Jalankan API Python
+#### Jalankan Konektor
 
 ```bash
-python main.py
-```
-
-> Server API aktif di `http://localhost:5000`. Jangan ditutup!
-> **Stop server:** Tekan `Ctrl + C` di terminal untuk menghentikan server Python.
-
-### Terminal 2: Jalankan Konektor WhatsApp
-
-```bash
-cd whatsapp-connector
 node index.js
 ```
 
-> Saat pertama kali, QR code akan muncul. Scan menggunakan WhatsApp di HP-mu (Pengaturan > Perangkat Tertaut > Tautkan Perangkat).
-> Setelah berhasil, bot **ONLINE** dan siap diajak chat!
-> **Stop server:** Tekan `Ctrl + C` di terminal untuk menghentikan konektor Node.js.
+> Scan QR code via WhatsApp saat pertama kali.
+> Bot **ONLINE** dan siap digunakan.
 
 ---
 
-## Cara Menggunakan Bot
+## Cara Menggunakan (CLI / WhatsApp)
 
-1. Chat nomor WhatsApp bot-mu.
-2. Mulai percakapan dengan kata kunci: **“laper”**, **“makan”**, atau **“rekomen”**.
-3. Jawab pertanyaan bot: lokasi, tingkat kelaparan, dan budget.
-4. Nikmati rekomendasi makanan yang paling pas!
+1. Chat bot WhatsApp.
+2. Mulai dengan kata kunci: `laper`, `makan`, atau `rekomen`.
+3. Jawab pertanyaan bot: lokasi, tingkat kelaparan, budget.
+4. Nikmati rekomendasi makanan paling mantul!
 
 ---
 
@@ -155,23 +135,6 @@ kencot-bot/
 │  └─ unit_test.py
 └─ database/            # Data kantin
 ```
-
----
-
-## Tips
-
-* Pastikan **dua server berjalan bersamaan**.
-* Scan QR code hanya saat pertama kali.
-* Simpan `.env` agar rahasia tetap aman.
-* Kalau ada error install dependencies, coba upgrade pip & npm:
-
-```bash
-pip install --upgrade pip
-npm install -g npm
-```
-
-* Gunakan terminal terpisah untuk tiap server agar gampang debug.
-* Cek console log di Node.js untuk melihat status koneksi WhatsApp.
 
 ---
 
