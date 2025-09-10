@@ -126,7 +126,9 @@ kencot-bot/
 │
 ├─ main.py              # Entry point backend Python
 ├─ requirements.txt     # Dependencies Python
+├─ chatcli.py           # cli bot
 ├─ .env                 # Rahasia & config
+├─ .env.example         # contoh .env
 ├─ whatsapp-connector/  # Folder konektor Node.js
 │  ├─ index.js
 │  └─ package.json
