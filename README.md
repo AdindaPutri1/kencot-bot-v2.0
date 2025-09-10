@@ -102,7 +102,7 @@ npm install
 #### Jalankan Konektor
 
 ```bash
-node index.js
+npm run dev
 ```
 
 > Scan QR code via WhatsApp saat pertama kali.
