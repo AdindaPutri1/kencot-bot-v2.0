@@ -1,0 +1,59 @@
+2025-09-10 16:36:13,181 - app.utils - INFO - Database loaded successfully from data/database.json
+2025-09-10 16:36:13,182 - __main__ - INFO - Kencot Bot - Mamang UGM v1.0.0 initialized successfully for API mode.
+2025-09-10 16:36:13,200 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.72.9.167:5000
+2025-09-10 16:36:13,200 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 16:37:23,197 - __main__ - INFO - API received message from 120363314349190899@newsletter: '*jadi inget dulu nabung beli cushion korea lumayan mehong ternyata keputihan*'
+2025-09-10 16:37:23,200 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:37:23] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:37:43,260 - __main__ - INFO - API received message from 62895410557***@c.us: 'Halo'
+2025-09-10 16:37:43,261 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:37:43] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:37:53,253 - __main__ - INFO - API received message from 62895410557***@c.us: 'laper'
+2025-09-10 16:37:53,253 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:37:53] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:03,913 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:03] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:08,646 - __main__ - INFO - API received message from 62895410557***@c.us: 'aku lagi di teknik nih'
+2025-09-10 16:38:08,648 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:08] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:24,982 - __main__ - INFO - API received message from 62895410557***@c.us: 'laper iseng aja si'
+2025-09-10 16:38:24,984 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:24] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:37,501 - __main__ - INFO - API received message from 62895410557***@c.us: '20rb aja'
+2025-09-10 16:38:37,502 - app.utils - INFO - Filtering for: faculty='Teknik', budget<=20000, hunger='iseng', time='sore'
+2025-09-10 16:38:37,502 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:37] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:39,408 - __main__ - INFO - API received message from 120363314349190899@newsletter: 'Maaf random tiba2 mau random review wkwk'
+2025-09-10 16:38:39,410 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:39] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:38:49,138 - __main__ - INFO - API received message from 62895410557***@c.us: 'Iyaa'
+2025-09-10 16:38:49,138 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:38:49] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:39:04,863 - __main__ - INFO - API received message from 62895410557***@c.us: 'aku mau ke filsafat'
+2025-09-10 16:39:04,864 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:39:04] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:39:21,383 - __main__ - INFO - API received message from 62895410557***@c.us: 'tapi makan brutal ada ga?'
+2025-09-10 16:39:21,384 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:39:21] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:39:27,807 - __main__ - INFO - API received message from 62895410557***@c.us: '20rb deh'
+2025-09-10 16:39:27,808 - app.utils - INFO - Filtering for: faculty='Filsafat', budget<=20000, hunger='brutal', time='sore'
+2025-09-10 16:39:27,808 - app.utils - ERROR - AI recommendation failed: 'menu_name'
+2025-09-10 16:39:27,809 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:39:27] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:39:33,179 - __main__ - INFO - API received message from 62895410557***@c.us: 'yaa boleh'
+2025-09-10 16:39:48,990 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2025-09-10 16:39:49,024 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:39:49] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:02,933 - __main__ - INFO - API received message from 62895410557***@c.us: 'iyaa'
+2025-09-10 16:40:02,934 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:02] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:15,325 - __main__ - INFO - API received message from 62895410557***@c.us: 'kali ini mau di filsafat tapi yang iseng aja budget 20rb'
+2025-09-10 16:40:15,326 - app.bot - INFO - All info detected langsung: Filsafat, iseng, 20000
+2025-09-10 16:40:15,327 - app.utils - INFO - Filtering for: faculty='Filsafat', budget<=20000, hunger='iseng', time='sore'
+2025-09-10 16:40:15,329 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:15] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:26,567 - __main__ - INFO - API received message from 62895410557***@c.us: 'wihh gaa mang'
+2025-09-10 16:40:26,571 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:26] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:32,459 - __main__ - INFO - API received message from 62895410557***@c.us: 'Wareg'
+2025-09-10 16:40:32,461 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:32] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:49,906 - __main__ - INFO - API received message from 62895410557***@c.us: 'eh laper lagi nih'
+2025-09-10 16:40:49,908 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:49] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:40:55,767 - __main__ - INFO - API received message from 62895410557***@c.us: 'aku di teknik laper iseng'
+2025-09-10 16:40:55,768 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:40:55] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:41:01,529 - __main__ - INFO - API received message from 62895410557***@c.us: 'budget 1k'
+2025-09-10 16:41:01,529 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:41:01] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:41:13,106 - __main__ - INFO - API received message from 62895410557***@c.us: 'eh boong 20rb maksudnya, aku kaya yahh'
+2025-09-10 16:41:13,107 - app.utils - INFO - Filtering for: faculty='Teknik', budget<=20000, hunger='iseng', time='sore'
+2025-09-10 16:41:13,108 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:41:13] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:41:33,390 - __main__ - INFO - API received message from 62895410557***@c.us: 'yey, ga mang'
+2025-09-10 16:41:33,393 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:41:33] "POST /chat HTTP/1.1" 200 -
+2025-09-10 16:41:36,956 - __main__ - INFO - API received message from 62895410557***@c.us: 'makasi yaa'
+2025-09-10 16:41:36,957 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 16:41:36] "POST /chat HTTP/1.1" 200 -

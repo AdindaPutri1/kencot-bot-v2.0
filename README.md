@@ -7,6 +7,25 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 
 ---
 
+## Nama Tim
+| No | Nama                        | NIM                |
+|----|-----------------------------|--------------------|
+| 1  | Adinda Putri Romadhon       | 22/505508/TK/55321 |
+| 2  | Fatimah Nadia Eka Putri     | 22/497876/TK/554588|
+
+---
+
+## Link
+- **Demo Video:**
+  - [https://bit.ly/VideoDemoKencot-Bot](https://bit.ly/VideoDemoKencot-Bot)
+
+- **Link PPT:**
+  - [PDF PPT Presentasi](https://drive.google.com/file/d/1KkjctXrmL1yCzlNhx7YkXp80rip9fY7a/view?usp=sharing)
+  - [PPT Presentasi](https://docs.google.com/presentation/d/14aagyh5VrmLZ-b4oezT8jvQyUHmKAQV5/edit?usp=sharing&ouid=110910143854406637416&rtpof=true&sd=true)
+
+- **Demo GIF:**
+    ![Demo BOT GIF](documentation/demo.gif)
+
 ## Fitur Utama
 
 * **Rekomendasi Cerdas**: Disesuaikan dengan lokasi (fakultas), tingkat kelaparan, dan budget.
@@ -22,6 +41,9 @@ Bot ini menggunakan **arsitektur hybrid** yang efisien:
 
 1. **Backend (Python & Flask)**: Otak bot yang memproses pesan dan mencari rekomendasi dari database.
 2. **Konektor (Node.js & whatsapp-web.js)**: Jembatan yang menghubungkan WhatsApp ke backend API.
+3. **Integrasi LLM (Gemini)**: Return rekomendasi dari AI Gemini jika tidak ada data yang sesuai dari database.
+
+![Arsitektur KencotBot](documentation/arsitektur.png)
 
 ---
 
@@ -46,10 +68,10 @@ cd kencot-bot
 
 ### 2. Siapkan file `.env`
 
-Buat file `.env` di folder utama. Tidak perlu token khusus untuk WhatsApp. Contoh isi:
+Buat file `.env` di folder utama. Tidak perlu token khusus untuk WhatsApp. `.env` digunakan untuk token API GEMINI yang bisa didapatkan di [Google AI Studio]](https://aistudio.google.com/)
 
 ```bash
-SECRET_KEY=kunci-rahasia-bebas
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
 
 ### 3. Setup Backend Python

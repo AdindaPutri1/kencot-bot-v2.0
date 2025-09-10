@@ -12,5 +12,5 @@ node_modules/
 # File Rahasia
 .env
 
-# Log files
-*.log
+# # Log files
+# *.log

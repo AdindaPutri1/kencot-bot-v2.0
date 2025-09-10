@@ -128,7 +128,7 @@ def extract_budget_from_text(text: str) -> Optional[int]:
     if match:
         num = int(match.group(1))
         # If number is small (e.g., 15), assume it's in thousands. If large (15000), use as is.
-        return num * 1000 if num < 1000 else num
+        return num * 1000 if num < 100 else num
     
     # Format dengan kata (dua puluh ribu, sepuluh ribu)
     WORD_NUMS = {
