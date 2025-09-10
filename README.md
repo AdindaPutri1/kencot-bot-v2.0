@@ -10,7 +10,7 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 | No | Nama                        | NIM                |
 |----|-----------------------------|--------------------|
 | 1  | Adinda Putri Romadhon       | 22/505508/TK/55321 |
-| 2  | Fatimah Nadia Eka Putri     | 22/497876/TK/554588|
+| 2  | Fatimah Nadia Eka Putri     | 22/497876/TK/54588|
 
 ---
 
