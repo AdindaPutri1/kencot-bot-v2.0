@@ -217,7 +217,7 @@ def find_recommendations(all_canteens: List[Dict], faculty: str, budget: int, hu
     hunger_to_category_map = {
         'brutal': ['makanan_berat'],
         'standar': ['makanan_berat', 'makanan_ringan'],
-        'iseng': ['cemilan', 'makanan_ringan']
+        'iseng': ['cemilan', 'makanan_ringan', 'minuman']
     }
     allowed_categories = hunger_to_category_map.get(hunger_level, [])
 
