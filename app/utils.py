@@ -12,6 +12,7 @@ from difflib import get_close_matches
 from datetime import datetime
 from typing import Dict, List, Optional, Any
 
+from app.llm import ask_gemini 
 
 logger = logging.getLogger(__name__)
 
@@ -143,15 +144,9 @@ def extract_budget_from_text(text: str) -> Optional[int]:
 def extract_hunger_level_from_text(text: str) -> Optional[str]:
     """Extract hunger level dengan regex dan mapping ke brutal/standar/iseng."""
     patterns = {
-        "brutal": [
-            r"\ba\b", r"\bbrutal\b", r"\bbanget\b", r"\bparah\b", r"\bkuli\b"
-        ],
-        "standar": [
-            r"\bb\b", r"\bstandar\b", r"\bbiasa\b", r"\bnormal\b", r"\bkenyang\b"
-        ],
-        "iseng": [
-            r"\bc\b", r"\biseng\b", r"\bngunyah\b", r"\bngemil\b", r"\bringan\b"
-        ]
+        "iseng": [r"\bc\b", r"\biseng\b", r"\bngunyah\b", r"\bngemil\b", r"\bringan\b"],
+        "standar": [r"\bb\b", r"\bstandar\b", r"\bbiasa\b", r"\bnormal\b", r"\bkenyang\b"],
+        "brutal": [r"\ba\b", r"\bbrutal\b", r"\bbanget\b", r"\bparah\b", r"\bkuli\b"]
     }
 
     text_lower = text.lower()
@@ -162,6 +157,7 @@ def extract_hunger_level_from_text(text: str) -> Optional[str]:
                 return level
 
     return None
+
 
 def agree_response(text: str) -> Optional[bool]:
     """Deteksi jawaban setuju/tidak pakai flexible pattern."""
@@ -251,19 +247,32 @@ def find_recommendations(all_canteens: List[Dict], faculty: str, budget: int, hu
                 matching_menus.append(result_item)
     
     random.shuffle(matching_menus)
-    logger.info(f"Found {len(matching_menus)} matching items. Returning up to 2.")
+
+    # --- Kalau kosong → fallback ke Gemini ---
+    if not matching_menus:
+        try:
+            user_data = {
+                "faculty": faculty,
+                "budget": budget,
+                "hunger_level": hunger_level,
+                "time_category": time_period,
+            }
+            ai_result = ask_gemini(user_data, nearby_canteens)
+            if ai_result:
+                # ⚠️ NOTE: ini return string, bukan list
+                return [{"canteen_name": "AI Mamang 🤖", "menu_name": ai_result, "menu_price": "-", "gmaps_link": None}]
+        except Exception as e:
+            logger.error(f"AI recommendation failed: {e}")
+            return []
+
     return matching_menus[:2]
 
 def find_nearby_menus(
     canteens_db: List[Dict], faculty: str, limit: int = 5, allow_fallback: bool = True
 ) -> List[Dict]:
-    """Ambil beberapa menu dari kantin dekat fakultas tertentu. 
-       Kalau tidak ada, ambil dari fakultas lain kalau allow_fallback=True.
-    """
     menus = []
     faculty_lower = faculty.lower()
 
-    #  Cari berdasarkan fakultas dulu
     for canteen in canteens_db:
         if (faculty_lower in canteen.get("canteen_name", "").lower() or
             any(faculty_lower in alias.lower() for alias in canteen.get("canteen_alias", []))):
@@ -281,7 +290,6 @@ def find_nearby_menus(
                     if len(menus) >= limit:
                         return menus
 
-    #  Kalau kosong & fallback diizinkan → ambil menu umum dari kantin lain
     if not menus and allow_fallback:
         for canteen in canteens_db:
             for menu in canteen.get("menus", []):
@@ -299,41 +307,4 @@ def find_nearby_menus(
 
     return menus
 
-# untuk testing functional flow
-def ask_user_budget():
-    return input("Budgetnya berapa?")
-
-def ask_user_ai():
-    return input("Mau dicari pake AI? (ya/tidak)")
-
-def ask_user_repeat():
-    return input("Mau rekomendasi lagi? (ya/tidak)")
-
-def reset_state():
-    return None
-
-# untuk functional test
-def ask_user_budget():
-    pass
-
-def ask_user_ai():
-    pass
-
-def ask_user_repeat():
-    pass
-
-def ask_user_faculty():
-    pass
-
-def ask_user_hunger():
-    pass
-
-def ai_recommendation(faculty, budget, hunger):
-    pass
-
-
-
-
-
-
-
+  
