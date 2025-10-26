@@ -1,5 +1,5 @@
-from app.bot import KencotBot
-from app.config import Config
+from src.bot import KencotBot
+from src.config import Config
 
 bot = KencotBot(Config)
 
