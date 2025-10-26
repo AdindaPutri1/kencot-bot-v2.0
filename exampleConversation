@@ -1,0 +1,90 @@
+2025-10-25 10:30:15 - INFO - Kencot Bot V2.0 initialized
+2025-10-25 10:30:16 - INFO - Connected to MongoDB: kencot_bot
+2025-10-25 10:30:16 - INFO - Loaded 10 foods into cache
+
+=== CONVERSATION START: user_wa_123456 ===
+
+2025-10-25 10:30:20 - USER: laper nih
+2025-10-25 10:30:20 - TRIGGER: food_request
+2025-10-25 10:30:20 - PHASE: idle → waiting_location
+2025-10-25 10:30:20 - BOT: Selamat pagi! ☀️
+
+Mamang siap bantuin cari makan! Kamu di fakultas mana nih? 📍
+
+2025-10-25 10:30:35 - USER: di teknik budget 15k laper brutal
+2025-10-25 10:30:35 - INFO: Complete request detected: {'faculty': 'Teknik', 'hunger_level': 'brutal', 'budget': 15000}
+2025-10-25 10:30:35 - CONTEXT: {'faculty': 'Teknik', 'hunger_level': 'brutal', 'budget': 15000, 'time_period': 'pagi'}
+2025-10-25 10:30:35 - INFO: RAG search started
+2025-10-25 10:30:36 - INFO: Search query: makanan berat porsi besar mengenyangkan sarapan pagi
+2025-10-25 10:30:37 - INFO: Found 3 similar foods (scores: 0.85, 0.82, 0.78)
+2025-10-25 10:30:37 - PHASE: → recommendation_given
+2025-10-25 10:30:38 - LLM: Generating recommendation via Gemini
+2025-10-25 10:30:42 - BOT: Tunggu sebentar, Mamang pikirin dulu yaa... 🤔
+
+Oke nih bro! Mamang udah cariin yang paling pas buat kamu. Lagi laper brutal di Teknik jam pagi gini dengan budget 15k, ini rekomendasi terbaik:
+
+1. Nasi Goreng Spesial (650 kkal) 🍳
+   Ini pilihan paling mantul! Porsinya gede, rasanya gurih pedas, cocok banget buat ngisi perut yang udah keroncongan brutal. Harganya juga masuk budget kamu kok!
+
+2. Mie Ayam (520 kkal) 🍜
+   Alternatif yang enak juga nih! Kuahnya hangat, ayamnya banyak, dijamin kenyang sampe siang. Budget-friendly banget!
+
+3. Bakso Komplit (450 kkal) 🍲
+   Kalau mau yang lebih ringan tapi tetep ngenyanggin, bakso ini pilihan bagus. Ada mie, daging, mantap deh!
+
+📊 Total Nutrisi:
+🔥 Kalori: 1620 kkal
+💪 Protein: 60g
+🧈 Lemak: 58g
+🍚 Karbohidrat: 207g
+
+📋 Detail per Menu:
+• Nasi Goreng Spesial: 650 kkal (P: 18g, F: 22g, C: 85g)
+• Mie Ayam: 520 kkal (P: 22g, F: 16g, C: 68g)
+• Bakso Komplit: 450 kkal (P: 20g, F: 15g, C: 55g)
+
+Gimana, cocok ga? Kasih feedback dong 👍 atau 👎
+
+2025-10-25 10:31:05 - USER: 👍 mantap nih
+2025-10-25 10:31:05 - TRIGGER: feedback_positive
+2025-10-25 10:31:05 - INFO: Processing positive feedback
+2025-10-25 10:31:05 - FEEDBACK: Stored feedback (rating: 5, foods: ['Nasi Goreng Spesial', 'Mie Ayam', 'Bakso Komplit'])
+2025-10-25 10:31:05 - MEMORY: Updated user preferences - added to favorites
+2025-10-25 10:31:05 - MEMORY: Updated budget pattern (min: 15000, max: 15000, avg: 15000)
+2025-10-25 10:31:05 - PHASE: recommendation_given → idle
+2025-10-25 10:31:05 - BOT: Yeay! Seneng deh kalau cocok! 🎉
+
+Mamang bakal inget preferensi kamu buat next time.
+Kalau laper lagi tinggal bilang ya! 😋
+
+=== CONVERSATION END ===
+
+2025-10-25 10:31:10 - INFO: User interaction count: 1
+2025-10-25 10:31:10 - INFO: Session closed for user_wa_123456
+
+---
+
+=== CONVERSATION START: user_wa_123456 (RETURNING USER) ===
+
+2025-10-25 14:20:10 - USER: laper lagi
+2025-10-25 14:20:10 - INFO: Returning user detected (interactions: 1)
+2025-10-25 14:20:10 - PHASE: idle → waiting_location
+2025-10-25 14:20:10 - BOT: Selamat siang! 🌤️ Welcome back! 🎉
+
+Mamang inget kamu kok! Ini preferensi kamu:
+📍 Fakultas biasanya: Teknik
+❤️ Makanan favorit: Nasi Goreng Spesial, Mie Ayam, Bakso Komplit
+💰 Budget rata-rata: Rp 15,000
+🔢 Total interaksi: 1x
+
+Sekarang mau makan di fakultas mana nih?
+
+2025-10-25 14:20:25 - USER: MIPA 20k laper standar
+2025-10-25 14:20:25 - INFO: Complete request detected
+2025-10-25 14:20:25 - CONTEXT: {'faculty': 'MIPA', 'hunger_level': 'standar', 'budget': 20000, 'time_period': 'siang'}
+2025-10-25 14:20:26 - INFO: RAG search with personalization
+2025-10-25 14:20:27 - INFO: Boosting favorite foods in results
+2025-10-25 14:20:28 - INFO: Found 3 personalized recommendations
+2025-10-25 14:20:31 - BOT: [Rekomendasi dengan preferensi personal...]
+
+=== CONVERSATION CONTINUES ===
