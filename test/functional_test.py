@@ -2,7 +2,7 @@ import sys, os, json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import pytest
-from app import utils
+from src.utils import utils
 
 # ---------- FUNCTIONAL TESTS ---------- based on utils.py
 
