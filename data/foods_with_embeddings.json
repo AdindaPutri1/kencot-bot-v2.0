@@ -1,0 +1,104 @@
+{
+  "foods": [
+    {
+      "id": "food_001",
+      "name": "Nasi Goreng Spesial",
+      "calories": 650,
+      "protein": 18,
+      "fat": 22,
+      "carbs": 85,
+      "tags": ["pedas", "gurih", "goreng", "nasi", "berat"],
+      "embedding": [0.23, -0.45, 0.78, -0.12, 0.56]
+    },
+    {
+      "id": "food_002",
+      "name": "Gado-Gado",
+      "calories": 320,
+      "protein": 12,
+      "fat": 15,
+      "carbs": 38,
+      "tags": ["sayur", "sehat", "kacang", "segar", "ringan"],
+      "embedding": [0.15, 0.32, -0.67, 0.44, -0.21]
+    },
+    {
+      "id": "food_003",
+      "name": "Ayam Bakar Madu",
+      "calories": 480,
+      "protein": 35,
+      "fat": 18,
+      "carbs": 42,
+      "tags": ["manis", "protein", "bakar", "ayam", "berat"],
+      "embedding": [-0.34, 0.56, 0.12, -0.78, 0.29]
+    },
+    {
+      "id": "food_004",
+      "name": "Lotek",
+      "calories": 280,
+      "protein": 10,
+      "fat": 12,
+      "carbs": 35,
+      "tags": ["sayur", "sehat", "kacang", "segar", "ringan"],
+      "embedding": [0.18, 0.29, -0.71, 0.38, -0.15]
+    },
+    {
+      "id": "food_005",
+      "name": "Mie Ayam",
+      "calories": 520,
+      "protein": 22,
+      "fat": 16,
+      "carbs": 68,
+      "tags": ["mie", "ayam", "kuah", "gurih", "berat"],
+      "embedding": [-0.12, -0.34, 0.65, 0.21, 0.47]
+    },
+    {
+      "id": "food_006",
+      "name": "Soto Ayam",
+      "calories": 380,
+      "protein": 25,
+      "fat": 14,
+      "carbs": 42,
+      "tags": ["kuah", "hangat", "ayam", "gurih", "standar"],
+      "embedding": [0.08, -0.52, 0.43, 0.19, -0.36]
+    },
+    {
+      "id": "food_007",
+      "name": "Bakso Komplit",
+      "calories": 450,
+      "protein": 20,
+      "fat": 15,
+      "carbs": 55,
+      "tags": ["kuah", "daging", "mie", "gurih", "berat"],
+      "embedding": [-0.25, -0.41, 0.58, 0.33, 0.19]
+    },
+    {
+      "id": "food_008",
+      "name": "Pisang Goreng",
+      "calories": 180,
+      "protein": 3,
+      "fat": 8,
+      "carbs": 28,
+      "tags": ["manis", "goreng", "cemilan", "pisang", "ringan"],
+      "embedding": [0.42, 0.18, -0.29, -0.55, 0.31]
+    },
+    {
+      "id": "food_009",
+      "name": "Es Teh Manis",
+      "calories": 120,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 30,
+      "tags": ["minuman", "manis", "dingin", "segar", "ringan"],
+      "embedding": [0.67, 0.25, -0.18, -0.44, -0.52]
+    },
+    {
+      "id": "food_010",
+      "name": "Pecel Lele",
+      "calories": 550,
+      "protein": 28,
+      "fat": 24,
+      "carbs": 52,
+      "tags": ["pedas", "goreng", "ikan", "sambal", "berat"],
+      "embedding": [0.21, -0.38, 0.72, -0.15, 0.44]
+    }
+  ]
+}

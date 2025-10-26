@@ -2,173 +2,1809 @@
   "ugm_canteens": [
     {
       "canteen_name": "Kantin Teknik Mesin",
-      "canteen_alias": ["Kantin Mesin", "KM"],
-      "faculty_proximity": ["Teknik"],
+      "canteen_alias": [
+        "Kantin Mesin",
+        "KM"
+      ],
+      "faculty_proximity": [
+        "Teknik"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/ANQU6THziV4TREiD9",
       "price_range_min": 12000,
       "price_range_max": 20000,
       "menus": [
-        { "name": "Ayam Geprek", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Rames", "price": 14000, "category": "makanan_berat", "suitability": ["pagi", "siang"] }
+        {
+          "name": "Ayam Geprek",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Rames",
+          "price": 14000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin Teknik Sipil",
-      "canteen_alias": ["Kantin Sipil", "KMSL"],
-      "faculty_proximity": ["Teknik"],
+      "canteen_alias": [
+        "Kantin Sipil",
+        "KMSL"
+      ],
+      "faculty_proximity": [
+        "Teknik"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/9uPF4hre2tZvQ5K29",
       "price_range_min": 12000,
       "price_range_max": 20000,
       "menus": [
-        { "name": "Soto", "price": 12000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
-        { "name": "Gado-gado", "price": 13000, "category": "makanan_berat", "suitability": ["siang"] },
-        { "name": "Nasi Ramesan", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Jajanan & Gorengan", "price": 2000, "category": "cemilan", "suitability": ["pagi", "siang", "sore"] },
-        { "name": "Aneka Jus", "price": 8000, "category": "minuman", "suitability": ["pagi", "siang", "sore", "malam"] }
+        {
+          "name": "Soto",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Gado-gado",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        },
+        {
+          "name": "Nasi Ramesan",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Jajanan & Gorengan",
+          "price": 2000,
+          "category": "cemilan",
+          "suitability": [
+            "pagi",
+            "siang",
+            "sore"
+          ]
+        },
+        {
+          "name": "Aneka Jus",
+          "price": 8000,
+          "category": "minuman",
+          "suitability": [
+            "pagi",
+            "siang",
+            "sore",
+            "malam"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin Teknik Arsitektur",
-      "canteen_alias": ["Kantin Arsi", "DTAP"],
-      "faculty_proximity": ["Teknik"],
+      "canteen_alias": [
+        "Kantin Arsi",
+        "DTAP"
+      ],
+      "faculty_proximity": [
+        "Teknik"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8",
       "price_range_min": 5000,
       "price_range_max": 15000,
       "menus": [
-        { "name": "Nasi Sayur", "price": 5000, "category": "makanan_ringan", "suitability": ["pagi", "siang"] },
-        { "name": "Mama Mie (Indomie)", "price": 8000, "category": "makanan_ringan", "suitability": ["pagi", "siang", "sore", "malam"] },
-        { "name": "Nasi Ayam/Lele", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Gorengan", "price": 1000, "category": "cemilan", "suitability": ["pagi", "siang", "sore"] }
+        {
+          "name": "Nasi Sayur",
+          "price": 5000,
+          "category": "makanan_ringan",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Mama Mie (Indomie)",
+          "price": 8000,
+          "category": "makanan_ringan",
+          "suitability": [
+            "pagi",
+            "siang",
+            "sore",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Ayam/Lele",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Gorengan",
+          "price": 1000,
+          "category": "cemilan",
+          "suitability": [
+            "pagi",
+            "siang",
+            "sore"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin SGLC",
-      "canteen_alias": ["SGLC"],
-      "faculty_proximity": ["Teknik"],
+      "canteen_alias": [
+        "SGLC"
+      ],
+      "faculty_proximity": [
+        "Teknik"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/a5Dgtuc2qdce84BX6",
       "price_range_min": 12000,
       "price_range_max": 25000,
       "menus": [
-        { "name": "Batagor", "price": 15000, "category": "makanan_ringan", "suitability": ["siang", "sore"] },
-        { "name": "Dimsum", "price": 18000, "category": "cemilan", "suitability": ["siang", "sore"] },
-        { "name": "Bakso", "price": 16000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Mie Ayam", "price": 14000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Ayam Geprek", "price": 20000, "category": "makanan_berat", "suitability": ["siang", "malam"] }
+        {
+          "name": "Batagor",
+          "price": 15000,
+          "category": "makanan_ringan",
+          "suitability": [
+            "siang",
+            "sore"
+          ]
+        },
+        {
+          "name": "Dimsum",
+          "price": 18000,
+          "category": "cemilan",
+          "suitability": [
+            "siang",
+            "sore"
+          ]
+        },
+        {
+          "name": "Bakso",
+          "price": 16000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Mie Ayam",
+          "price": 14000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Ayam Geprek",
+          "price": 20000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Pujale (Pusat Jajanan Lembah)",
-      "canteen_alias": ["Pujale"],
-      "faculty_proximity": ["Peternakan", "Kedokteran Hewan", "Kehutanan", "FEB", "Filsafat", "Hukum"],
+      "canteen_alias": [
+        "Pujale"
+      ],
+      "faculty_proximity": [
+        "Peternakan",
+        "Kedokteran Hewan",
+        "Kehutanan",
+        "FEB",
+        "Filsafat",
+        "Hukum"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/Xf2XsjrxHBzJMqWU8",
       "price_range_min": 10000,
       "price_range_max": 20000,
       "menus": [
-        { "name": "Ayam Geprek (Warung Bu Saijo)", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Goreng Seafood (Warung Bu Saijo)", "price": 16000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Chicken Steak (Angkringan Steak)", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Paket Chicken Katsu + Nasi + Teh", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Gado-gado (Warung Bu Saijo)", "price": 10000, "category": "makanan_berat", "suitability": ["siang"] }
+        {
+          "name": "Ayam Geprek (Warung Bu Saijo)",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Goreng Seafood (Warung Bu Saijo)",
+          "price": 16000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Chicken Steak (Angkringan Steak)",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Paket Chicken Katsu + Nasi + Teh",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Gado-gado (Warung Bu Saijo)",
+          "price": 10000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin Fisipol (Fisipoint)",
-      "canteen_alias": ["Kafis", "Fisipoint", "Digilib Cafe"],
-      "faculty_proximity": ["Fisipol", "Psikologi", "Pascasarjana"],
+      "canteen_alias": [
+        "Kafis",
+        "Fisipoint",
+        "Digilib Cafe"
+      ],
+      "faculty_proximity": [
+        "Fisipol",
+        "Psikologi",
+        "Pascasarjana"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/HK4UwDkoeLuXtQBr9",
       "price_range_min": 18000,
       "price_range_max": 25000,
       "menus": [
-        { "name": "Mie Goreng", "price": 20000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Sayur Lodeh", "price": 18000, "category": "makanan_berat", "suitability": ["siang"] },
-        { "name": "Nasi Pecel Tahu Tempe", "price": 18000, "category": "makanan_berat", "suitability": ["siang"] }
+        {
+          "name": "Mie Goreng",
+          "price": 20000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Sayur Lodeh",
+          "price": 18000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        },
+        {
+          "name": "Nasi Pecel Tahu Tempe",
+          "price": 18000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin Sehat Pertanian (Mororere)",
-      "canteen_alias": ["Mororere", "Kantin Pertanian"],
-      "faculty_proximity": ["Pertanian", "Teknologi Pertanian", "Kehutanan"],
+      "canteen_alias": [
+        "Mororere",
+        "Kantin Pertanian"
+      ],
+      "faculty_proximity": [
+        "Pertanian",
+        "Teknologi Pertanian",
+        "Kehutanan"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/Y7mP3f2tp9e9y1m8A",
       "price_range_min": 10000,
       "price_range_max": 18000,
       "menus": [
-        { "name": "Soto Ayam Campur", "price": 10000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
-        { "name": "Soto Sapi Pisah", "price": 15000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
-        { "name": "Nasi Ayam Bakar", "price": 13000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Tongseng", "price": 13000, "category": "makanan_berat", "suitability": ["siang", "malam"] }
+        {
+          "name": "Soto Ayam Campur",
+          "price": 10000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Soto Sapi Pisah",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Nasi Ayam Bakar",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Tongseng",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Kantin Aldhan Fakultas Filsafat",
-      "canteen_alias": ["Bonbin", "Kantin Filsafat"],
-      "faculty_proximity": ["Filsafat", "Ilmu Budaya", "FEB", "Hukum"],
+      "canteen_alias": [
+        "Bonbin",
+        "Kantin Filsafat"
+      ],
+      "faculty_proximity": [
+        "Filsafat",
+        "Ilmu Budaya",
+        "FEB",
+        "Hukum"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/BoAfB3NdcWiiTZsQ9",
       "price_range_min": 8000,
       "price_range_max": 15000,
       "menus": [
-        { "name": "Sego Yu Par", "price": 10000, "category": "makanan_berat", "suitability": ["siang"] },
-        { "name": "Nasi Rames", "price": 12000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Waffle Es Krim", "price": 13000, "category": "cemilan", "suitability": ["siang", "sore"] }
+        {
+          "name": "Sego Yu Par",
+          "price": 10000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        },
+        {
+          "name": "Nasi Rames",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Waffle Es Krim",
+          "price": 13000,
+          "category": "cemilan",
+          "suitability": [
+            "siang",
+            "sore"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Angkringan Peyek Bunderan UGM",
-      "canteen_alias": ["Angkringan Bundaran", "Angkringan Pak Peyek"],
-      "faculty_proximity": ["Gedung Pusat", "MIPA", "FKKMK"],
+      "canteen_alias": [
+        "Angkringan Bundaran",
+        "Angkringan Pak Peyek"
+      ],
+      "faculty_proximity": [
+        "Gedung Pusat",
+        "MIPA",
+        "FKKMK"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8",
       "price_range_min": 3000,
       "price_range_max": 15000,
       "menus": [
-        { "name": "Nasi Bungkus Teri", "price": 3000, "category": "makanan_ringan", "suitability": ["pagi", "sore", "malam"] },
-        { "name": "Nasi Bungkus Ayam", "price": 3000, "category": "makanan_ringan", "suitability": ["pagi", "sore", "malam"] },
-        { "name": "Sate Usus Bakar", "price": 3000, "category": "cemilan", "suitability": ["sore", "malam"] },
-        { "name": "Sate Telur Bakar", "price": 3000, "category": "cemilan", "suitability": ["sore", "malam"] },
-        { "name": "Kopi Jos", "price": 5000, "category": "minuman", "suitability": ["malam"] }
+        {
+          "name": "Nasi Bungkus Teri",
+          "price": 3000,
+          "category": "makanan_ringan",
+          "suitability": [
+            "pagi",
+            "sore",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Bungkus Ayam",
+          "price": 3000,
+          "category": "makanan_ringan",
+          "suitability": [
+            "pagi",
+            "sore",
+            "malam"
+          ]
+        },
+        {
+          "name": "Sate Usus Bakar",
+          "price": 3000,
+          "category": "cemilan",
+          "suitability": [
+            "sore",
+            "malam"
+          ]
+        },
+        {
+          "name": "Sate Telur Bakar",
+          "price": 3000,
+          "category": "cemilan",
+          "suitability": [
+            "sore",
+            "malam"
+          ]
+        },
+        {
+          "name": "Kopi Jos",
+          "price": 5000,
+          "category": "minuman",
+          "suitability": [
+            "malam"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Warung Makan Bu Har",
-      "canteen_alias": ["Bu Har Gelanggang"],
-      "faculty_proximity": ["Gelanggang Mahasiswa", "FKKMK", "Pascasarjana"],
+      "canteen_alias": [
+        "Bu Har Gelanggang"
+      ],
+      "faculty_proximity": [
+        "Gelanggang Mahasiswa",
+        "FKKMK",
+        "Pascasarjana"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/2GJxtWU7153RLqvP9",
       "price_range_min": 12000,
       "price_range_max": 18000,
       "menus": [
-        { "name": "Nasi Pecel + Telur Ceplok", "price": 14500, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
-        { "name": "Gado-gado + Telur", "price": 15000, "category": "makanan_berat", "suitability": ["pagi", "siang"] },
-        { "name": "Lotek", "price": 13000, "category": "makanan_berat", "suitability": ["siang"] },
-        { "name": "Soto Ayam", "price": 12000, "category": "makanan_berat", "suitability": ["pagi", "siang"] }
+        {
+          "name": "Nasi Pecel + Telur Ceplok",
+          "price": 14500,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Gado-gado + Telur",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        },
+        {
+          "name": "Lotek",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang"
+          ]
+        },
+        {
+          "name": "Soto Ayam",
+          "price": 12000,
+          "category": "makanan_berat",
+          "suitability": [
+            "pagi",
+            "siang"
+          ]
+        }
       ]
     },
     {
       "canteen_name": "Penyetan Bu Lastri",
-      "canteen_alias": ["Bu Lastri"],
-      "faculty_proximity": ["MIPA", "Teknik"],
+      "canteen_alias": [
+        "Bu Lastri"
+      ],
+      "faculty_proximity": [
+        "MIPA",
+        "Teknik"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/ZphWbzn2RaM9zAik7",
       "price_range_min": 10000,
       "price_range_max": 18000,
       "menus": [
-        { "name": "Nasi Ayam Geprek", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Telur Penyet", "price": 10000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Nasi Goreng", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] },
-        { "name": "Magelangan", "price": 14000, "category": "makanan_berat", "suitability": ["malam"] },
-        { "name": "Mie Dok-Dok", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] }
+        {
+          "name": "Nasi Ayam Geprek",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Telur Penyet",
+          "price": 10000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Nasi Goreng",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        },
+        {
+          "name": "Magelangan",
+          "price": 14000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        },
+        {
+          "name": "Mie Dok-Dok",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        }
       ]
     },
-     {
+    {
       "canteen_name": "Kantin Fakultas Geografi",
-      "canteen_alias": ["Pawon Hotplate"],
-      "faculty_proximity": ["MIPA"],
+      "canteen_alias": [
+        "Pawon Hotplate"
+      ],
+      "faculty_proximity": [
+        "MIPA"
+      ],
       "gmaps_link": "https://maps.app.goo.gl/KhH8BhAJ8R3uGPk59",
       "price_range_min": 10000,
       "price_range_max": 18000,
       "menus": [
-        { "name": "Steak", "price": 15000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Rawon", "price": 20000, "category": "makanan_berat", "suitability": ["siang", "malam"] },
-        { "name": "Gulai", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] },
-        { "name": "Ayam lada hitam", "price": 14000, "category": "makanan_berat", "suitability": ["malam"] },
-        { "name": "SAyam asam manis", "price": 13000, "category": "makanan_berat", "suitability": ["malam"] }
+        {
+          "name": "Steak",
+          "price": 15000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Rawon",
+          "price": 20000,
+          "category": "makanan_berat",
+          "suitability": [
+            "siang",
+            "malam"
+          ]
+        },
+        {
+          "name": "Gulai",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        },
+        {
+          "name": "Ayam lada hitam",
+          "price": 14000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        },
+        {
+          "name": "SAyam asam manis",
+          "price": 13000,
+          "category": "makanan_berat",
+          "suitability": [
+            "malam"
+          ]
+        }
       ]
+    }
+  ],
+  "users": [
+    {
+      "user_id": "example_user",
+      "faculty": "Teknik",
+      "favorite_foods": [
+        "Nasi Goreng",
+        "Mie Ayam"
+      ],
+      "allergies": [],
+      "budget_range": {
+        "min": 5000,
+        "max": 15000
+      },
+      "hunger_patterns": [],
+      "interaction_count": 0,
+      "last_interaction": "2025-10-26T00:00:00",
+      "created_at": "2025-10-26T00:00:00",
+      "updated_at": "2025-10-26T00:00:00"
+    },
+    {
+      "user_id": "cli_test_user",
+      "faculty": null,
+      "favorite_foods": [],
+      "allergies": [],
+      "budget_range": {
+        "min": 5000,
+        "max": 6000
+      },
+      "hunger_patterns": [
+        {
+          "hunger_level": "brutal",
+          "time_period": "siang",
+          "budget": 20000,
+          "timestamp": "2025-10-26 07:24:08.688768"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "siang",
+          "budget": 20000,
+          "timestamp": "2025-10-26 07:27:38.889014"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "siang",
+          "budget": 20000,
+          "timestamp": "2025-10-26 07:30:07.406555"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "siang",
+          "budget": 5000,
+          "timestamp": "2025-10-26 07:30:28.478146"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "siang",
+          "budget": 15000,
+          "timestamp": "2025-10-26 07:32:47.706008"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "siang",
+          "budget": 20000,
+          "timestamp": "2025-10-26 07:40:41.274111"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "siang",
+          "budget": 10000,
+          "timestamp": "2025-10-26 07:40:59.192254"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:16:40.564713"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:20:23.752114"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:28:10.824183"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:29:13.889121"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:33:12.737578"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:39:09.207425"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 09:47:44.592001"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 10:00:08.432639"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 15000,
+          "timestamp": "2025-10-26 10:05:39.130589"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "malam",
+          "budget": 5000,
+          "timestamp": "2025-10-26 12:22:51.757627"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "malam",
+          "budget": 29000,
+          "timestamp": "2025-10-26 12:30:58.939214"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "malam",
+          "budget": 20000,
+          "timestamp": "2025-10-26 12:40:37.972496"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "malam",
+          "budget": 5000,
+          "timestamp": "2025-10-26 12:41:16.085170"
+        }
+      ],
+      "interaction_count": 115,
+      "last_interaction": "2025-10-26 12:41:27.286672",
+      "updated_at": "2025-10-26 12:41:16.073928",
+      "created_at": "2025-10-26 05:49:30.254938"
+    },
+    {
+      "user_id": "6285782494121@c.us",
+      "faculty": null,
+      "favorite_foods": [],
+      "allergies": [],
+      "budget_range": {
+        "min": 20000,
+        "max": 24000
+      },
+      "hunger_patterns": [
+        {
+          "hunger_level": "standar",
+          "time_period": "sore",
+          "budget": 20000,
+          "timestamp": "2025-10-26 10:22:54.008929"
+        }
+      ],
+      "interaction_count": 11,
+      "last_interaction": "2025-10-26 10:26:14.599960",
+      "updated_at": "2025-10-26 10:22:54.003447",
+      "created_at": "2025-10-26 10:22:12.523659"
+    }
+  ],
+  "sessions": [
+    {
+      "user_id": "example_user",
+      "phase": "idle",
+      "context": {},
+      "conversation_history": [],
+      "created_at": "2025-10-26T00:00:00",
+      "updated_at": "2025-10-26T00:00:00",
+      "expires_at": "2025-10-26T01:00:00"
+    },
+    {
+      "user_id": "cli_test_user",
+      "phase": "recommendation_given",
+      "context": {
+        "faculty": "Fisipol",
+        "hunger_level": "iseng",
+        "budget": 5000,
+        "time_period": "malam",
+        "recommended_foods": [
+          "Nasi Bungkus Ayam",
+          "Nasi Bungkus Teri",
+          "Sate Usus Bakar",
+          "Kopi Jos",
+          "Jajanan & Gorengan"
+        ]
+      },
+      "conversation_history": [
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 05:49:30.263142"
+        }
+      ],
+      "created_at": "2025-10-26 05:49:30.254938",
+      "updated_at": "2025-10-26 05:49:30.263142",
+      "expires_at": "2025-10-26 20:11:27.295436",
+      "history": [
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 14:02:00.780453"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 14:06:39.165914"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:06:43.729037"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 14:06:47.702594"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:08:45.245811"
+        },
+        {
+          "role": "user",
+          "content": "kencot",
+          "timestamp": "2025-10-26 14:08:48.144129"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:09:47.934621"
+        },
+        {
+          "role": "user",
+          "content": "kencot",
+          "timestamp": "2025-10-26 14:09:50.768577"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:14:12.423088"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 14:14:17.577407"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 14:14:30.922458"
+        },
+        {
+          "role": "user",
+          "content": "a",
+          "timestamp": "2025-10-26 14:14:34.047846"
+        },
+        {
+          "role": "user",
+          "content": "10k",
+          "timestamp": "2025-10-26 14:14:37.624552"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:16:03.389876"
+        },
+        {
+          "role": "user",
+          "content": "10k",
+          "timestamp": "2025-10-26 14:16:13.257352"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:16:39.463565"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 14:16:48.217621"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:22:15.976294"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 14:22:23.598441"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:24:03.910746"
+        },
+        {
+          "role": "user",
+          "content": "20k",
+          "timestamp": "2025-10-26 14:24:08.672091"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:27:34.044725"
+        },
+        {
+          "role": "user",
+          "content": "20k",
+          "timestamp": "2025-10-26 14:27:38.867594"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:30:04.705430"
+        },
+        {
+          "role": "user",
+          "content": "20k",
+          "timestamp": "2025-10-26 14:30:07.394248"
+        },
+        {
+          "role": "user",
+          "content": "boleh",
+          "timestamp": "2025-10-26 14:30:15.536461"
+        },
+        {
+          "role": "user",
+          "content": "fk",
+          "timestamp": "2025-10-26 14:30:21.506137"
+        },
+        {
+          "role": "user",
+          "content": "c",
+          "timestamp": "2025-10-26 14:30:24.879519"
+        },
+        {
+          "role": "user",
+          "content": "5k",
+          "timestamp": "2025-10-26 14:30:28.461785"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:32:20.724392"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 14:32:26.303599"
+        },
+        {
+          "role": "user",
+          "content": "mau",
+          "timestamp": "2025-10-26 14:32:29.977306"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 14:32:32.231485"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 14:32:39.569528"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 14:32:43.947507"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 14:32:47.679562"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 14:40:22.846706"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 14:40:25.935990"
+        },
+        {
+          "role": "user",
+          "content": "teknik, punya duit 20k",
+          "timestamp": "2025-10-26 14:40:33.905251"
+        },
+        {
+          "role": "user",
+          "content": "c",
+          "timestamp": "2025-10-26 14:40:37.705363"
+        },
+        {
+          "role": "user",
+          "content": "20k",
+          "timestamp": "2025-10-26 14:40:41.247542"
+        },
+        {
+          "role": "user",
+          "content": "halah",
+          "timestamp": "2025-10-26 14:40:46.129349"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 14:40:48.310737"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 14:40:52.381009"
+        },
+        {
+          "role": "user",
+          "content": "c",
+          "timestamp": "2025-10-26 14:40:54.794574"
+        },
+        {
+          "role": "user",
+          "content": "10k",
+          "timestamp": "2025-10-26 14:40:59.159624"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:16:27.638494"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:16:30.447291"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:16:34.306216"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:16:36.907132"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:16:40.546475"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:20:13.311631"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:20:15.187326"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:20:17.815496"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:20:20.432821"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:20:23.736054"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
+          "timestamp": "2025-10-26 16:20:24.709581"
+        },
+        {
+          "role": "user",
+          "content": "oke",
+          "timestamp": "2025-10-26 16:20:44.143049"
+        },
+        {
+          "role": "user",
+          "content": "python -m src.main --cli",
+          "timestamp": "2025-10-26 16:27:59.775436"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:28:02.324451"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:28:05.925593"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:28:08.156048"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:28:10.803284"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
+          "timestamp": "2025-10-26 16:28:11.464120"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:29:06.181110"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:29:07.849992"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:29:10.022051"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:29:11.373791"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:29:13.867025"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
+          "timestamp": "2025-10-26 16:29:14.576831"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:33:03.288079"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:33:06.535323"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:33:08.689268"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:33:10.229196"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:33:12.717301"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:39:02.872071"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:39:09.180855"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Batagor (320 kkal)\n3. Aneka Jus (80 kkal)\n\nTotal kalori: 550 kkal \ud83d\udd25\n\n\u2728 Total kalori rekomendasi: ~550 kcal (Protein rata-rata 5.3g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
+          "timestamp": "2025-10-26 16:39:10.114224"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:47:29.536854"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 16:47:33.969222"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 16:47:38.317978"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 16:47:40.033992"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 16:47:44.572493"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Batagor (320 kkal)\n3. Aneka Jus (80 kkal)\n\nTotal kalori: 550 kkal \ud83d\udd25\n\n\u2728 Total kalori rekomendasi: ~550 kcal (Protein rata-rata 5.3g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
+          "timestamp": "2025-10-26 16:47:45.553459"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 16:59:58.912082"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 17:00:00.870356"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 17:00:03.400787"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 17:00:05.004439"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 17:00:08.411790"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin Teknik*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Lainnya*\n   \u2022 *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \u2022 *Batagor* - Rp 15,000\n      _320 kkal | P: 12g | F: 18g | C: 28g_\n   \u2022 *Aneka Jus* - Rp 8,000\n      _80 kkal | P: 1g | F: 0g | C: 18g_\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 24,000\n\ud83d\udd25 Total kalori: 550 kkal\n\ud83d\udcaa Protein: 16g | \ud83e\uddc8 Lemak: 26g | \ud83c\udf5a Karbo: 64g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Batagor: 320 kkal (P: 12g, F: 18g, C: 28g)\n- Aneka Jus: 80 kkal (P: 1g, F: 0g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 17:00:08.726283"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 17:05:26.174743"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 17:05:28.706616"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 17:05:32.229214"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 17:05:34.633632"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 17:05:36.291606"
+        },
+        {
+          "role": "user",
+          "content": "15k",
+          "timestamp": "2025-10-26 17:05:39.104807"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Mama Mie (Indomie) (380 kkal)\n3. Batagor (320 kkal)\n\nTotal kalori: 850 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd59 *Mama Mie (Indomie)* - Rp 8,000\n      _380 kkal | P: 10g | F: 16g | C: 52g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n*2. Kantin SGLC*\n   \ud83e\udd59 *Batagor* - Rp 15,000\n      _320 kkal | P: 12g | F: 18g | C: 28g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/a5Dgtuc2qdce84BX6\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 24,000\n\ud83d\udd25 Total kalori: 850 kkal\n\ud83d\udcaa Protein: 25g | \ud83e\uddc8 Lemak: 42g | \ud83c\udf5a Karbo: 98g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Mama Mie (Indomie): 380 kkal (P: 10g, F: 16g, C: 52g)\n- Batagor: 320 kkal (P: 12g, F: 18g, C: 28g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 17:05:39.819713"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 19:22:34.452312"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 19:22:39.017544"
+        },
+        {
+          "role": "user",
+          "content": "kedokteran",
+          "timestamp": "2025-10-26 19:22:46.589300"
+        },
+        {
+          "role": "user",
+          "content": "c",
+          "timestamp": "2025-10-26 19:22:48.672854"
+        },
+        {
+          "role": "user",
+          "content": "5k",
+          "timestamp": "2025-10-26 19:22:51.726089"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Nasi Bungkus Ayam (250 kkal)\n2. Nasi Bungkus Teri (250 kkal)\n3. Sate Usus Bakar (150 kkal)\n\nTotal kalori: 670 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Angkringan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Angkringan Peyek Bunderan UGM*\n   \ud83e\udd59 *Nasi Bungkus Ayam* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83e\udd59 *Nasi Bungkus Teri* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83c\udf6a *Sate Usus Bakar* - Rp 3,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd64 *Kopi Jos* - Rp 5,000\n      _20 kkal | P: 1g | F: 0g | C: 3g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 14,000\n\ud83d\udd25 Total kalori: 670 kkal\n\ud83d\udcaa Protein: 20g | \ud83e\uddc8 Lemak: 28g | \ud83c\udf5a Karbo: 81g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Nasi Bungkus Ayam: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Nasi Bungkus Teri: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Sate Usus Bakar: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Kopi Jos: 20 kkal (P: 1g, F: 0g, C: 3g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 19:22:52.897105"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 19:30:48.742298"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 19:30:51.288184"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 19:30:53.575600"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 19:30:55.962142"
+        },
+        {
+          "role": "user",
+          "content": "29k",
+          "timestamp": "2025-10-26 19:30:58.910052"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mie Dok-Dok (420 kkal)\n2. Nasi Goreng (250 kkal)\n3. Magelangan (380 kkal)\n\nTotal kalori: 2005 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Penyetan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Penyetan Bu Lastri*\n   \ud83c\udf5b *Mie Dok-Dok* - Rp 13,000\n      _420 kkal | P: 14g | F: 18g | C: 50g_\n   \ud83c\udf5b *Nasi Goreng* - Rp 13,000\n      _250 kkal | P: 8g | F: 10g | C: 35g_\n   \ud83c\udf5b *Magelangan* - Rp 14,000\n      _380 kkal | P: 14g | F: 16g | C: 45g_\n   \ud83c\udf5b *Nasi Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83c\udf5b *Nasi Telur Penyet* - Rp 10,000\n      _155 kkal | P: 13g | F: 11g | C: 1g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ZphWbzn2RaM9zAik7\n\n*2. Kantin Teknik Mesin*\n   \ud83c\udf5b *Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ANQU6THziV4TREiD9\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 80,000\n\ud83d\udd25 Total kalori: 2005 kkal\n\ud83d\udcaa Protein: 99g | \ud83e\uddc8 Lemak: 91g | \ud83c\udf5a Karbo: 201g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mie Dok-Dok: 420 kkal (P: 14g, F: 18g, C: 50g)\n- Nasi Goreng: 250 kkal (P: 8g, F: 10g, C: 35g)\n- Magelangan: 380 kkal (P: 14g, F: 16g, C: 45g)\n- Nasi Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n- Nasi Telur Penyet: 155 kkal (P: 13g, F: 11g, C: 1g)\n- Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 19:31:01.667297"
+        },
+        {
+          "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-26 19:40:27.219531"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 19:40:29.422106"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 19:40:32.015438"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 19:40:34.356291"
+        },
+        {
+          "role": "user",
+          "content": "20k",
+          "timestamp": "2025-10-26 19:40:37.949922"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mie Dok-Dok (420 kkal)\n2. Nasi Goreng (250 kkal)\n3. Magelangan (380 kkal)\n\nTotal kalori: 2005 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Penyetan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Penyetan Bu Lastri*\n   \ud83c\udf5b *Mie Dok-Dok* - Rp 13,000\n      _420 kkal | P: 14g | F: 18g | C: 50g_\n   \ud83c\udf5b *Nasi Goreng* - Rp 13,000\n      _250 kkal | P: 8g | F: 10g | C: 35g_\n   \ud83c\udf5b *Magelangan* - Rp 14,000\n      _380 kkal | P: 14g | F: 16g | C: 45g_\n   \ud83c\udf5b *Nasi Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83c\udf5b *Nasi Telur Penyet* - Rp 10,000\n      _155 kkal | P: 13g | F: 11g | C: 1g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ZphWbzn2RaM9zAik7\n\n*2. Kantin Teknik Mesin*\n   \ud83c\udf5b *Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ANQU6THziV4TREiD9\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 80,000\n\ud83d\udd25 Total kalori: 2005 kkal\n\ud83d\udcaa Protein: 99g | \ud83e\uddc8 Lemak: 91g | \ud83c\udf5a Karbo: 201g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mie Dok-Dok: 420 kkal (P: 14g, F: 18g, C: 50g)\n- Nasi Goreng: 250 kkal (P: 8g, F: 10g, C: 35g)\n- Magelangan: 380 kkal (P: 14g, F: 16g, C: 45g)\n- Nasi Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n- Nasi Telur Penyet: 155 kkal (P: 13g, F: 11g, C: 1g)\n- Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 19:40:38.951453"
+        },
+        {
+          "role": "user",
+          "content": "ga",
+          "timestamp": "2025-10-26 19:40:51.380009"
+        },
+        {
+          "role": "user",
+          "content": "iya",
+          "timestamp": "2025-10-26 19:40:54.876460"
+        },
+        {
+          "role": "user",
+          "content": "fisip",
+          "timestamp": "2025-10-26 19:41:00.594566"
+        },
+        {
+          "role": "user",
+          "content": "c",
+          "timestamp": "2025-10-26 19:41:02.464013"
+        },
+        {
+          "role": "user",
+          "content": "3k",
+          "timestamp": "2025-10-26 19:41:04.725373"
+        },
+        {
+          "role": "user",
+          "content": "ga ada duit",
+          "timestamp": "2025-10-26 19:41:12.272703"
+        },
+        {
+          "role": "user",
+          "content": "5k",
+          "timestamp": "2025-10-26 19:41:16.059585"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Nasi Bungkus Ayam (250 kkal)\n2. Nasi Bungkus Teri (250 kkal)\n3. Sate Usus Bakar (150 kkal)\n\nTotal kalori: 820 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Angkringan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Angkringan Peyek Bunderan UGM*\n   \ud83e\udd59 *Nasi Bungkus Ayam* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83e\udd59 *Nasi Bungkus Teri* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83c\udf6a *Sate Usus Bakar* - Rp 3,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd64 *Kopi Jos* - Rp 5,000\n      _20 kkal | P: 1g | F: 0g | C: 3g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8\n\n*2. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 16,000\n\ud83d\udd25 Total kalori: 820 kkal\n\ud83d\udcaa Protein: 23g | \ud83e\uddc8 Lemak: 36g | \ud83c\udf5a Karbo: 99g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Nasi Bungkus Ayam: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Nasi Bungkus Teri: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Sate Usus Bakar: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Kopi Jos: 20 kkal (P: 1g, F: 0g, C: 3g)\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 19:41:16.500066"
+        },
+        {
+          "role": "user",
+          "content": "ga",
+          "timestamp": "2025-10-26 19:41:27.286672"
+        }
+      ]
+    },
+    {
+      "user_id": "cli_test_user",
+      "phase": "idle",
+      "context": {},
+      "conversation_history": [],
+      "created_at": "2025-10-26 06:52:02.465398",
+      "updated_at": "2025-10-26 06:52:02.465398",
+      "expires_at": "2025-10-26 07:22:02.465398"
+    },
+    {
+      "user_id": "6285782494121@c.us",
+      "created_at": "2025-10-26 17:22:12.488652",
+      "expires_at": "2025-10-26 17:56:14.610960",
+      "phase": "recommendation_given",
+      "context": {
+        "faculty": "Teknik",
+        "hunger_level": "standar",
+        "budget": 20000,
+        "time_period": "sore",
+        "recommended_foods": [
+          "Gorengan",
+          "Mama Mie (Indomie)",
+          "Batagor",
+          "Dimsum"
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "sendiri",
+          "timestamp": "2025-10-26 17:22:12.536318"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-26 17:22:21.726566"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-26 17:22:38.634506"
+        },
+        {
+          "role": "user",
+          "content": "b",
+          "timestamp": "2025-10-26 17:22:46.142873"
+        },
+        {
+          "role": "user",
+          "content": "20.000",
+          "timestamp": "2025-10-26 17:22:53.971716"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Mama Mie (Indomie) (380 kkal)\n3. Batagor (320 kkal)\n\nTotal kalori: 1050 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd59 *Mama Mie (Indomie)* - Rp 8,000\n      _380 kkal | P: 10g | F: 16g | C: 52g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n*2. Kantin SGLC*\n   \ud83e\udd59 *Batagor* - Rp 15,000\n      _320 kkal | P: 12g | F: 18g | C: 28g_\n   \ud83c\udf6a *Dimsum* - Rp 18,000\n      _200 kkal | P: 8g | F: 10g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/a5Dgtuc2qdce84BX6\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 42,000\n\ud83d\udd25 Total kalori: 1050 kkal\n\ud83d\udcaa Protein: 33g | \ud83e\uddc8 Lemak: 52g | \ud83c\udf5a Karbo: 116g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Mama Mie (Indomie): 380 kkal (P: 10g, F: 16g, C: 52g)\n- Batagor: 320 kkal (P: 12g, F: 18g, C: 28g)\n- Dimsum: 200 kkal (P: 8g, F: 10g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-26 17:22:55.915609"
+        },
+        {
+          "role": "user",
+          "content": "aku di konmer",
+          "timestamp": "2025-10-26 17:24:56.417282"
+        },
+        {
+          "role": "user",
+          "content": "tapi mau balik",
+          "timestamp": "2025-10-26 17:24:56.670743"
+        },
+        {
+          "role": "user",
+          "content": "blm abis nih latte large",
+          "timestamp": "2025-10-26 17:25:17.934947"
+        },
+        {
+          "role": "user",
+          "content": "disana 3jam",
+          "timestamp": "2025-10-26 17:26:00.923768"
+        },
+        {
+          "role": "user",
+          "content": "buntu",
+          "timestamp": "2025-10-26 17:26:02.653657"
+        },
+        {
+          "role": "user",
+          "content": "jadi nyamper vico ke konmer",
+          "timestamp": "2025-10-26 17:26:14.605959"
+        }
+      ]
+    }
+  ],
+  "foods": [
+    {
+      "id": "food_001",
+      "name": "Nasi Goreng Spesial",
+      "calories": 650,
+      "protein": 18,
+      "fat": 22,
+      "carbs": 85,
+      "tags": [
+        "pedas",
+        "gurih",
+        "goreng",
+        "nasi",
+        "berat"
+      ],
+      "embedding": [
+        0.23,
+        -0.45,
+        0.78,
+        -0.12,
+        0.56
+      ]
+    },
+    {
+      "id": "food_002",
+      "name": "Gado-Gado",
+      "calories": 320,
+      "protein": 12,
+      "fat": 15,
+      "carbs": 38,
+      "tags": [
+        "sayur",
+        "sehat",
+        "kacang",
+        "segar",
+        "ringan"
+      ],
+      "embedding": [
+        0.15,
+        0.32,
+        -0.67,
+        0.44,
+        -0.21
+      ]
+    },
+    {
+      "id": "food_003",
+      "name": "Ayam Bakar Madu",
+      "calories": 480,
+      "protein": 35,
+      "fat": 18,
+      "carbs": 42,
+      "tags": [
+        "manis",
+        "protein",
+        "bakar",
+        "ayam",
+        "berat"
+      ],
+      "embedding": [
+        -0.34,
+        0.56,
+        0.12,
+        -0.78,
+        0.29
+      ]
+    },
+    {
+      "id": "food_004",
+      "name": "Lotek",
+      "calories": 280,
+      "protein": 10,
+      "fat": 12,
+      "carbs": 35,
+      "tags": [
+        "sayur",
+        "sehat",
+        "kacang",
+        "segar",
+        "ringan"
+      ],
+      "embedding": [
+        0.18,
+        0.29,
+        -0.71,
+        0.38,
+        -0.15
+      ]
+    },
+    {
+      "id": "food_005",
+      "name": "Mie Ayam",
+      "calories": 520,
+      "protein": 22,
+      "fat": 16,
+      "carbs": 68,
+      "tags": [
+        "mie",
+        "ayam",
+        "kuah",
+        "gurih",
+        "berat"
+      ],
+      "embedding": [
+        -0.12,
+        -0.34,
+        0.65,
+        0.21,
+        0.47
+      ]
+    },
+    {
+      "id": "food_006",
+      "name": "Soto Ayam",
+      "calories": 380,
+      "protein": 25,
+      "fat": 14,
+      "carbs": 42,
+      "tags": [
+        "kuah",
+        "hangat",
+        "ayam",
+        "gurih",
+        "standar"
+      ],
+      "embedding": [
+        0.08,
+        -0.52,
+        0.43,
+        0.19,
+        -0.36
+      ]
+    },
+    {
+      "id": "food_007",
+      "name": "Bakso Komplit",
+      "calories": 450,
+      "protein": 20,
+      "fat": 15,
+      "carbs": 55,
+      "tags": [
+        "kuah",
+        "daging",
+        "mie",
+        "gurih",
+        "berat"
+      ],
+      "embedding": [
+        -0.25,
+        -0.41,
+        0.58,
+        0.33,
+        0.19
+      ]
+    },
+    {
+      "id": "food_008",
+      "name": "Pisang Goreng",
+      "calories": 180,
+      "protein": 3,
+      "fat": 8,
+      "carbs": 28,
+      "tags": [
+        "manis",
+        "goreng",
+        "cemilan",
+        "pisang",
+        "ringan"
+      ],
+      "embedding": [
+        0.42,
+        0.18,
+        -0.29,
+        -0.55,
+        0.31
+      ]
+    },
+    {
+      "id": "food_009",
+      "name": "Es Teh Manis",
+      "calories": 120,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 30,
+      "tags": [
+        "minuman",
+        "manis",
+        "dingin",
+        "segar",
+        "ringan"
+      ],
+      "embedding": [
+        0.67,
+        0.25,
+        -0.18,
+        -0.44,
+        -0.52
+      ]
+    },
+    {
+      "id": "food_010",
+      "name": "Pecel Lele",
+      "calories": 550,
+      "protein": 28,
+      "fat": 24,
+      "carbs": 52,
+      "tags": [
+        "pedas",
+        "goreng",
+        "ikan",
+        "sambal",
+        "berat"
+      ],
+      "embedding": [
+        0.21,
+        -0.38,
+        0.72,
+        -0.15,
+        0.44
+      ]
+    }
+  ],
+  "feedbacks": [
+    {
+      "user_id": "example_user",
+      "recommendation_id": "rec_001",
+      "foods_recommended": [
+        "Nasi Goreng"
+      ],
+      "rating": 5,
+      "sentiment": "positive",
+      "context": {
+        "faculty": "Teknik",
+        "hunger_level": "medium",
+        "budget": 10000,
+        "time_period": "lunch"
+      },
+      "comment": "Enak banget!",
+      "created_at": "2025-10-26T00:00:00"
     }
   ]
 }
