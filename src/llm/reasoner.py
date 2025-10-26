@@ -1,5 +1,6 @@
 """
 LLM Reasoner for intelligent food recommendations
+Supports multi-model reasoning: Groq & Gemini
 Combines RAG results with contextual reasoning
 """
 import logging
@@ -11,69 +12,92 @@ from src.utils.calorie_utils import calculate_total_calories, format_nutrition_s
 logger = logging.getLogger(__name__)
 
 class LLMReasoner:
-    """LLM-based reasoning layer for recommendations"""
-    
+    """LLM-based reasoning layer with model switching"""
+
     def __init__(self):
-        self.client = OpenAI(
-            api_key=Config.GEMINI_API_KEY,
-            base_url=Config.LLM_BASE_URL
+        # Client Groq (default)
+        self.client_groq = OpenAI(
+            api_key=Config.GROQ_API_KEY,
+            base_url="https://api.groq.com/openai/v1"
         )
-    
+        # Client Gemini (Google)
+        self.client_gemini = OpenAI(
+            api_key=Config.GEMINI_API_KEY,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+        )
+
+
+
     def generate_recommendation(
         self,
         user_context: Dict,
         rag_results: List[Dict],
-        canteen_data: Optional[List[Dict]] = None
+        canteen_data: Optional[List[Dict]] = None,
+        model: str = "groq"
     ) -> str:
         """
-        Generate natural language recommendation
-        
-        Args:
-            user_context: User info (faculty, hunger, budget, etc.)
-            rag_results: Foods from RAG retrieval
-            canteen_data: Optional canteen menu data
-            
-        Returns:
-            Natural language recommendation text
+        Generate natural language recommendation using Groq or Gemini
         """
-        prompt = self._build_recommendation_prompt(
-            user_context,
-            rag_results,
-            canteen_data
-        )
-        
+        prompt = self._build_recommendation_prompt(user_context, rag_results, canteen_data)
+
+        # Pilih model dan client utama
+        if model.lower() == "gemini":
+            client = self.client_gemini
+            model_name = "gemini-1.5-flash"
+        else:
+            client = self.client_groq
+            model_name = "llama-3.1-8b-instant"
+
+        # ✅ --- Bagian try-except lengkap (dengan fallback otomatis) ---
         try:
-            response = self.client.chat.completions.create(
-                model=Config.LLM_MODEL,
-                messages=[{"role": "user", "content": prompt}],
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=[
+                    {"role": "system", "content": "Kamu asisten lucu dan cerdas yang bantu rekomendasi makanan kampus."},
+                    {"role": "user", "content": prompt}
+                ],
                 temperature=0.8,
-                max_tokens=800
+                max_tokens=600
             )
-            
-            return response.choices[0].message.content
-            
+            return response.choices[0].message.content.strip()
+
         except Exception as e:
-            logger.error(f"LLM reasoning failed: {e}", exc_info=True)
-            return self._generate_fallback_response(rag_results)
-    
+            logger.warning(f"{model} gagal, fallback ke Gemini: {e}")
+
+            # fallback otomatis ke Gemini
+            try:
+                response = self.client_gemini.chat.completions.create(
+                    model="gemini-1.5-flash",
+                    messages=[
+                        {"role": "system", "content": "Kamu asisten lucu dan cerdas yang bantu rekomendasi makanan kampus."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.8,
+                    max_tokens=600
+                )
+                return "⚡ Fallback ke Gemini:\n\n" + response.choices[0].message.content.strip()
+
+            except Exception as e2:
+                logger.error(f"Fallback gagal: {e2}")
+                return self._generate_fallback_response(rag_results)
+
     def _build_recommendation_prompt(
         self,
         context: Dict,
         rag_results: List[Dict],
         canteen_data: Optional[List[Dict]]
     ) -> str:
-        """Build prompt for LLM"""
-        
-        faculty = context.get("faculty", "")
-        hunger = context.get("hunger_level", "")
+        """Bangun prompt kontekstual untuk LLM"""
+
+        faculty = context.get("faculty", "-")
+        hunger = context.get("hunger_level", "-")
         budget = context.get("budget", 0)
-        time_period = context.get("time_period", "")
-        
-        # Calculate nutrition
+        time_period = context.get("time_period", "-")
+
         nutrition = calculate_total_calories(rag_results)
-        
+
         prompt = f"""
-Kamu adalah Mamang, asisten rekomendasi makanan UGM yang ramah dan santai.
+Kamu adalah Mamang, asisten rekomendasi makanan UGM yang santai, lucu, dan cerdas 😋
 
 KONTEKS USER:
 - Fakultas: {faculty}
@@ -81,95 +105,78 @@ KONTEKS USER:
 - Budget: Rp {budget:,}
 - Waktu: {time_period}
 
-REKOMENDASI DARI AI (RAG):
+DAFTAR MAKANAN DARI RAG:
 """
-        
-        for i, food in enumerate(rag_results, 1):
+        for i, food in enumerate(rag_results[:5], 1):
             prompt += f"""
 {i}. {food.get('name')}
-   - Kalori: {food.get('calories')} kkal
-   - Protein: {food.get('protein')}g | Fat: {food.get('fat')}g | Carbs: {food.get('carbs')}g
-   - Tags: {', '.join(food.get('tags', []))}
-   - Similarity Score: {food.get('similarity_score', 0):.2f}
+   - Harga: Rp {food.get('price', 0):,}
+   - Kalori: {food.get('calories', '?')} kkal
+   - Protein: {food.get('protein', '?')}g | Lemak: {food.get('fat', '?')}g | Karbo: {food.get('carbs', '?')}g
+   - Kantin: {food.get('canteen_name', 'Tidak diketahui')}
 """
-        
+
         if canteen_data:
-            prompt += "\n\nDATA KANTIN TERDEKAT:\n"
-            for canteen in canteen_data[:3]:
-                prompt += f"- {canteen.get('menu_name')} di {canteen.get('canteen_name')} (Rp {canteen.get('menu_price', 0):,})\n"
-        
+            prompt += "\nKANTIN TERDEKAT:\n"
+            for c in canteen_data[:3]:
+                prompt += f"- {c.get('menu_name')} di {c.get('canteen_name')} (Rp {c.get('menu_price', 0):,})\n"
+
         prompt += f"""
 
 TOTAL NUTRISI:
 {format_nutrition_summary(nutrition)}
 
-INSTRUKSI:
-1. Pilih 2-3 menu terbaik dari rekomendasi di atas
-2. Jelaskan kenapa cocok dengan kondisi user (lapar {hunger}, budget {budget}, waktu {time_period})
-3. Kalau ada data kantin, sebutin lokasinya
-4. Sebutin total kalori dan nutrisi dari pilihan kamu
-5. Kasih tips nutrition yang relevan
-
-GAYA BAHASA:
-- Santai, friendly, penuh emoji 😋
-- Jangan pakai markdown atau formatting aneh
-- Panggil user "kamu" dan diri sendiri "Mamang"
-- Bahasa gaul anak muda tapi tetap sopan
-
-Tulis rekomendasinya sekarang!
+INSTRUKSI UNTUK KAMU (LLM):
+1. Pilih 2–3 menu terbaik yang sesuai konteks (lapar, budget, waktu, fakultas)
+2. Jelaskan kenapa cocok — dengan gaya Gen-Z yang asik tapi jelas
+3. Kalau bisa, tambahkan tips kecil tentang gizi atau porsi
+4. Jangan pakai markdown, cukup teks biasa dengan emoji
+5. Bahasa santai tapi tetap sopan, panggil user "kamu" dan sebut diri "Mamang"
 """
-        
-        return prompt
-    
+
+        return prompt.strip()
+
     def _generate_fallback_response(self, foods: List[Dict]) -> str:
-        """Simple fallback if LLM fails"""
+        """Fallback kalau LLM error"""
         if not foods:
             return "Waduh, Mamang ga nemu makanan yang cocok nih 😅 Coba ubah kriterianya dikit?"
-        
-        response = "Nih Mamang kasih rekomendasi:\n\n"
-        
+
+        response = "😅 AI-nya lagi istirahat, tapi nih Mamang bantu dulu manual:\n\n"
         for i, food in enumerate(foods[:3], 1):
-            response += f"{i}. {food.get('name')} ({food.get('calories')} kkal)\n"
-        
+            response += f"{i}. {food.get('name')} - Rp {food.get('price', 0):,}\n"
         nutrition = calculate_total_calories(foods)
         response += f"\nTotal kalori: {nutrition['total_calories']} kkal 🔥"
-        
         return response
-    
-    def explain_reasoning(
-        self,
-        user_query: str,
-        context: Dict,
-        recommendation: str
-    ) -> str:
-        """
-        Explain why certain recommendations were made
-        (Untuk debugging atau user yang penasaran)
-        """
+
+    def explain_reasoning(self, user_query: str, context: Dict, recommendation: str, model: str = "groq") -> str:
+        """Menjelaskan alasan di balik rekomendasi (debugging/penjelasan opsional)"""
         prompt = f"""
 User nanya: "{user_query}"
-
 Konteks user: {context}
+Rekomendasi diberikan: {recommendation}
 
-Rekomendasi yang diberikan: {recommendation}
-
-Jelaskan secara singkat (3-4 kalimat) logika di balik rekomendasi ini.
-Gunakan bahasa yang mudah dipahami.
+Jelaskan secara singkat (3 kalimat) alasan logis di balik rekomendasi ini, dengan bahasa ringan.
 """
-        
+
         try:
-            response = self.client.chat.completions.create(
-                model=Config.LLM_MODEL,
+            if model == "gemini":
+                client = self.client_gemini
+                model_name = "gemini-1.5-flash"
+            else:
+                client = self.client_groq
+                model_name = "llama3-8b-8192"
+
+            response = client.chat.completions.create(
+                model=model_name,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.7,
+                temperature=0.6,
                 max_tokens=200
             )
-            
-            return response.choices[0].message.content
-            
+            return response.choices[0].message.content.strip()
+
         except Exception as e:
-            logger.error(f"Reasoning explanation failed: {e}")
-            return "Mamang milih berdasarkan budget, tingkat lapar, dan waktu kamu nih! 😊"
+            logger.error(f"Explain reasoning failed: {e}")
+            return "Mamang milih berdasarkan budget, tingkat lapar, dan waktu kamu nih 😋"
 
 # Global instance
 llm_reasoner = LLMReasoner()
