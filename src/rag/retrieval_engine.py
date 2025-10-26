@@ -131,6 +131,12 @@ class RetrievalEngine:
         Returns:
             List of recommended foods with scores
         """
+        if "similar_to" in context:
+            query_text = f"menu mirip dengan {', '.join(context['similar_to'])}"
+        else:
+            query_text = self._build_query_text(context)
+
+
         if top_k is None:
             top_k = Config.MAX_RECOMMENDATIONS
         
@@ -156,8 +162,9 @@ class RetrievalEngine:
             return []
         
         # STEP 2: RAG semantic search
-        query_text = self._build_query_text(context)
         logger.info(f"Search query: '{query_text}'")
+        query_embedding = get_embedding(query_text)
+
         
         query_embedding = get_embedding(query_text)
         
