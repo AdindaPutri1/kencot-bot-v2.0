@@ -40,9 +40,10 @@ class Config:
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     
     # LLM Settings
+    GEMINI_BASE_URL = os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta")
     LLM_MODEL = os.getenv("LLM_MODEL", "groq")  # groq, gemini, openai
     LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
-    GROQ_MODEL_NAME = os.getenv("GROQ_MODEL_NAME", "llama-3.1-70b-versatile")
+    GROQ_MODEL_NAME = os.getenv("GROQ_MODEL_NAME", "llama-3.1-8b-instant")
     GEMINI_MODEL_NAME = os.getenv("GEMINI_MODEL_NAME", "gemini-2.5-flash")
     OPENAI_MODEL_NAME = os.getenv("OPENAI_MODEL_NAME", "gpt-3.5-turbo")
     
@@ -70,18 +71,15 @@ class Config:
     
     @classmethod
     def validate(cls):
-        """Validate configuration"""
-        errors = []
+        """Validate critical configuration"""
+        if not cls.GEMINI_API_KEY and not cls.GROQ_API_KEY:
+            raise ValueError("At least one LLM API key must be configured")
         
-        # Check if at least one LLM API key is provided
-        if not any([cls.GROQ_API_KEY, cls.GEMINI_API_KEY, cls.OPENAI_API_KEY]):
-            errors.append("At least one LLM API key must be provided (GROQ, GEMINI, or OPENAI)")
-        
-        # Check if foods file exists
-        if not cls.FOODS_PATH.exists():
-            errors.append(f"Foods database not found: {cls.FOODS_PATH}")
-        
-        if errors:
-            raise ValueError(f"Configuration errors:\n" + "\n".join(f"- {e}" for e in errors))
+        # Create directories if not exist
+        cls.LOGS_DIR.mkdir(exist_ok=True)
+        cls.DATA_DIR.mkdir(exist_ok=True)
         
         return True
+
+# Validate on import
+Config.validate()

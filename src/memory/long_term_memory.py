@@ -82,7 +82,19 @@ class LongTermMemory:
         """Update user's allergies"""
         User.update_preferences(self.user_id, {"allergies": allergies})
         self.profile = self._load_profile()
-    
+
+    def update_budget_pattern(self, budget: int):
+        """Track budget usage pattern over time"""
+        self.budget_patterns.append({
+            "budget": budget,
+            "timestamp": datetime.now().isoformat()
+        })
+
+        # Simpan juga di database kalo mau persist
+        User.update_preferences(self.user_id, {"budget_patterns": self.budget_patterns})
+
+        logger.info(f"[LTM] Budget pattern updated for user {self.user_id}: Rp {budget:,}")
+        
     def get_budget_range(self) -> Dict:
         """Get typical budget range"""
         return self.profile.get("budget_range", {})

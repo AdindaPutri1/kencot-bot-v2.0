@@ -23,63 +23,45 @@ class LLMReasoner:
         # Client Gemini (Google)
         self.client_gemini = OpenAI(
             api_key=Config.GEMINI_API_KEY,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+            base_url=Config.GEMINI_BASE_URL
         )
 
-
-
-    def generate_recommendation(
-        self,
-        user_context: Dict,
-        rag_results: List[Dict],
-        canteen_data: Optional[List[Dict]] = None,
-        model: str = "groq"
-    ) -> str:
-        """
-        Generate natural language recommendation using Groq or Gemini
-        """
+    def generate_recommendation(self, user_context: Dict, rag_results: List[Dict],
+                            canteen_data: Optional[List[Dict]] = None,
+                            model: str = "groq") -> str:
         prompt = self._build_recommendation_prompt(user_context, rag_results, canteen_data)
 
-        # Pilih model dan client utama
-        if model.lower() == "gemini":
-            client = self.client_gemini
-            model_name = "gemini-2.5-flash"
-        else:
-            client = self.client_groq
-            model_name = "llama-3.1-8b-instant"
+        # Pilih client & model
+        client = self.client_gemini if model.lower() == "gemini" else self.client_groq
+        model_name = Config.GEMINI_MODEL_NAME if model.lower() == "gemini" else "llama-3.1-8b-instant"
 
-        # ✅ --- Bagian try-except lengkap (dengan fallback otomatis) ---
         try:
             response = client.chat.completions.create(
                 model=model_name,
                 messages=[
-                    {"role": "system", "content": "Kamu asisten lucu dan cerdas yang bantu rekomendasi makanan kampus."},
+                    {"role": "system", "content": "Kamu asisten lucu & cerdas yang bantu rekomendasi makanan kampus."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.8,
                 max_tokens=600
             )
-            return response.choices[0].message.content.strip()
+            # cek aman
+            # Safe check supaya gak error kalau response kosong atau message None
+            raw_content = ""
+            if hasattr(response, "choices") and response.choices:
+                msg = getattr(response.choices[0], "message", None)
+                if msg:
+                    raw_content = getattr(msg, "content", "") or ""
+
+            # Gunakan fallback teks kalau kosong
+            response_text = raw_content.strip() or "Waduh, Mamang belum nemu jawaban 😅 coba ulangi inputnya"
+            return response_text
 
         except Exception as e:
-            logger.warning(f"{model} gagal, fallback ke Gemini: {e}")
+            logger.warning(f"{model} gagal: {e}")
 
-            # fallback otomatis ke Gemini
-            try:
-                response = self.client_gemini.chat.completions.create(
-                    model="gemini-2.5-flash",
-                    messages=[
-                        {"role": "system", "content": "Kamu asisten lucu dan cerdas yang bantu rekomendasi makanan kampus."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.8,
-                    max_tokens=600
-                )
-                return "⚡ Fallback ke Gemini:\n\n" + response.choices[0].message.content
-
-            except Exception as e2:
-                logger.error(f"Fallback gagal: {e2}")
-                return self._generate_fallback_response(rag_results)
+        # fallback manual kalau semua gagal
+        return self._generate_fallback_response(rag_results)
 
     def _build_recommendation_prompt(
         self,
@@ -109,12 +91,12 @@ DAFTAR MAKANAN DARI RAG:
 """
         for i, food in enumerate(rag_results[:5], 1):
             prompt += f"""
-{i}. {food.get('name')}
-   - Harga: Rp {food.get('price', 0):,}
-   - Kalori: {food.get('calories', '?')} kkal
-   - Protein: {food.get('protein', '?')}g | Lemak: {food.get('fat', '?')}g | Karbo: {food.get('carbs', '?')}g
-   - Kantin: {food.get('canteen_name', 'Tidak diketahui')}
-"""
+            {i}. {food.get('name')}
+            - Harga: Rp {food.get('price', 0):,}
+            - Kalori: {food.get('calories', '?')} kkal
+            - Protein: {food.get('protein', '?')}g | Lemak: {food.get('fat', '?')}g | Karbo: {food.get('carbs', '?')}g
+            - Kantin: {food.get('canteen_name', 'Tidak diketahui')}
+            """
 
         if canteen_data:
             prompt += "\nKANTIN TERDEKAT:\n"
@@ -161,7 +143,7 @@ INSTRUKSI UNTUK KAMU (LLM):
         try:
             if model == "gemini":
                 client = self.client_gemini
-                model_name = "gemini-2.5-flash"
+                model_name = Config.GEMINI_MODEL_NAME
             else:
                 client = self.client_groq
                 model_name = "llama3-8b-8192"

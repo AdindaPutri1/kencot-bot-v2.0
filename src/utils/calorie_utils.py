@@ -5,33 +5,41 @@ from typing import List, Dict
 
 def calculate_total_calories(foods: List[Dict]) -> Dict:
     """
-    Calculate total calories and macros from multiple foods
-    
-    Args:
-        foods: List of food items with nutrition data
-        
-    Returns:
-        Dict with totals and breakdown
+    Calculate total calories and macros from multiple foods.
+    Handles mixed string/number inputs gracefully.
     """
     total = {
-        "total_calories": 0,
-        "total_protein": 0,
-        "total_fat": 0,
-        "total_carbs": 0,
+        "total_calories": 0.0,
+        "total_protein": 0.0,
+        "total_fat": 0.0,
+        "total_carbs": 0.0,
         "foods": []
     }
-    
+
+    def to_number(val):
+        if isinstance(val, (int, float)):
+            return val
+        if isinstance(val, str):
+            # Bersihin teks kayak "650 kkal", "20g", "≈400", "~500"
+            val = val.lower().replace("kkal", "").replace("g", "")
+            val = val.replace("~", "").replace("±", "").replace(",", ".").strip()
+            try:
+                return float(val)
+            except ValueError:
+                return 0.0
+        return 0.0
+
     for food in foods:
-        calories = food.get("calories", 0)
-        protein = food.get("protein", 0)
-        fat = food.get("fat", 0)
-        carbs = food.get("carbs", 0)
-        
+        calories = to_number(food.get("calories", 0))
+        protein = to_number(food.get("protein", 0))
+        fat = to_number(food.get("fat", 0))
+        carbs = to_number(food.get("carbs", 0))
+
         total["total_calories"] += calories
         total["total_protein"] += protein
         total["total_fat"] += fat
         total["total_carbs"] += carbs
-        
+
         total["foods"].append({
             "name": food.get("name", "Unknown"),
             "calories": calories,
@@ -39,7 +47,7 @@ def calculate_total_calories(foods: List[Dict]) -> Dict:
             "fat": fat,
             "carbs": carbs
         })
-    
+
     return total
 
 def format_nutrition_summary(nutrition: Dict) -> str:

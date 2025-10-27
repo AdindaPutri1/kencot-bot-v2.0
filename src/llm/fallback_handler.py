@@ -1,89 +1,73 @@
 """
-Fallback handler for LLM failures or incomplete responses.
-Handles graceful degradation when reasoning or generation fails.
+Fallback handler for LLM failures
 """
-
 import logging
 from typing import List, Dict, Optional
-from src.utils.calorie_utils import calculate_total_calories, format_nutrition_summary
 
 logger = logging.getLogger(__name__)
 
 
 class FallbackHandler:
-    """
-    Fallback layer for LLM or API errors.
-    Designed to keep user experience smooth with humor & contextual awareness.
-    """
-
-    def __init__(self):
-        self.default_responses = [
-            "Waduh, Mamang lagi ngantuk nih, coba lagi bentar ya 😴",
-            "Server lagi laper juga nih, sabar bentar ya 🍜",
-            "Hmm, kayaknya jaringan lagi lemot... tapi Mamang tetep usahain buat bantuin 💪",
-        ]
-
-    def handle_reasoning_failure(
-        self,
-        user_context: Dict,
-        rag_results: Optional[List[Dict]] = None
-    ) -> str:
-        """
-        Generate a fallback recommendation if reasoning fails.
-        """
-
-        faculty = user_context.get("faculty", "fakultas kamu")
-        hunger = user_context.get("hunger_level", "lapar")
-        budget = user_context.get("budget", 0)
-
-        if not rag_results:
-            msg = (
-                f"😅 Mamang belum nemu makanan yang cocok buat kamu di sekitar {faculty}. "
-                f"Coba naikin dikit budget-nya (Rp {budget:,}) atau pilih fakultas lain deh 😉"
+    """Handle LLM failures with graceful fallbacks"""
+    
+    @staticmethod
+    def generate_simple_recommendation(foods: List[Dict], context: Dict) -> str:
+        """Generate simple text recommendation without LLM"""
+        if not foods:
+            return FallbackHandler.no_results_message(context)
+        
+        budget = context.get("budget", 0)
+        hunger = context.get("hunger_level", "standar")
+        
+        intro = f"Oke, dengan budget Rp {budget:,} dan tingkat lapar {hunger}, nih Mamang kasih rekomendasi:\n\n"
+        
+        items = []
+        for i, food in enumerate(foods[:3], 1):
+            name = food.get("name", "Makanan")
+            price = food.get("price", 0)
+            canteen = food.get("canteen_name", "Kantin")
+            
+            items.append(f"{i}. {name} - Rp {price:,}\n   📍 {canteen}")
+        
+        return intro + "\n".join(items) + "\n\nGaskeun cobain! 😋"
+    
+    @staticmethod
+    def no_results_message(context: Dict) -> str:
+        """Message when no foods found"""
+        budget = context.get("budget", 0)
+        
+        if budget < 5000:
+            return (
+                "Waduh, budget Rp {budget:,} kayaknya agak susah nih 😅\n"
+                "Coba naikin dikit jadi minimal 5k ya!"
             )
-            logger.warning("Fallback triggered: no RAG results.")
-            return msg
-
-        # Ambil top 3 hasil
-        selected_foods = rag_results[:3]
-        nutrition = calculate_total_calories(selected_foods)
-
-        msg = f"Tenang, Mamang tetep punya rekomendasi buat kamu nih 😋\n\n"
-
-        for i, food in enumerate(selected_foods, 1):
-            msg += f"{i}. {food.get('name')} - {food.get('calories', 0)} kkal\n"
-
-        msg += f"\nTotal kalori: {nutrition['total_calories']} kkal 🔥"
-        msg += f"\nCocok buat kamu yang lagi {hunger} dan punya budget sekitar Rp {budget:,} 💸"
-
-        return msg
-
-    def handle_connection_error(self, error: Exception) -> str:
-        """
-        Fallback for API/connection errors (e.g., Gemini down, network issues).
-        """
-        logger.error(f"LLM connection error: {error}", exc_info=True)
+        
         return (
-            "⚠️ Mamang lagi susah connect ke server nih 😭 "
-            "Mungkin jaringannya ngambek. Coba lagi bentar ya!"
+            "Waduh, Mamang ga nemu makanan yang cocok nih 😢\n"
+            "Coba ubah kriterianya dikit ya:\n"
+            "- Naikin budget dikit\n"
+            "- Pilih waktu lain\n"
+            "- Coba fakultas terdekat"
         )
-
-    def handle_unexpected_response(self, raw_response: Optional[Dict] = None) -> str:
-        """
-        Fallback for weird or incomplete model responses.
-        """
-        logger.warning(f"Unexpected LLM response: {raw_response}")
+    
+    @staticmethod
+    def ai_error_message() -> str:
+        """Message when AI fails"""
         return (
-            "Heh, Mamang dikasih jawaban aneh sama AI 😅 "
-            "Coba ulang lagi, nanti Mamang pastiin hasilnya lebih mantap!"
+            "😅 AI-nya lagi istirahat nih.\n"
+            "Tapi tenang, Mamang tetap bisa kasih rekomendasi manual!\n"
+            "Coba ulangi ya 😊"
         )
-
-    def random_idle_message(self) -> str:
-        """
-        Random playful message to keep bot personality alive during idle or wait time.
-        """
-        import random
-        return random.choice(self.default_responses)
+    
+    @staticmethod
+    def format_nutrition_simple(food: Dict) -> str:
+        """Simple nutrition format"""
+        cal = food.get("calories", 0)
+        protein = food.get("protein", 0)
+        
+        if cal or protein:
+            return f"🔥 {cal} kkal | 💪 {protein}g protein"
+        return ""
 
 
 # Global instance

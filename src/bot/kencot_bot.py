@@ -2,7 +2,7 @@
 Kencot Bot V2.0 - Main bot class with memory + RAG integration
 """
 import logging
-from typing import Dict, List
+from typing import Dict
 from src.config import Config
 from src.handlers.trigger_handler import TriggerHandler
 from src.memory.short_term_memory import ShortTermMemory
@@ -19,20 +19,18 @@ from src.utils.text_utils import (
     is_full_response,
     is_thank_you
 )
-from src.utils.nutrition_estimator import nutrition_estimator
-from src.utils.response_formatter import response_formatter
+from src.utils.calorie_utils import calculate_total_calories, format_nutrition_summary
 import json
 
 logger = logging.getLogger(__name__)
 
 class KencotBotV2:
     """Upgraded Kencot Bot with RAG + Memory"""
-
-    def __init__(self, config: Config):
-        self.config = config
+    
+    def __init__(self):
         self.responses = self._load_responses()
         logger.info("Kencot Bot V2.0 initialized")
-
+    
     def _load_responses(self) -> Dict:
         """Load response templates"""
         try:
@@ -53,75 +51,83 @@ class KencotBotV2:
                 },
                 "budget_ask": ["Budget kamu berapa nih?"]
             }
-
+    
     def handle_message(self, user_id: str, message: str) -> str:
         """Main message handler with RAG + Memory"""
+        
+        # Initialize memories
         stm = ShortTermMemory(user_id)
         ltm = LongTermMemory(user_id)
+        
+        # Increment interaction counter
         ltm.increment_interaction()
+        
+        # Store message in history
         stm.add_message("user", message)
-
+        
+        # Detect trigger
         trigger = TriggerHandler.detect_trigger(message)
+        
+        # Handle special triggers
         if trigger == "reset":
             return self._handle_reset(user_id, stm)
+        
         if trigger == "help":
             return TriggerHandler.get_help_response()
+        
         if trigger == "greeting" and stm.get_phase() == "idle":
             return TriggerHandler.get_greeting_response()
-
+        
+        # Get current phase
         phase = stm.get_phase()
+        
+        # Try smart extraction (all info at once)
         quick_info = TriggerHandler.extract_quick_info(message)
-
+        
         if self._is_complete_info(quick_info):
             return self._handle_complete_request(user_id, stm, ltm, quick_info)
-
+        
+        # State machine flow
         try:
             if phase == "idle":
                 return self._handle_idle_phase(user_id, stm, ltm, message, trigger)
-            elif phase == "waiting_ai_choice":
-                return self._handle_ai_choice_phase(user_id, stm, ltm, message)
             elif phase == "waiting_location":
                 return self._handle_location_phase(user_id, stm, message)
             elif phase == "waiting_hunger":
                 return self._handle_hunger_phase(user_id, stm, message)
             elif phase == "waiting_budget":
                 return self._handle_budget_phase(user_id, stm, ltm, message)
-            
-            elif phase == "waiting_ai_decision":
-                if "ai" in message.lower():
-                    context = stm.get_context()
-                    try:
-                        ai_result = llm_reasoner.generate_recommendation(context, [])
-                        stm.set_phase("recommendation_given")
-                        return f"🔥 Oke! Mamang panggil AI buat bantu mikirin menu terbaik buat kamu 🤖✨\n\n{ai_result}"
-                    except Exception as e:
-                        logger.error(f"AI reasoning failed: {e}")
-                        stm.set_phase("recommendation_given")
-                        return "Aduh, AI-nya lagi ngambek nih 😅 Coba nanti lagi ya!"
-                else:
-                    stm.set_phase("recommendation_given")
-                    return "Oke, kalau gitu coba ubah kriterianya dikit aja ya 😄"
-
-
             elif phase == "recommendation_given":
                 return self._handle_feedback_phase(user_id, stm, ltm, message)
             else:
                 stm.set_phase("idle")
                 return "Ada yang salah nih. Yuk mulai lagi! Bilang 'laper' ya 😊"
+        
         except Exception as e:
             logger.error(f"Error handling message: {e}", exc_info=True)
             stm.clear()
             return "Aduh Mamang error nih 😵 Coba lagi ya!"
-
+    
     def _is_complete_info(self, info: Dict) -> bool:
+        """Check if all required info is present"""
         return all(k in info for k in ["faculty", "hunger_level", "budget"])
-
+    
     def _handle_reset(self, user_id: str, stm: ShortTermMemory) -> str:
+        """Reset conversation"""
         stm.clear()
         return "Siap! Udah direset. Kalau laper lagi tinggal bilang ya! 😊"
-
-    def _handle_idle_phase(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, message: str, trigger: str) -> str:
+    
+    def _handle_idle_phase(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        ltm: LongTermMemory,
+        message: str,
+        trigger: str
+    ) -> str:
+        """Handle idle phase"""
         if trigger == "food_request":
+            # Check if returning user
             if ltm.is_returning_user():
                 prefs = ltm.get_preferences_summary()
                 greeting = (
@@ -134,255 +140,248 @@ class KencotBotV2:
                     f"{get_time_greeting()}\n\n"
                     f"Mamang siap bantuin cari makan! Kamu di fakultas mana nih? 📍"
                 )
+            
             stm.set_phase("waiting_location")
             return greeting
+        
         return "Hai! Bilang 'laper' kalau mau makan ya! 😉"
-
-    def _handle_location_phase(self, user_id: str, stm: ShortTermMemory, message: str) -> str:
+    
+    def _handle_location_phase(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        message: str
+    ) -> str:
+        """Handle location input"""
         faculty = extract_faculty_from_text(message)
+        
         if faculty:
             stm.update_context({"faculty": faculty})
             stm.set_phase("waiting_hunger")
+            
             options = "\n".join([
                 "A. Laper brutal (butuh nasi porsi kuli)",
                 "B. Laper standar (yang penting kenyang)",
                 "C. Cuma iseng (pengen ngunyah aja)"
             ])
+            
             return f"Siap, {faculty} noted! 📍\n\nTingkat lapermu gimana nih?\n{options}"
+        
         return "Hmm, fakultas mana ya? Coba sebutin yang spesifik kayak 'Teknik' atau 'MIPA' 🤔"
-
-    def _handle_hunger_phase(self, user_id: str, stm: ShortTermMemory, message: str) -> str:
+    
+    def _handle_hunger_phase(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        message: str
+    ) -> str:
+        """Handle hunger level input"""
         hunger = extract_hunger_level_from_text(message)
+        
         if hunger:
             stm.update_context({"hunger_level": hunger})
             stm.set_phase("waiting_budget")
-            return "Okay noted! Budget kamu berapaan nih?"
+            return "Okay noted! Budget kamu berapaan nih? 💰"
+        
         return "Pilih A, B, atau C aja ya bestie! 😊"
-
-   # === START PATCH: AI MODEL CHOICE HANDLER ===
-    def _handle_ai_choice_phase(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, message: str) -> str:
-        """Handle pilihan AI model dari user"""
-        model_choice = message.lower().strip()
-
-        if model_choice not in ["groq", "gemini"]:
-            return "Ketik aja 'groq' atau 'gemini' ya 😄"
-
-        context = stm.get_context()
-        stm.update_context({"chosen_ai": model_choice})
-
-        try:
-            ai_result = llm_reasoner.generate_recommendation(context, [], model=model_choice)
-            stm.set_phase("recommendation_given")
-            return f"🔥 Siap! Mamang pakai model {model_choice.title()} buat bantu kamu:\n\n{ai_result}"
-        except Exception as e:
-            logger.error(f"AI reasoning error ({model_choice}): {e}")
-            return "Waduh, AI-nya lagi ngambek nih 😅 Coba model lain deh!"
-
-    def _handle_budget_phase(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, message: str) -> str:
+    
+    def _handle_budget_phase(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        ltm: LongTermMemory,
+        message: str
+    ) -> str:
+        """Handle budget input and generate recommendations"""
         budget = extract_budget_from_text(message)
+        
         if not budget:
             return "Hmm, ga kedetect budgetnya. Coba angkanya ya, misal: 15k atau 20000"
         
-        # Cek apakah user malah milih model AI
-        if message.lower().strip() in ["groq", "gemini"]:
-            context = stm.get_context()
-            try:
-                ai_result = llm_reasoner.generate_recommendation(context, [], model=message.lower().strip())
-                stm.set_phase("recommendation_given")
-                return f"🔥 Siap! Mamang pakai model {message.title()} buat bantuin kamu:\n\n{ai_result}"
-            except Exception as e:
-                logger.error(f"AI reasoning error: {e}")
-                return "Aduh, AI-nya lagi error. Coba model lain deh 😅"
-
+        if budget < 5000:
+            return (
+                f"Aduh budget {budget} itu keciiiil banget 😅\n"
+                "Minimal 5 ribu ya biar ada pilihan!"
+            )
+        
+        # Save context
         stm.update_context({"budget": budget})
         context = stm.get_context()
         context["time_period"] = get_current_time_period()
-
-        ltm.update_budget_range(budget, int(budget * 1.2))
+        
+        # Update long-term memory
+        ltm.update_budget_pattern(budget)
         ltm.add_hunger_pattern({
             "hunger_level": context["hunger_level"],
             "time_period": context["time_period"],
             "budget": budget
         })
+        
+        # Generate recommendation using RAG
         return self._generate_rag_recommendation(user_id, stm, ltm, context)
-
-
-    def _handle_complete_request(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, info: Dict) -> str:
+    
+    def _handle_complete_request(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        ltm: LongTermMemory,
+        info: Dict
+    ) -> str:
+        """Handle request with all info at once"""
         logger.info(f"Complete request detected: {info}")
+        
         if info["budget"] < 5000:
             stm.set_phase("waiting_budget")
             return "Budget minimal 5 ribu ya! Coba sebutin lagi 😊"
+        
+        # Save to context
         stm.update_context(info)
         info["time_period"] = get_current_time_period()
-        ltm.update_budget_pattern(info["budget"])
+        
+        # Update long-term memory
+        ltm.update_budget_range(info["budget"], info["budget"])
         ltm.add_hunger_pattern({
             "hunger_level": info["hunger_level"],
             "time_period": info["time_period"],
             "budget": info["budget"]
         })
+        
         return self._generate_rag_recommendation(user_id, stm, ltm, info)
-
-    def _generate_rag_recommendation(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, context: Dict) -> str:
-        """
-        New logic:
-         - retrieve candidate foods (RAG)
-         - enrich with nutrition estimator
-         - group by canteen, pick top-2 canteens
-         - present full whatsapp-style detailed response
-        """
-        logger.info(f"Generating recommendation with context: {context}")
-        # get candidate foods via retrieval_engine
+    
+    def _generate_rag_recommendation(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        ltm: LongTermMemory,
+        context: Dict
+    ) -> str:
+        """Generate recommendation using RAG + LLM"""
+        
+        # Search using RAG
         rag_results = retrieval_engine.search_by_context(
             user_id,
             context,
-            top_k=self.config.MAX_RECOMMENDATIONS * 5  # get more to allow grouping by canteen
+            top_k=Config.MAX_RECOMMENDATIONS
         )
-
+        
         if not rag_results:
-            stm.set_phase("waiting_ai_choice")
+            stm.set_phase("recommendation_given")
             return (
                 "Waduh, Mamang ga nemu makanan yang cocok nih 😢\n"
-                "Tapi tenang, Mamang bisa panggil AI buat bantu mikirin menu!\n"
-                "🧠 Pilih model yang mau dipakai:\n"
-                "1️. Groq (cepet & hemat token)\n"
-                "2️. Gemini (lebih kreatif & ekspresif)\n"
-                "Ketik aja: 'groq' atau 'gemini'"
+                "Coba ubah kriterianya dikit?"
             )
-
-
-
-        # Normalize keys to expected names and enrich nutr info
-        # retrieval_engine may return different keys; ensure each item has: name, price, canteen_name, gmaps_link
-        normalized = []
-        for item in rag_results:
-            normalized_item = {
-                "name": item.get("name") or item.get("menu_name") or item.get("menu"),
-                "price": item.get("price") or item.get("menu_price") or item.get("menu_price", 0) or 0,
-                "canteen_name": item.get("canteen_name") or item.get("canteen") or item.get("canteen_name", "Kantin Lainnya"),
-                "gmaps_link": item.get("gmaps_link") or item.get("gmaps") or item.get("gmaps_url") or "",
-                # nutrition placeholders (nutrition_estimator will fill if possible)
-                "calories": item.get("calories", None),
-                "protein": item.get("protein", None),
-                "fat": item.get("fat", None),
-                "carbs": item.get("carbs", None),
-                # keep original for trace/debug
-                **item
-            }
-            normalized.append(normalized_item)
-
-        # Enrich with nutrition estimator (should fill calories/protein/fat/carbs if missing)
-        try:
-            normalized = nutrition_estimator.enrich_foods(normalized)
-        except Exception as e:
-            logger.warning(f"nutrition_enrich failed: {e}")
-
-        # Group by canteen preserving order
-        canteen_order: List[str] = []
-        canteen_map: Dict[str, List[Dict]] = {}
-        for f in normalized:
-            cname = f.get("canteen_name", "Kantin Lainnya")
-            if cname not in canteen_map:
-                canteen_map[cname] = []
-                canteen_order.append(cname)
-            canteen_map[cname].append(f)
-
-        # Pick top 2 canteens (if available)
-        selected_canteens = canteen_order[:2] if canteen_order else list(canteen_map.keys())[:2]
-
-        # build flattened list that keeps only foods from selected canteens
-        final_foods = []
-        for cname in selected_canteens:
-            final_foods.extend(canteen_map.get(cname, []))
-
-        # store recommended food names to STM
-        food_names = [f.get("name") for f in final_foods]
+        
+        # Store recommended foods in context
+        food_names = [f["name"] for f in rag_results]
         stm.update_context({"recommended_foods": food_names})
+        
+        # Generate natural language response
+        response = llm_reasoner.generate_recommendation(
+            context,
+            rag_results,
+            canteen_data=None  # Could integrate canteen data here
+        )
 
-        # Use llm_reasoner to generate a short opening (if exists) — tolerant to exceptions
-        llm_intro = ""
-        try:
-            llm_intro = llm_reasoner.generate_recommendation(context, final_foods, canteen_data=None)
-        except Exception as e:
-            logger.debug(f"LLM reasoner failed: {e}")
+        # ====== Fallback nutrisi manual kalau data kosong ======
+        for food in rag_results:
+            if not food.get("calories") or food["calories"] == 0:
+                name = food.get("name", "").lower()
+                if "mie" in name:
+                    food.update({"calories": 550, "protein": 15, "fat": 12, "carbs": 65})
+                elif "ayam" in name:
+                    food.update({"calories": 700, "protein": 30, "fat": 20, "carbs": 60})
+                elif "nasi" in name:
+                    food.update({"calories": 600, "protein": 15, "fat": 18, "carbs": 70})
+                elif "kopi" in name:
+                    food.update({"calories": 50, "protein": 1, "fat": 1, "carbs": 10})
+                else:
+                    # default ringan
+                    food.update({"calories": 300, "protein": 8, "fat": 10, "carbs": 40})
 
-        # Format final message using response_formatter
-        try:
-            formatted = response_formatter.format_whatsapp_style(final_foods)
-            # Prefer to include llm_intro if it exists (prepend)
-            if llm_intro:
-                formatted = "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu...\n\n" + llm_intro + "\n\n" + formatted
-        except Exception as e:
-            logger.error(f"Formatting failed: {e}", exc_info=True)
-            # fallback simple format
-            formatted = "Nih rekomendasi (format gagal, pake fallback):\n\n" + response_formatter.format_simple_list(final_foods)
+        
+        # Langsung hitung total nutrisi dari hasil RAG tanpa normalisasi
+        nutrition = calculate_total_calories(rag_results)
 
+
+        print("\n--- DEBUG NUTRITION RAW ---")
+        print(nutrition)
+
+        nutrition_text = format_nutrition_summary(nutrition)
+        
+        # Update phase
         stm.set_phase("recommendation_given")
-        stm.add_message("bot", formatted)
-        return formatted
-
-    def _handle_feedback_phase(self, user_id: str, stm: ShortTermMemory, ltm: LongTermMemory, message: str) -> str:
+        
+        # Store bot response
+        full_response = (
+            "Tunggu sebentar, Mamang pikirin dulu yaa... 🤔\n\n"
+            f"{response}\n\n"
+            f"{nutrition_text}\n\n"
+            "Gimana, cocok ga? Kasih feedback dong 👍 atau 👎"
+        )
+        
+        stm.add_message("bot", full_response)
+        
+        return full_response
+    
+    def _handle_feedback_phase(
+        self,
+        user_id: str,
+        stm: ShortTermMemory,
+        ltm: LongTermMemory,
+        message: str
+    ) -> str:
+        """Handle user feedback after recommendation"""
+        
         trigger = TriggerHandler.detect_trigger(message)
-
-        # NEW: User minta AI reasoning
-        if trigger == "ask_ai":
-            context = stm.get_context()
-            foods = context.get("recommended_foods", [])
-
-            if not foods:
-                return "Oke, Mamang belum punya data makanan sebelumnya nih. Coba bilang 'laper' dulu biar Mamang tau konteksnya 😄"
-
-            logger.info(f"User minta AI reasoning based on: {foods}")
-
-            try:
-                ai_result = llm_reasoner.generate_recommendation(context, foods, canteen_data=None)
-                stm.add_message("bot", ai_result)
-                return f"Oke, Mamang panggil AI dulu biar bantu mikirin menu terbaik buat kamu 🤖✨\n\n{ai_result}"
-            except Exception as e:
-                logger.error(f"AI reasoning failed: {e}")
-                return "Waduh, AI-nya lagi ngambek nih 😅 Coba ulang lagi ya nanti!"
-
-                
-        # Positive feedback
+        
+        # Check for feedback
         if trigger == "feedback_positive":
             context = stm.get_context()
             foods = context.get("recommended_foods", [])
-            MemoryUpdater.process_feedback(user_id, "positive", context, foods)
+            
+            MemoryUpdater.process_feedback(
+                user_id,
+                "positive",
+                context,
+                foods
+            )
+            
             stm.set_phase("idle")
-            return "Yeay! Seneng deh kalau cocok! 🎉 Mamang bakal inget preferensi kamu buat next time."
-
-        # Negative feedback
+            return (
+                "Yeay! Seneng deh kalau cocok! 🎉\n\n"
+                "Mamang bakal inget preferensi kamu buat next time.\n"
+                "Kalau laper lagi tinggal bilang ya! 😋"
+            )
+        
         elif trigger == "feedback_negative":
             context = stm.get_context()
             foods = context.get("recommended_foods", [])
-            MemoryUpdater.process_feedback(user_id, "negative", context, foods)
+            
+            MemoryUpdater.process_feedback(
+                user_id,
+                "negative",
+                context,
+                foods
+            )
+            
             stm.set_phase("waiting_location")
-            return "Oops, maafin Mamang ya ga cocok 😔 Mau coba rekomendasi lain? Fakultas mana nih?"
-
-        # 🔥 NEW: User minta rekomendasi lagi
-        elif trigger == "more_recommendation":
-                context = stm.get_context()
-                last_foods = context.get("recommended_foods", [])
-
-                # kalau belum ada rekomendasi sebelumnya → fallback
-                if not last_foods:
-                    stm.set_phase("waiting_location")
-                    return "Oke siap! Mau di fakultas mana kali ini? 😊"
-
-                # 🔥 Tambahkan fitur cari menu mirip sebelumnya
-                context["similar_to"] = last_foods
-
-                logger.info(f"User minta rekomendasi mirip: {last_foods}")
-
-                reply = "Oke! Mamang cariin menu lain yang mirip-mirip kayak sebelumnya ya 😋"
-                rag_reply = self._generate_rag_recommendation(user_id, stm, ltm, context)
-                return f"{reply}\n\n{rag_reply}"
-
-        # Done or thank you
+            return (
+                "Oops, maaf ya ga cocok 😔\n\n"
+                "Mamang bakal belajar dari ini!\n"
+                "Mau coba rekomendasi lain? Fakultas mana nih?"
+            )
+        
+        # Check for more recommendations
+        if trigger == "more_recommendations":
+            stm.set_phase("waiting_location")
+            return "Oke siap! Mau di fakultas mana kali ini? 😊"
+        
+        # Check for done
         if is_full_response(message) or is_thank_you(message):
             stm.clear()
             return "Sip, wareg tenan! Kalau laper lagi tinggal bilang ya! 😋"
-
-        # Agreement detection
+        
+        # Ambiguous response
         agree = agree_response(message)
         if agree is True:
             stm.set_phase("waiting_location")
@@ -390,9 +389,8 @@ class KencotBotV2:
         elif agree is False:
             stm.clear()
             return "Oke deh! Kalau laper lagi call Mamang ya! 😉"
-
-        # Default fallback
+        
         return "Gimana, mau rekomendasi lagi atau udah cukup? 😊"
 
 # Global bot instance
-kencot_bot = KencotBotV2(Config)
+kencot_bot = KencotBotV2()
