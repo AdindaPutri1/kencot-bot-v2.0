@@ -815,6 +815,28 @@
       "last_interaction": "2025-10-26 10:26:14.599960",
       "updated_at": "2025-10-26 10:22:54.003447",
       "created_at": "2025-10-26 10:22:12.523659"
+    },
+    {
+      "user_id": "user123",
+      "faculty": null,
+      "favorite_foods": [],
+      "allergies": [],
+      "budget_range": {
+        "min": 2000,
+        "max": 2400
+      },
+      "hunger_patterns": [
+        {
+          "hunger_level": "brutal",
+          "time_period": "pagi",
+          "budget": 2000,
+          "timestamp": "2025-10-27 02:51:33.027072"
+        }
+      ],
+      "interaction_count": 19,
+      "last_interaction": "2025-10-27 03:01:49.766820",
+      "updated_at": "2025-10-27 02:51:33.024965",
+      "created_at": "2025-10-27 02:51:24.596614"
     }
   ],
   "sessions": [
@@ -949,6 +971,143 @@
           "role": "user",
           "content": "gemini",
           "timestamp": "2025-10-27 01:00:41.298850"
+        }
+      ]
+    },
+    {
+      "user_id": "user123",
+      "created_at": "2025-10-27 09:51:24.593611",
+      "expires_at": "2025-10-27 10:31:49.771808",
+      "phase": "recommendation_given",
+      "context": {
+        "faculty": "Teknik",
+        "hunger_level": "brutal",
+        "budget": 2000,
+        "time_period": "pagi",
+        "recommended_foods": [
+          "Jajanan & Gorengan",
+          "Gorengan"
+        ],
+        "similar_to": [
+          "Jajanan & Gorengan",
+          "Gorengan"
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-27 09:51:24.601659"
+        },
+        {
+          "role": "user",
+          "content": "teknik",
+          "timestamp": "2025-10-27 09:51:29.398517"
+        },
+        {
+          "role": "user",
+          "content": "a",
+          "timestamp": "2025-10-27 09:51:30.359431"
+        },
+        {
+          "role": "user",
+          "content": "2000",
+          "timestamp": "2025-10-27 09:51:33.018744"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu...\n\nHalo kamu! Saya Mamang, asisten makanan UGM yang siap membantu kamu menemukan menu yang lezat dan seimbang. Kamu sedang mencari makanan di pagi hari dengan budget yang murah, ya? Kamu berada di Fakultas Teknik, jadi saya pilih beberapa menu yang paling cocok untukmu.\n\nMenu pertama, yang paling sesuai untuk lapar brutal seperti kamu, adalah Jajanan & Gorengan dari Kantin Teknik Sipil. Menu ini hanya Rp 2.000, jadi sangat sesuai dengan budget kamu. Kalori 150 kkal juga cukup untuk menambah energi kamu di pagi hari. Selain itu, asam amino yang ada di dalamnya dapat membantu memperbaiki keseimbangan gizi kamu.\n\nMenu kedua yang bisa kamu pilih adalah... (sepertinya ada masalah dengan opsi-opsi menu yang tersedia). Kalau itu benar, saya sarankan kamu berkeliling kampus untuk mencari menu makanan yang lebih lengkap. Saya berjanji kamu akan menemukan menu yang lebih bagus dari saya.\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 2,000\n\ud83d\udd25 Total kalori: 150 kkal\n\ud83d\udcaa Protein: 3g | \ud83e\uddc8 Lemak: 8g | \ud83c\udf5a Karbo: 18g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-27 09:51:35.245554"
+        },
+        {
+          "role": "user",
+          "content": "halo",
+          "timestamp": "2025-10-27 09:58:32.135333"
+        },
+        {
+          "role": "user",
+          "content": "mau",
+          "timestamp": "2025-10-27 09:58:40.543782"
+        },
+        {
+          "role": "user",
+          "content": "cukup",
+          "timestamp": "2025-10-27 09:58:44.187900"
+        },
+        {
+          "role": "user",
+          "content": "wareg",
+          "timestamp": "2025-10-27 09:58:46.924286"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-27 09:58:48.295125"
+        },
+        {
+          "role": "user",
+          "content": "ya",
+          "timestamp": "2025-10-27 09:58:50.711975"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu...\n\nHai, kamu! \ud83e\udd17 Sebagai Mamang, aku sengaja datang untuk membantu kamu menemukan makanan kampus yang lezat dan mengenyangkan. Kamu sedang lapar brutal, ya? \ud83d\ude0b\n\nKamu sedang mencari makanan di UGM, tepatnya di Fakultas Teknik. Aku lihat ada dua menu yang cocok untuk kamu: Jajanan & Gorengan dari Kantin Teknik Sipil dan Gorengan dari Kantin Teknik Arsitektur. Kedua menu tersebut harganya sangat murah, yaitu Rp 2.000 dan Rp 1.000, dan kalori-nya tidak terlalu banyak, yaitu 150 kkal per porsi.\n\nKamu bisa memilih Jajanan & Gorengan karena kalorinya sudah cukup untuk mengenyangkan. Protein-nya hanya 3 gram, tapi tidak masalah, karena kamu tidak butuh banyak protein dalam makanan ringan seperti ini. Lemak dan karbohidratnya cukup banyak, sehingga kamu tidak akan merasa lapar lagi. \n\nTapi, aku juga lihat ada menu Gorengan yang harganya lebih murah, yaitu Rp 1.000. Kalorinya juga 150 kkal, dan protein, lemak, dan karbohidratnya sama dengan Jajanan & Gorengan. Jadi, kalau kamu ingin hemat, kamu bisa memilih Gorengan dari Kantin Teknik Arsitektur.\n\nTips kecil: Kamu sebaiknya membeli dua porsi Gorengan daripada satu porsi Jajanan & Gorengan. Karena Gorengan lebih murah, kamu bisa mendapatkan 300 kalori dengan budget yang sama. Dan, jangan lupa untuk membeli air putih untuk memenuhi kebutuhan cairanmu! \ud83d\udca7\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n*2. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 3,000\n\ud83d\udd25 Total kalori: 300 kkal\n\ud83d\udcaa Protein: 6g | \ud83e\uddc8 Lemak: 16g | \ud83c\udf5a Karbo: 36g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-27 09:58:52.040080"
+        },
+        {
+          "role": "user",
+          "content": "ga",
+          "timestamp": "2025-10-27 09:59:01.169337"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-27 09:59:03.032372"
+        },
+        {
+          "role": "user",
+          "content": "ya",
+          "timestamp": "2025-10-27 09:59:06.615907"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu...\n\nHalo kamu, Teknik! \n\nKamu sedang lapar brutal dan butuh nasi, gak? Mamang punya beberapa rekomendasi makanan yang pas untuk kamu. Berikut beberapa pilihan, yuk!\n\nKamu bisa memilih Jajanan & Gorengan dari Kantin Teknik Sipil. Ini cocok untuk kamu karena:\n\n* Harganya murah, cuma Rp 2.000!\n* Kalori yang cukup untuk membantumu menemukan energi di pagi hari (150 kkal).\n* Kamu bisa mendapatkan protein dan karbohidrat yang cukup untuk memulai hari.\n\nAtau, kamu bisa memilih Gorengan dari Kantin Teknik Arsitektur. Ini juga cocok untuk kamu karena:\n\n* Harganya murah, cuma Rp 1.000!\n* Kalori yang sama dengan Jajanan & Gorengan, yaitu 150 kkal.\n* Kamu bisa mendapatkan protein dan karbohidrat yang sama dengan Jajanan & Gorengan.\n\nTips kecil dari Mamang: pastikan kamu memakan nasi dalam porsi yang cukup untuk menjaga energimu tetap stabil sepanjang hari. Kamu bisa memilih nasi putih atau nasi merah, gak apa-apa! \ud83c\udf5a\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n*2. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 3,000\n\ud83d\udd25 Total kalori: 300 kkal\n\ud83d\udcaa Protein: 6g | \ud83e\uddc8 Lemak: 16g | \ud83c\udf5a Karbo: 36g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-27 09:59:07.291326"
+        },
+        {
+          "role": "user",
+          "content": "ga",
+          "timestamp": "2025-10-27 09:59:11.155095"
+        },
+        {
+          "role": "user",
+          "content": "laper",
+          "timestamp": "2025-10-27 09:59:13.941619"
+        },
+        {
+          "role": "user",
+          "content": "cukup",
+          "timestamp": "2025-10-27 09:59:22.688567"
+        },
+        {
+          "role": "user",
+          "content": "ya",
+          "timestamp": "2025-10-27 09:59:24.085264"
+        },
+        {
+          "role": "bot",
+          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu...\n\nHalo kamu, anak Teknik! Kamu sedang mencari makanan yang lezat dan murah, ya? Mamang punya beberapa rekomendasi untuk kamu!\n\nKamu tahu, Fakultas Teknik punya beberapa kantin yang lezat dan murah, kan? Mamang merekomendasikan Jajanan & Gorengan dari Kantin Teknik Sipil. Harga Rp 2.000, kamu bisa mendapatkan 150 kkal, 3g protein, 8g lemak, dan 18g karbo! Kamu bisa makan dengan puas dan tidak perlu khawatir tentang budget!\n\nSelain itu, Mamang juga merekomendasikan Gorengan dari Kantin Teknik Arsitektur. Harga Rp 1.000, kamu bisa mendapatkan 150 kkal, 3g protein, 8g lemak, dan 18g karbo! Kamu bisa makan dengan cepat dan mudah!\n\nTips dari Mamang: Pastikan kamu makan secukupnya dan tidak terlalu banyak. Kamu bisa mencoba mengatur porsinya dengan memilih 2-3 gorengan kecil daripada 1-2 gorengan besar. Kamu juga bisa menambahkan sayuran atau buah untuk meningkatkan gizi!\n\nJadi, apa kabar, kamu? Kamu siap makan dengan puas dan murah? Mamang di sini untuk membantu kamu!\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n*2. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 3,000\n\ud83d\udd25 Total kalori: 300 kkal\n\ud83d\udcaa Protein: 6g | \ud83e\uddc8 Lemak: 16g | \ud83c\udf5a Karbo: 36g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
+          "timestamp": "2025-10-27 09:59:24.752644"
+        },
+        {
+          "role": "user",
+          "content": "halo",
+          "timestamp": "2025-10-27 10:01:39.587933"
+        },
+        {
+          "role": "user",
+          "content": "cukup",
+          "timestamp": "2025-10-27 10:01:49.769820"
         }
       ]
     }

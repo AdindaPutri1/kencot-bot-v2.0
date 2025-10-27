@@ -43,7 +43,7 @@ class LLMReasoner:
         # Pilih model dan client utama
         if model.lower() == "gemini":
             client = self.client_gemini
-            model_name = "gemini-1.5-flash"
+            model_name = "gemini-2.5-flash"
         else:
             client = self.client_groq
             model_name = "llama-3.1-8b-instant"
@@ -67,7 +67,7 @@ class LLMReasoner:
             # fallback otomatis ke Gemini
             try:
                 response = self.client_gemini.chat.completions.create(
-                    model="gemini-1.5-flash",
+                    model="gemini-2.5-flash",
                     messages=[
                         {"role": "system", "content": "Kamu asisten lucu dan cerdas yang bantu rekomendasi makanan kampus."},
                         {"role": "user", "content": prompt}
@@ -161,7 +161,7 @@ Jelaskan secara singkat (3 kalimat) alasan logis di balik rekomendasi ini, denga
         try:
             if model == "gemini":
                 client = self.client_gemini
-                model_name = "gemini-1.5-flash"
+                model_name = "gemini-2.5-flash"
             else:
                 client = self.client_groq
                 model_name = "llama3-8b-8192"
