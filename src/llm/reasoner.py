@@ -75,7 +75,7 @@ class LLMReasoner:
                     temperature=0.8,
                     max_tokens=600
                 )
-                return "⚡ Fallback ke Gemini:\n\n" + response.choices[0].message.content.strip()
+                return "⚡ Fallback ke Gemini:\n\n" + response.choices[0].message.content
 
             except Exception as e2:
                 logger.error(f"Fallback gagal: {e2}")
@@ -151,12 +151,12 @@ INSTRUKSI UNTUK KAMU (LLM):
     def explain_reasoning(self, user_query: str, context: Dict, recommendation: str, model: str = "groq") -> str:
         """Menjelaskan alasan di balik rekomendasi (debugging/penjelasan opsional)"""
         prompt = f"""
-User nanya: "{user_query}"
-Konteks user: {context}
-Rekomendasi diberikan: {recommendation}
+            User nanya: "{user_query}"
+            Konteks user: {context}
+            Rekomendasi diberikan: {recommendation}
 
-Jelaskan secara singkat (3 kalimat) alasan logis di balik rekomendasi ini, dengan bahasa ringan.
-"""
+            Jelaskan secara singkat (3 kalimat) alasan logis di balik rekomendasi ini, dengan bahasa ringan.
+        """
 
         try:
             if model == "gemini":
