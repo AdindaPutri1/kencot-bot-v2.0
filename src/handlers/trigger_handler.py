@@ -10,36 +10,41 @@ class TriggerHandler:
     # Trigger patterns
     TRIGGERS = {
         'food_request': re.compile(
-            r'\b(laper|lapar|hungry|kencot|makan|mam|rekomen|haus)\b',
+            r'\b(laper|lapar|hungry|kencot|makan|mam|rekomen|haus|mangan|hungry|kelaparan)\b',
             re.IGNORECASE
         ),
         'greeting': re.compile(
-            r'\b(halo|hai|hi|hey|pagi|siang|sore|malam|assalam)\b',
+            r'\b(halo|halok|hai|hi|hey|pagi|siang|sore|malam|assalamualaikum)\b',
             re.IGNORECASE
         ),
         'reset': re.compile(
-            r'\b(ulang|reset|restart|mulai lagi|cancel|batal)\b',
+            r'\b(ulang|reset|restart|mulai|cancel|batal|ulangi)\b',
             re.IGNORECASE
         ),
         'help': re.compile(
-            r'\b(help|bantuan|gimana|cara|tutorial)\b',
+            r'\b(help|bantuan|gimana|cara|tutorial|tolong)\b',
             re.IGNORECASE
         ),
         'feedback_positive': re.compile(
-            r'(👍|👏|mantap|enak|cocok|bagus|suka|makasih|thanks|good)',
+            r'(👍|👏|mantap|enak|cocok|bagus|suka|makasih|thanks|good|nice|mksh|terima kasih|ok|oke|okay)',
             re.IGNORECASE
         ),
         'feedback_negative': re.compile(
-            r'(👎|jelek|ga enak|ga cocok|mahal|jauh)',
+            r'(👎|jelek|ga enak|ga cocok|mahal|jauh|kurang|ga banget)',
             re.IGNORECASE
         ),
-        'more_recommendations': re.compile(
-            r'\b(lagi|more|tambah|lain)\b',
+        'more_recommendation': re.compile(
+            r'\b(rekom|rekomendasi|lagi|more|oke|iya|boleh|gas|lanjut|terserah|ayo|yuk|ayo dong|ya)\b',
             re.IGNORECASE
         ),
+
         'done': re.compile(
-            r'\b(wareg|kenyang|cukup|selesai|udah|done|finish)\b',
+            r'\b(wareg|kenyang|cukup|selesai|udah|done|finish|udh|done)\b',
             re.IGNORECASE
+        ),
+
+        'ask_ai': re.compile(
+            r'\b(ai|pakai ai|gunakan ai|biar ai aja|suruh ai aja)\b', re.IGNORECASE
         )
     }
     

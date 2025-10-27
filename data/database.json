@@ -664,88 +664,10 @@
       "favorite_foods": [],
       "allergies": [],
       "budget_range": {
-        "min": 5000,
-        "max": 6000
+        "min": 500,
+        "max": 600
       },
       "hunger_patterns": [
-        {
-          "hunger_level": "brutal",
-          "time_period": "siang",
-          "budget": 20000,
-          "timestamp": "2025-10-26 07:24:08.688768"
-        },
-        {
-          "hunger_level": "brutal",
-          "time_period": "siang",
-          "budget": 20000,
-          "timestamp": "2025-10-26 07:27:38.889014"
-        },
-        {
-          "hunger_level": "brutal",
-          "time_period": "siang",
-          "budget": 20000,
-          "timestamp": "2025-10-26 07:30:07.406555"
-        },
-        {
-          "hunger_level": "iseng",
-          "time_period": "siang",
-          "budget": 5000,
-          "timestamp": "2025-10-26 07:30:28.478146"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "siang",
-          "budget": 15000,
-          "timestamp": "2025-10-26 07:32:47.706008"
-        },
-        {
-          "hunger_level": "iseng",
-          "time_period": "siang",
-          "budget": 20000,
-          "timestamp": "2025-10-26 07:40:41.274111"
-        },
-        {
-          "hunger_level": "iseng",
-          "time_period": "siang",
-          "budget": 10000,
-          "timestamp": "2025-10-26 07:40:59.192254"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:16:40.564713"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:20:23.752114"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:28:10.824183"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:29:13.889121"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:33:12.737578"
-        },
-        {
-          "hunger_level": "standar",
-          "time_period": "sore",
-          "budget": 15000,
-          "timestamp": "2025-10-26 09:39:09.207425"
-        },
         {
           "hunger_level": "standar",
           "time_period": "sore",
@@ -787,11 +709,89 @@
           "time_period": "malam",
           "budget": 5000,
           "timestamp": "2025-10-26 12:41:16.085170"
+        },
+        {
+          "hunger_level": "standar",
+          "time_period": "malam",
+          "budget": 20000,
+          "timestamp": "2025-10-26 16:35:25.239719"
+        },
+        {
+          "hunger_level": "iseng",
+          "time_period": "malam",
+          "budget": 2000,
+          "timestamp": "2025-10-26 16:48:08.452705"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 1000,
+          "timestamp": "2025-10-26 16:58:22.335543"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 16:59:43.947037"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 3000,
+          "timestamp": "2025-10-26 17:07:04.246273"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:08:31.896687"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:13:57.154730"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:40:18.521382"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:46:07.976763"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:55:17.739199"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:55:49.061057"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 17:58:30.275540"
+        },
+        {
+          "hunger_level": "brutal",
+          "time_period": "malam",
+          "budget": 500,
+          "timestamp": "2025-10-26 18:00:38.714356"
         }
       ],
-      "interaction_count": 115,
-      "last_interaction": "2025-10-26 12:41:27.286672",
-      "updated_at": "2025-10-26 12:41:16.073928",
+      "interaction_count": 226,
+      "last_interaction": "2025-10-26 18:00:41.296849",
+      "updated_at": "2025-10-26 18:00:38.712357",
       "created_at": "2025-10-26 05:49:30.254938"
     },
     {
@@ -806,7 +806,7 @@
       "hunger_patterns": [
         {
           "hunger_level": "standar",
-          "time_period": "sore",
+          "time_period": "malam",
           "budget": 20000,
           "timestamp": "2025-10-26 10:22:54.008929"
         }
@@ -815,46 +815,6 @@
       "last_interaction": "2025-10-26 10:26:14.599960",
       "updated_at": "2025-10-26 10:22:54.003447",
       "created_at": "2025-10-26 10:22:12.523659"
-    },
-    {
-      "user_id": "user123",
-      "faculty": null,
-      "favorite_foods": [],
-      "allergies": [],
-      "budget_range": {
-        "min": 20000,
-        "max": 24000
-      },
-      "hunger_patterns": [
-        {
-          "hunger_level": "brutal",
-          "time_period": "pagi",
-          "budget": 20000,
-          "timestamp": "2025-10-27 02:13:10.294564"
-        },
-        {
-          "hunger_level": "iseng",
-          "time_period": "pagi",
-          "budget": 5000,
-          "timestamp": "2025-10-27 02:13:38.172044"
-        },
-        {
-          "hunger_level": "brutal",
-          "time_period": "pagi",
-          "budget": 20000,
-          "timestamp": "2025-10-27 02:14:01.797336"
-        },
-        {
-          "hunger_level": "brutal",
-          "time_period": "pagi",
-          "budget": 20000,
-          "timestamp": "2025-10-27 02:17:23.145908"
-        }
-      ],
-      "interaction_count": 28,
-      "last_interaction": "2025-10-27 02:17:23.113907",
-      "updated_at": "2025-10-27 02:17:23.139027",
-      "created_at": "2025-10-27 02:13:02.404729"
     }
   ],
   "sessions": [
@@ -866,664 +826,6 @@
       "created_at": "2025-10-26T00:00:00",
       "updated_at": "2025-10-26T00:00:00",
       "expires_at": "2025-10-26T01:00:00"
-    },
-    {
-      "user_id": "cli_test_user",
-      "phase": "recommendation_given",
-      "context": {
-        "faculty": "Fisipol",
-        "hunger_level": "iseng",
-        "budget": 5000,
-        "time_period": "malam",
-        "recommended_foods": [
-          "Nasi Bungkus Ayam",
-          "Nasi Bungkus Teri",
-          "Sate Usus Bakar",
-          "Kopi Jos",
-          "Jajanan & Gorengan"
-        ]
-      },
-      "conversation_history": [
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 05:49:30.263142"
-        }
-      ],
-      "created_at": "2025-10-26 05:49:30.254938",
-      "updated_at": "2025-10-26 05:49:30.263142",
-      "expires_at": "2025-10-26 20:11:27.295436",
-      "history": [
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 14:02:00.780453"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 14:06:39.165914"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:06:43.729037"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 14:06:47.702594"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:08:45.245811"
-        },
-        {
-          "role": "user",
-          "content": "kencot",
-          "timestamp": "2025-10-26 14:08:48.144129"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:09:47.934621"
-        },
-        {
-          "role": "user",
-          "content": "kencot",
-          "timestamp": "2025-10-26 14:09:50.768577"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:14:12.423088"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 14:14:17.577407"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 14:14:30.922458"
-        },
-        {
-          "role": "user",
-          "content": "a",
-          "timestamp": "2025-10-26 14:14:34.047846"
-        },
-        {
-          "role": "user",
-          "content": "10k",
-          "timestamp": "2025-10-26 14:14:37.624552"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:16:03.389876"
-        },
-        {
-          "role": "user",
-          "content": "10k",
-          "timestamp": "2025-10-26 14:16:13.257352"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:16:39.463565"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 14:16:48.217621"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:22:15.976294"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 14:22:23.598441"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:24:03.910746"
-        },
-        {
-          "role": "user",
-          "content": "20k",
-          "timestamp": "2025-10-26 14:24:08.672091"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:27:34.044725"
-        },
-        {
-          "role": "user",
-          "content": "20k",
-          "timestamp": "2025-10-26 14:27:38.867594"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:30:04.705430"
-        },
-        {
-          "role": "user",
-          "content": "20k",
-          "timestamp": "2025-10-26 14:30:07.394248"
-        },
-        {
-          "role": "user",
-          "content": "boleh",
-          "timestamp": "2025-10-26 14:30:15.536461"
-        },
-        {
-          "role": "user",
-          "content": "fk",
-          "timestamp": "2025-10-26 14:30:21.506137"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-26 14:30:24.879519"
-        },
-        {
-          "role": "user",
-          "content": "5k",
-          "timestamp": "2025-10-26 14:30:28.461785"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:32:20.724392"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-26 14:32:26.303599"
-        },
-        {
-          "role": "user",
-          "content": "mau",
-          "timestamp": "2025-10-26 14:32:29.977306"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 14:32:32.231485"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 14:32:39.569528"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 14:32:43.947507"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 14:32:47.679562"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 14:40:22.846706"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 14:40:25.935990"
-        },
-        {
-          "role": "user",
-          "content": "teknik, punya duit 20k",
-          "timestamp": "2025-10-26 14:40:33.905251"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-26 14:40:37.705363"
-        },
-        {
-          "role": "user",
-          "content": "20k",
-          "timestamp": "2025-10-26 14:40:41.247542"
-        },
-        {
-          "role": "user",
-          "content": "halah",
-          "timestamp": "2025-10-26 14:40:46.129349"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 14:40:48.310737"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 14:40:52.381009"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-26 14:40:54.794574"
-        },
-        {
-          "role": "user",
-          "content": "10k",
-          "timestamp": "2025-10-26 14:40:59.159624"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:16:27.638494"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:16:30.447291"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:16:34.306216"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:16:36.907132"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:16:40.546475"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:20:13.311631"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:20:15.187326"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:20:17.815496"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:20:20.432821"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:20:23.736054"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
-          "timestamp": "2025-10-26 16:20:24.709581"
-        },
-        {
-          "role": "user",
-          "content": "oke",
-          "timestamp": "2025-10-26 16:20:44.143049"
-        },
-        {
-          "role": "user",
-          "content": "python -m src.main --cli",
-          "timestamp": "2025-10-26 16:27:59.775436"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:28:02.324451"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:28:05.925593"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:28:08.156048"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:28:10.803284"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
-          "timestamp": "2025-10-26 16:28:11.464120"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:29:06.181110"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:29:07.849992"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:29:10.022051"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:29:11.373791"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:29:13.867025"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (None kkal)\n2. Batagor (None kkal)\n3. Aneka Jus (None kkal)\n\nTotal kalori: 0 kkal \ud83d\udd25\n\n\ud83d\udcca *Total Nutrisi:*\n\ud83d\udd25 Kalori: 0 kkal\n\ud83d\udcaa Protein: 0g\n\ud83e\uddc8 Lemak: 0g\n\ud83c\udf5a Karbohidrat: 0g\n\n\ud83d\udccb *Detail per Menu:*\n\u2022 Gorengan: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Batagor: 0 kkal (P: 0g, F: 0g, C: 0g)\n\u2022 Aneka Jus: 0 kkal (P: 0g, F: 0g, C: 0g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
-          "timestamp": "2025-10-26 16:29:14.576831"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:33:03.288079"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:33:06.535323"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:33:08.689268"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:33:10.229196"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:33:12.717301"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:39:02.872071"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:39:09.180855"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Batagor (320 kkal)\n3. Aneka Jus (80 kkal)\n\nTotal kalori: 550 kkal \ud83d\udd25\n\n\u2728 Total kalori rekomendasi: ~550 kcal (Protein rata-rata 5.3g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
-          "timestamp": "2025-10-26 16:39:10.114224"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:47:29.536854"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 16:47:33.969222"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 16:47:38.317978"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 16:47:40.033992"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 16:47:44.572493"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Batagor (320 kkal)\n3. Aneka Jus (80 kkal)\n\nTotal kalori: 550 kkal \ud83d\udd25\n\n\u2728 Total kalori rekomendasi: ~550 kcal (Protein rata-rata 5.3g)\n\nGimana, cocok ga? Kasih feedback dong \ud83d\udc4d atau \ud83d\udc4e",
-          "timestamp": "2025-10-26 16:47:45.553459"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 16:59:58.912082"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 17:00:00.870356"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 17:00:03.400787"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 17:00:05.004439"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 17:00:08.411790"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin Teknik*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Lainnya*\n   \u2022 *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \u2022 *Batagor* - Rp 15,000\n      _320 kkal | P: 12g | F: 18g | C: 28g_\n   \u2022 *Aneka Jus* - Rp 8,000\n      _80 kkal | P: 1g | F: 0g | C: 18g_\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 24,000\n\ud83d\udd25 Total kalori: 550 kkal\n\ud83d\udcaa Protein: 16g | \ud83e\uddc8 Lemak: 26g | \ud83c\udf5a Karbo: 64g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Batagor: 320 kkal (P: 12g, F: 18g, C: 28g)\n- Aneka Jus: 80 kkal (P: 1g, F: 0g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 17:00:08.726283"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 17:05:26.174743"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 17:05:28.706616"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 17:05:32.229214"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 17:05:34.633632"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 17:05:36.291606"
-        },
-        {
-          "role": "user",
-          "content": "15k",
-          "timestamp": "2025-10-26 17:05:39.104807"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Gorengan (150 kkal)\n2. Mama Mie (Indomie) (380 kkal)\n3. Batagor (320 kkal)\n\nTotal kalori: 850 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Arsitektur*\n   \ud83c\udf6a *Gorengan* - Rp 1,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd59 *Mama Mie (Indomie)* - Rp 8,000\n      _380 kkal | P: 10g | F: 16g | C: 52g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n*2. Kantin SGLC*\n   \ud83e\udd59 *Batagor* - Rp 15,000\n      _320 kkal | P: 12g | F: 18g | C: 28g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/a5Dgtuc2qdce84BX6\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 24,000\n\ud83d\udd25 Total kalori: 850 kkal\n\ud83d\udcaa Protein: 25g | \ud83e\uddc8 Lemak: 42g | \ud83c\udf5a Karbo: 98g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Mama Mie (Indomie): 380 kkal (P: 10g, F: 16g, C: 52g)\n- Batagor: 320 kkal (P: 12g, F: 18g, C: 28g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 17:05:39.819713"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 19:22:34.452312"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 19:22:39.017544"
-        },
-        {
-          "role": "user",
-          "content": "kedokteran",
-          "timestamp": "2025-10-26 19:22:46.589300"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-26 19:22:48.672854"
-        },
-        {
-          "role": "user",
-          "content": "5k",
-          "timestamp": "2025-10-26 19:22:51.726089"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Nasi Bungkus Ayam (250 kkal)\n2. Nasi Bungkus Teri (250 kkal)\n3. Sate Usus Bakar (150 kkal)\n\nTotal kalori: 670 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Angkringan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Angkringan Peyek Bunderan UGM*\n   \ud83e\udd59 *Nasi Bungkus Ayam* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83e\udd59 *Nasi Bungkus Teri* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83c\udf6a *Sate Usus Bakar* - Rp 3,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd64 *Kopi Jos* - Rp 5,000\n      _20 kkal | P: 1g | F: 0g | C: 3g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 14,000\n\ud83d\udd25 Total kalori: 670 kkal\n\ud83d\udcaa Protein: 20g | \ud83e\uddc8 Lemak: 28g | \ud83c\udf5a Karbo: 81g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Nasi Bungkus Ayam: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Nasi Bungkus Teri: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Sate Usus Bakar: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Kopi Jos: 20 kkal (P: 1g, F: 0g, C: 3g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 19:22:52.897105"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 19:30:48.742298"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 19:30:51.288184"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 19:30:53.575600"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 19:30:55.962142"
-        },
-        {
-          "role": "user",
-          "content": "29k",
-          "timestamp": "2025-10-26 19:30:58.910052"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mie Dok-Dok (420 kkal)\n2. Nasi Goreng (250 kkal)\n3. Magelangan (380 kkal)\n\nTotal kalori: 2005 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Penyetan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Penyetan Bu Lastri*\n   \ud83c\udf5b *Mie Dok-Dok* - Rp 13,000\n      _420 kkal | P: 14g | F: 18g | C: 50g_\n   \ud83c\udf5b *Nasi Goreng* - Rp 13,000\n      _250 kkal | P: 8g | F: 10g | C: 35g_\n   \ud83c\udf5b *Magelangan* - Rp 14,000\n      _380 kkal | P: 14g | F: 16g | C: 45g_\n   \ud83c\udf5b *Nasi Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83c\udf5b *Nasi Telur Penyet* - Rp 10,000\n      _155 kkal | P: 13g | F: 11g | C: 1g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ZphWbzn2RaM9zAik7\n\n*2. Kantin Teknik Mesin*\n   \ud83c\udf5b *Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ANQU6THziV4TREiD9\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 80,000\n\ud83d\udd25 Total kalori: 2005 kkal\n\ud83d\udcaa Protein: 99g | \ud83e\uddc8 Lemak: 91g | \ud83c\udf5a Karbo: 201g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mie Dok-Dok: 420 kkal (P: 14g, F: 18g, C: 50g)\n- Nasi Goreng: 250 kkal (P: 8g, F: 10g, C: 35g)\n- Magelangan: 380 kkal (P: 14g, F: 16g, C: 45g)\n- Nasi Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n- Nasi Telur Penyet: 155 kkal (P: 13g, F: 11g, C: 1g)\n- Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 19:31:01.667297"
-        },
-        {
-          "role": "user",
-          "content": "hi",
-          "timestamp": "2025-10-26 19:40:27.219531"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 19:40:29.422106"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-26 19:40:32.015438"
-        },
-        {
-          "role": "user",
-          "content": "b",
-          "timestamp": "2025-10-26 19:40:34.356291"
-        },
-        {
-          "role": "user",
-          "content": "20k",
-          "timestamp": "2025-10-26 19:40:37.949922"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mie Dok-Dok (420 kkal)\n2. Nasi Goreng (250 kkal)\n3. Magelangan (380 kkal)\n\nTotal kalori: 2005 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Penyetan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Penyetan Bu Lastri*\n   \ud83c\udf5b *Mie Dok-Dok* - Rp 13,000\n      _420 kkal | P: 14g | F: 18g | C: 50g_\n   \ud83c\udf5b *Nasi Goreng* - Rp 13,000\n      _250 kkal | P: 8g | F: 10g | C: 35g_\n   \ud83c\udf5b *Magelangan* - Rp 14,000\n      _380 kkal | P: 14g | F: 16g | C: 45g_\n   \ud83c\udf5b *Nasi Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83c\udf5b *Nasi Telur Penyet* - Rp 10,000\n      _155 kkal | P: 13g | F: 11g | C: 1g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ZphWbzn2RaM9zAik7\n\n*2. Kantin Teknik Mesin*\n   \ud83c\udf5b *Ayam Geprek* - Rp 15,000\n      _400 kkal | P: 25g | F: 18g | C: 35g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/ANQU6THziV4TREiD9\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 80,000\n\ud83d\udd25 Total kalori: 2005 kkal\n\ud83d\udcaa Protein: 99g | \ud83e\uddc8 Lemak: 91g | \ud83c\udf5a Karbo: 201g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mie Dok-Dok: 420 kkal (P: 14g, F: 18g, C: 50g)\n- Nasi Goreng: 250 kkal (P: 8g, F: 10g, C: 35g)\n- Magelangan: 380 kkal (P: 14g, F: 16g, C: 45g)\n- Nasi Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n- Nasi Telur Penyet: 155 kkal (P: 13g, F: 11g, C: 1g)\n- Ayam Geprek: 400 kkal (P: 25g, F: 18g, C: 35g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 19:40:38.951453"
-        },
-        {
-          "role": "user",
-          "content": "ga",
-          "timestamp": "2025-10-26 19:40:51.380009"
-        },
-        {
-          "role": "user",
-          "content": "iya",
-          "timestamp": "2025-10-26 19:40:54.876460"
-        },
-        {
-          "role": "user",
-          "content": "fisip",
-          "timestamp": "2025-10-26 19:41:00.594566"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-26 19:41:02.464013"
-        },
-        {
-          "role": "user",
-          "content": "3k",
-          "timestamp": "2025-10-26 19:41:04.725373"
-        },
-        {
-          "role": "user",
-          "content": "ga ada duit",
-          "timestamp": "2025-10-26 19:41:12.272703"
-        },
-        {
-          "role": "user",
-          "content": "5k",
-          "timestamp": "2025-10-26 19:41:16.059585"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Nasi Bungkus Ayam (250 kkal)\n2. Nasi Bungkus Teri (250 kkal)\n3. Sate Usus Bakar (150 kkal)\n\nTotal kalori: 820 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Angkringan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Angkringan Peyek Bunderan UGM*\n   \ud83e\udd59 *Nasi Bungkus Ayam* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83e\udd59 *Nasi Bungkus Teri* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83c\udf6a *Sate Usus Bakar* - Rp 3,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83e\udd64 *Kopi Jos* - Rp 5,000\n      _20 kkal | P: 1g | F: 0g | C: 3g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8\n\n*2. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 16,000\n\ud83d\udd25 Total kalori: 820 kkal\n\ud83d\udcaa Protein: 23g | \ud83e\uddc8 Lemak: 36g | \ud83c\udf5a Karbo: 99g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Nasi Bungkus Ayam: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Nasi Bungkus Teri: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Sate Usus Bakar: 150 kkal (P: 3g, F: 8g, C: 18g)\n- Kopi Jos: 20 kkal (P: 1g, F: 0g, C: 3g)\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-26 19:41:16.500066"
-        },
-        {
-          "role": "user",
-          "content": "ga",
-          "timestamp": "2025-10-26 19:41:27.286672"
-        }
-      ]
-    },
-    {
-      "user_id": "cli_test_user",
-      "phase": "idle",
-      "context": {},
-      "conversation_history": [],
-      "created_at": "2025-10-26 06:52:02.465398",
-      "updated_at": "2025-10-26 06:52:02.465398",
-      "expires_at": "2025-10-26 07:22:02.465398"
     },
     {
       "user_id": "6285782494121@c.us",
@@ -1606,180 +908,47 @@
       ]
     },
     {
-      "user_id": "user123",
-      "created_at": "2025-10-27 09:13:02.400726",
-      "expires_at": "2025-10-27 09:47:25.575292",
+      "user_id": "cli_test_user",
+      "created_at": "2025-10-27 01:00:30.845344",
+      "expires_at": "2025-10-27 01:30:42.346993",
       "phase": "recommendation_given",
       "context": {
-        "faculty": "MIPA",
+        "faculty": "Teknik",
         "hunger_level": "brutal",
-        "budget": 20000,
-        "time_period": "pagi",
-        "recommended_foods": [
-          "Nasi Bungkus Ayam",
-          "Nasi Bungkus Teri"
-        ]
+        "budget": 500,
+        "time_period": "malam",
+        "chosen_ai": "gemini"
       },
       "history": [
         {
           "role": "user",
+          "content": "hi",
+          "timestamp": "2025-10-27 01:00:30.852469"
+        },
+        {
+          "role": "user",
           "content": "laper",
-          "timestamp": "2025-10-27 09:13:02.411727"
+          "timestamp": "2025-10-27 01:00:32.511417"
         },
         {
           "role": "user",
           "content": "teknik",
-          "timestamp": "2025-10-27 09:13:07.026592"
+          "timestamp": "2025-10-27 01:00:34.450970"
         },
         {
           "role": "user",
           "content": "a",
-          "timestamp": "2025-10-27 09:13:08.352545"
+          "timestamp": "2025-10-27 01:00:35.475166"
         },
         {
           "role": "user",
-          "content": "20",
-          "timestamp": "2025-10-27 09:13:10.277669"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mama Mie (Indomie) (380 kkal)\n2. Jajanan & Gorengan (150 kkal)\n\nTotal kalori: 530 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Arsitektur*\n   \ud83e\udd59 *Mama Mie (Indomie)* - Rp 8,000\n      _380 kkal | P: 10g | F: 16g | C: 52g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n*2. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 10,000\n\ud83d\udd25 Total kalori: 530 kkal\n\ud83d\udcaa Protein: 13g | \ud83e\uddc8 Lemak: 24g | \ud83c\udf5a Karbo: 70g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mama Mie (Indomie): 380 kkal (P: 10g, F: 16g, C: 52g)\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-27 09:13:11.920804"
+          "content": "500",
+          "timestamp": "2025-10-27 01:00:38.698220"
         },
         {
           "role": "user",
-          "content": "ya",
-          "timestamp": "2025-10-27 09:13:30.464775"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-27 09:13:34.259936"
-        },
-        {
-          "role": "user",
-          "content": "c",
-          "timestamp": "2025-10-27 09:13:36.287390"
-        },
-        {
-          "role": "user",
-          "content": "5",
-          "timestamp": "2025-10-27 09:13:38.155137"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Jajanan & Gorengan (150 kkal)\n\nTotal kalori: 150 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 2,000\n\ud83d\udd25 Total kalori: 150 kkal\n\ud83d\udcaa Protein: 3g | \ud83e\uddc8 Lemak: 8g | \ud83c\udf5a Karbo: 18g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-27 09:13:38.430733"
-        },
-        {
-          "role": "user",
-          "content": "ga",
-          "timestamp": "2025-10-27 09:13:41.657263"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:13:44.106809"
-        },
-        {
-          "role": "user",
-          "content": "kenyang",
-          "timestamp": "2025-10-27 09:13:50.801529"
-        },
-        {
-          "role": "user",
-          "content": "ya",
-          "timestamp": "2025-10-27 09:13:52.975399"
-        },
-        {
-          "role": "user",
-          "content": "teknik",
-          "timestamp": "2025-10-27 09:13:58.018623"
-        },
-        {
-          "role": "user",
-          "content": "a",
-          "timestamp": "2025-10-27 09:13:59.062698"
-        },
-        {
-          "role": "user",
-          "content": "20",
-          "timestamp": "2025-10-27 09:14:01.775430"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Mama Mie (Indomie) (380 kkal)\n2. Jajanan & Gorengan (150 kkal)\n\nTotal kalori: 530 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Kantin*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Kantin Teknik Arsitektur*\n   \ud83e\udd59 *Mama Mie (Indomie)* - Rp 8,000\n      _380 kkal | P: 10g | F: 16g | C: 52g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/TuAxMrd5RWbiDjLZ8\n\n*2. Kantin Teknik Sipil*\n   \ud83c\udf6a *Jajanan & Gorengan* - Rp 2,000\n      _150 kkal | P: 3g | F: 8g | C: 18g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/9uPF4hre2tZvQ5K29\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 10,000\n\ud83d\udd25 Total kalori: 530 kkal\n\ud83d\udcaa Protein: 13g | \ud83e\uddc8 Lemak: 24g | \ud83c\udf5a Karbo: 70g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Mama Mie (Indomie): 380 kkal (P: 10g, F: 16g, C: 52g)\n- Jajanan & Gorengan: 150 kkal (P: 3g, F: 8g, C: 18g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-27 09:14:02.038018"
-        },
-        {
-          "role": "user",
-          "content": "gaa",
-          "timestamp": "2025-10-27 09:14:06.851248"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:14:08.935441"
-        },
-        {
-          "role": "user",
-          "content": "cukup",
-          "timestamp": "2025-10-27 09:14:11.655608"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:14:16.523644"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:14:18.893875"
-        },
-        {
-          "role": "user",
-          "content": "cukup",
-          "timestamp": "2025-10-27 09:14:22.940538"
-        },
-        {
-          "role": "user",
-          "content": "wareg",
-          "timestamp": "2025-10-27 09:14:25.428235"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:14:28.491746"
-        },
-        {
-          "role": "user",
-          "content": "ya",
-          "timestamp": "2025-10-27 09:14:31.455866"
-        },
-        {
-          "role": "user",
-          "content": "laper",
-          "timestamp": "2025-10-27 09:17:11.858317"
-        },
-        {
-          "role": "user",
-          "content": "mipa",
-          "timestamp": "2025-10-27 09:17:19.117301"
-        },
-        {
-          "role": "user",
-          "content": "a",
-          "timestamp": "2025-10-27 09:17:21.213267"
-        },
-        {
-          "role": "user",
-          "content": "20",
-          "timestamp": "2025-10-27 09:17:23.117907"
-        },
-        {
-          "role": "bot",
-          "content": "Tunggu bentar, Mamang lagi mikir menu terbaik buat kamu... \ud83e\udd14\n\nNih Mamang kasih rekomendasi:\n\n1. Nasi Bungkus Ayam (250 kkal)\n2. Nasi Bungkus Teri (250 kkal)\n\nTotal kalori: 500 kkal \ud83d\udd25\n\nTunggu sebentar, Mamang pikirin dulu yaa... \ud83e\udd14\n\nGini deh, karena kamu lagi di *Angkringan*, ini opsi paling mantul buat kamu: \u2728\n\n*1. Angkringan Peyek Bunderan UGM*\n   \ud83e\udd59 *Nasi Bungkus Ayam* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83e\udd59 *Nasi Bungkus Teri* - Rp 3,000\n      _250 kkal | P: 8g | F: 10g | C: 30g_\n   \ud83d\udccd Cus kesini: https://maps.app.goo.gl/kXQMiQQjeN5uvwpb8\n\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcca *Ringkasan Total:*\n\ud83d\udcb0 Estimasi biaya: Rp 6,000\n\ud83d\udd25 Total kalori: 500 kkal\n\ud83d\udcaa Protein: 16g | \ud83e\uddc8 Lemak: 20g | \ud83c\udf5a Karbo: 60g\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n\ud83d\udccb *Detail Nutrisi per Menu:*\n- Nasi Bungkus Ayam: 250 kkal (P: 8g, F: 10g, C: 30g)\n- Nasi Bungkus Teri: 250 kkal (P: 8g, F: 10g, C: 30g)\n\nGaskeun cobain salah satunya! Butuh rekomendasi lagi ga nih? \ud83d\ude0a",
-          "timestamp": "2025-10-27 09:17:25.569318"
+          "content": "gemini",
+          "timestamp": "2025-10-27 01:00:41.298850"
         }
       ]
     }
