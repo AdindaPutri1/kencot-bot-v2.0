@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 from src.config import Config
+from pymongo import MongoClient
 
 logger = logging.getLogger(__name__)
 
@@ -272,12 +273,11 @@ class DatabaseConnection:
     def connect(self):
         """Connect to database (MongoDB or JSON fallback)"""
         # Try MongoDB first if URI is provided
-        mongo_uri = getattr(Config, 'MONGODB_URI', None) or getattr(Config, 'MONGO_URI', None)
-        mongo_db = getattr(Config, 'MONGODB_DB', None) or getattr(Config, 'MONGO_DB', 'kencot_bot_v2')
+        mongo_uri = getattr(Config, 'MONGO_URI', None) 
+        mongo_db = getattr(Config, 'MONGO_DB', None) 
         
         if mongo_uri and mongo_uri != "mongodb://localhost:27017":
             try:
-                from pymongo import MongoClient
                 self.client = MongoClient(mongo_uri)
                 self.db = self.client[mongo_db]
                 # Test connection

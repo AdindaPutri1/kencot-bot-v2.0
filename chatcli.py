@@ -1,14 +1,22 @@
-from src.bot import KencotBot
+from src.bot import KencotBotV2
 from src.config import Config
+from src.database.connection import db_instance
 
-bot = KencotBot(Config)
+# === Inisialisasi koneksi database ===
+db_instance.connect()  # <-- ini otomatis pilih Mongo atau JSON
+print("✅ Database initialized.")
 
-print("Chat CLI untuk KencotBot (ketik 'quit' untuk keluar)")
+# === Inisialisasi bot ===
+bot = KencotBotV2(Config)
+
+print("\n🤖 Chat CLI untuk KencotBot (ketik 'quit' untuk keluar)")
 
 while True:
     user_input = input("You: ")
     if user_input.lower() in ["quit", "exit"]:
-        print("Keluar...")
+        db_instance.close()  # tutup koneksi / simpan JSON
+        print("👋 Keluar...")
         break
+
     response = bot.handle_message("user123", user_input)
     print("Bot:", response)

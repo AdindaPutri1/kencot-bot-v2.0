@@ -28,14 +28,15 @@ logger = logging.getLogger(__name__)
 class KencotBotV2:
     """Upgraded Kencot Bot with RAG + Memory"""
 
-    def __init__(self):
+    def __init__(self, config: Config):
+        self.config = config
         self.responses = self._load_responses()
         logger.info("Kencot Bot V2.0 initialized")
 
     def _load_responses(self) -> Dict:
         """Load response templates"""
         try:
-            with open(Config.RESPONSES_PATH, 'r', encoding='utf-8') as f:
+            with open(self.config.RESPONSES_PATH, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except:
             logger.warning("Using default responses")
@@ -186,7 +187,7 @@ class KencotBotV2:
         rag_results = retrieval_engine.search_by_context(
             user_id,
             context,
-            top_k=Config.MAX_RECOMMENDATIONS * 5  # get more to allow grouping by canteen
+            top_k=self.config.MAX_RECOMMENDATIONS * 5  # get more to allow grouping by canteen
         )
 
         if not rag_results:
@@ -293,4 +294,4 @@ class KencotBotV2:
 
 
 # Global bot instance
-kencot_bot = KencotBotV2()
+kencot_bot = KencotBotV2(Config)

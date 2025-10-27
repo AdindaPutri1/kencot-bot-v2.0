@@ -24,9 +24,9 @@ class Config:
     
     # Database settings (MongoDB is optional)
     MONGO_URI = os.getenv("MONGO_URI", None)
-    MONGODB_URI = os.getenv("MONGODB_URI", None) or MONGO_URI  # Support both names
-    MONGO_DB = os.getenv("MONGO_DB", "kencot_bot_v2")
-    MONGODB_DB = os.getenv("MONGODB_DB", None) or MONGO_DB  # Support both names
+    # MONGODB_URI = os.getenv("MONGODB_URI", None) or MONGO_URI  # Support both names
+    MONGO_DB = os.getenv("MONGO_DB", "chatbot")
+    # MONGODB_DB = os.getenv("MONGODB_DB", None) or MONGO_DB  # Support both names
     
     # Data files
     FOODS_PATH = DATA_DIR / "foods_with_embeddings.json"
