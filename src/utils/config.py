@@ -14,7 +14,7 @@ class Config:
     MAX_RECOMMENDATIONS = 3
     
     # Base paths
-    BASE_DIR = Path(__file__).parent.parent
+    BASE_DIR = Path(__file__).parent.parent.parent
     DATA_DIR = BASE_DIR / "data"
     LOGS_DIR = BASE_DIR / "logs"
     
@@ -24,10 +24,8 @@ class Config:
     
     # Database settings (MongoDB is optional)
     MONGO_URI = os.getenv("MONGO_URI", None)
-    # MONGODB_URI = os.getenv("MONGODB_URI", None) or MONGO_URI  # Support both names
     MONGO_DB = os.getenv("MONGO_DB", "chatbot")
-    # MONGODB_DB = os.getenv("MONGODB_DB", None) or MONGO_DB  # Support both names
-    
+
     # Data files
     FOODS_PATH = DATA_DIR / "foods_with_embeddings.json"
     CANTEENS_PATH = DATA_DIR / "canteens.json"
@@ -36,8 +34,11 @@ class Config:
     
     # API Keys
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+    # Nutrition API KEYS
+    NUTRITION_API_KEY = os.getenv("NUTRITION_API_KEY")
     
     # LLM Settings
     GEMINI_BASE_URL = os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta")
