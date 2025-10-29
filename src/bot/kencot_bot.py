@@ -18,8 +18,8 @@ class KencotBot:
         self.cooldown_delta = timedelta(minutes=cooldown_minutes)
         self.greetings = [
             "Halo bestie! Ada yang laper nih kayaknya 👀",
-            "Waduh ada yang kencot ya? Tenang, Mamang siap bantu!",
-            "Yeay ada yang mau mam! Gaskeun cari makanan enak 🍽️"
+            "Waduh ada yang kencot ya? Tenang, Mamang UGM siap bantu!",
+            "Yeay ada yang mau mam! Gaskeun cari makanan enak bareng Mamang UGM🍽️"
         ]
 
     def handle_user_input(self, user_id: str, session_id: str, text: str) -> Dict[str, Any]:
