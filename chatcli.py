@@ -1,5 +1,5 @@
 from src.bot import KencotBotV2
-from src.config import Config
+from src.utils.config import Config
 from src.database.connection import db_instance
 
 # === Inisialisasi koneksi database ===
