@@ -12,6 +12,26 @@ from src.rag.retrieval_engine import RetrievalEngine
 
 logger = logging.getLogger(__name__)
 
+def estimate_calories(protein_g=0, carbs_g=0, fat_g=0):
+    """
+    Estimasi kalori dari makronutrien:
+    protein/carbs = 4 kcal per gram
+    fat = 9 kcal per gram
+    """
+    try:
+        protein_g = float(protein_g)
+    except:
+        protein_g = 0
+    try:
+        carbs_g = float(carbs_g)
+    except:
+        carbs_g = 0
+    try:
+        fat_g = float(fat_g)
+    except:
+        fat_g = 0
+    return round(protein_g*4 + carbs_g*4 + fat_g*9, 2)
+
 
 class FoodAgent:
     def __init__(self):
@@ -89,6 +109,28 @@ class FoodAgent:
         nutrition = {}
         if call_nutrition and final_recommendation.get("menu_name") != "Tidak ada rekomendasi":
             nutrition = self.nutrition_tool.get_nutrition(final_recommendation.get("menu_name"))
+            
+        # === fallback estimasi kalori ===
+        protein_raw = nutrition.get("protein_g", 5.0)
+        carbs_raw = nutrition.get("carbohydrates_total_g", 0.0)
+        fat_raw = nutrition.get("fat_total_g", 0.0)
+
+        try:
+            protein = float(protein_raw)
+        except (ValueError, TypeError):
+            protein = 5.0  # default perkiraan
+
+        try:
+            carbs = float(carbs_raw)
+        except (ValueError, TypeError):
+            carbs = 32.4  # contoh default dari menu Nasi Goreng
+
+        try:
+            fat = float(fat_raw)
+        except (ValueError, TypeError):
+            fat = 2.9  # contoh default dari menu Nasi Goreng
+
+        nutrition["calories"] = estimate_calories(protein, carbs, fat)
 
         # --- 6️⃣ Reasoning ke user ---
         reasoning_prompt = self.build_reasoning_prompt(

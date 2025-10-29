@@ -14,6 +14,14 @@ from src.rag.similarity import cosine_similarity
 
 logger = logging.getLogger(__name__)
 
+def estimate_calories(protein_g: float = 0, carbs_g: float = 0, fat_g: float = 0) -> float:
+    """
+    Hitung kalori dari makronutrien secara manual
+    1 gram protein/carbs = 4 kcal
+    1 gram fat = 9 kcal
+    """
+    return round(protein_g*4 + carbs_g*4 + fat_g*9, 2)
+
 class RetrievalEngine:
     """Lightweight RAG search engine untuk makanan"""
 
@@ -89,12 +97,22 @@ class RetrievalEngine:
                     continue
 
             if score >= min_score:
+                protein = food.get("protein_g") or 5.0
+                carbs = food.get("carbohydrates_total_g") or 0
+                fat = food.get("fat_total_g") or 0
+                est_calories = estimate_calories(protein, carbs, fat)
+
+            
                 results.append({
                     "name": food.get("name"),
                     "canteen": food.get("canteen"),
                     "price": food.get("price"),
                     "tags": food.get("tags"),
-                    "similarity_score": float(score)
+                    "similarity_score": float(score),
+                    "estimated_calories": est_calories,
+                    "protein_g": protein,
+                    "carbohydrates_total_g": carbs,
+                    "fat_total_g": fat
                 })
 
 
