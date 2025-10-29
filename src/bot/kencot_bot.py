@@ -34,7 +34,7 @@ class KencotBotV2:
     def _load_responses(self) -> Dict:
         """Load response templates"""
         try:
-            with open(self.config.RESPONSES_PATH, 'r', encoding='utf-8') as f:
+            with open(Config.RESPONSES_PATH, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except:
             logger.warning("Using default responses")

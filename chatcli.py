@@ -7,7 +7,7 @@ db_instance.connect()  # <-- ini otomatis pilih Mongo atau JSON
 print("✅ Database initialized.")
 
 # === Inisialisasi bot ===
-bot = KencotBotV2(Config)
+bot = KencotBotV2()
 
 print("\n🤖 Chat CLI untuk KencotBot (ketik 'quit' untuk keluar)")
 
