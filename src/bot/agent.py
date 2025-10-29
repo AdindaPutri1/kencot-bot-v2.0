@@ -226,7 +226,7 @@ Tugasmu:
         canteen = food.get("canteen") or food.get("canteen_name", "Tidak diketahui")
         price = food.get("price", "Tidak diketahui")
         suitability = ", ".join(food.get("suitability", [])) or "Tidak diketahui"
-        maps_link = food.get("maps") or food.get("maps_link", "Tidak tersedia")
+        maps_link = food.get("gmaps_link") or "Tidak tersedia"
         method = "RAG retrieval" if rag_used else "database.json"
 
         stm_text = "\n".join([f"{m['role']}: {m.get('content', m.get('message', ''))}" for m in context.get("stm", [])])
