@@ -1,10 +1,10 @@
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from difflib import get_close_matches
 from typing import Optional
 
 def get_current_time_period() -> str:
-    now = datetime.utcnow() + timedelta(hours=7)
+    now = datetime.now(timezone.utc) + timedelta(hours=7)
     hour = now.hour
     if 5 <= hour < 11:
         return 'pagi'

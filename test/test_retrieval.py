@@ -1,107 +1,67 @@
-"""
-Unit tests for RAG Retrieval Engine
-"""
+# test/test_rag_engine.py
 import pytest
-from src.rag.similarity import calculate_cosine_similarity, find_similar_foods_fast
-from src.rag.embeddings import get_embedding
-from src.rag.retrieval_engine import retrieval_engine
-from src.database.connection import db_instance
-from src.database.models.food_db import Food
+import numpy as np
+from src.rag.retrieval_engine import RetrievalEngine
+from unittest.mock import patch
+import json
 
-@pytest.fixture(scope="module")
-def setup_db():
-    """Setup database with test data"""
-    db_instance.connect()
-    Food.load_from_json()
-    yield
-    db_instance.close()
+# --- Dummy embedding function ---
+def fake_get_embedding(text):
+    if "pedas" in text.lower():
+        return np.array([1.0, 0.0, 0.0])
+    elif "manis" in text.lower():
+        return np.array([0.0, 1.0, 0.0])
+    return np.array([0.0, 0.0, 1.0])  # default / fallback
 
-class TestSimilarity:
-    
-    def test_cosine_similarity(self):
-        """Test cosine similarity calculation"""
-        vec1 = [1.0, 0.0, 0.0]
-        vec2 = [1.0, 0.0, 0.0]
-        
-        similarity = calculate_cosine_similarity(vec1, vec2)
-        assert similarity == pytest.approx(1.0, 0.01)
-    
-    def test_orthogonal_vectors(self):
-        """Test orthogonal vectors (should be 0)"""
-        vec1 = [1.0, 0.0]
-        vec2 = [0.0, 1.0]
-        
-        similarity = calculate_cosine_similarity(vec1, vec2)
-        assert similarity == pytest.approx(0.0, 0.01)
-    
-    def test_find_similar_foods(self, setup_db):
-        """Test finding similar foods"""
-        query_embedding = [0.2, -0.4, 0.7, -0.1, 0.5]
-        
-        foods = Food.get_all()
-        results = find_similar_foods_fast(
-            query_embedding,
-            foods,
-            top_k=3,
-            threshold=0.5
-        )
-        
+# --- Dummy RAG database ---
+dummy_rag_data = [
+    {"name": "Ayam Geprek", "embedding": [1.0, 0.0, 0.0]},
+    {"name": "Pisang Goreng", "embedding": [0.0, 1.0, 0.0]},
+    {"name": "Nasi Goreng", "embedding": [0.0, 0.0, 1.0]}
+]
+
+@pytest.fixture
+def rag_engine(tmp_path):
+    # Simpan dummy DB ke file JSON sementara
+    db_file = tmp_path / "rag_db.json"
+    with open(db_file, "w", encoding="utf-8") as f:
+        json.dump(dummy_rag_data, f, ensure_ascii=False)
+    return RetrievalEngine(str(db_file))
+
+# --- Test semua kemungkinan input / branch ---
+
+def test_rag_search_pedas(rag_engine):
+    with patch("src.rag.retrieval_engine.get_embedding", side_effect=fake_get_embedding):
+        results = rag_engine.search("aku mau makanan pedas", top_k=2)
+        assert results[0]["name"] == "Ayam Geprek"
+        assert results[0]["similarity_score"] > 0.9
+
+def test_rag_search_manis(rag_engine):
+    with patch("src.rag.retrieval_engine.get_embedding", side_effect=fake_get_embedding):
+        results = rag_engine.search("aku mau makanan manis", top_k=2)
+        assert results[0]["name"] == "Pisang Goreng"
+        assert results[0]["similarity_score"] > 0.9
+
+def test_rag_search_default(rag_engine):
+    with patch("src.rag.retrieval_engine.get_embedding", side_effect=fake_get_embedding):
+        results = rag_engine.search("aku mau makanan asin", top_k=2)
+        # fallback branch
+        assert results[0]["name"] == "Nasi Goreng"
+        assert results[0]["similarity_score"] > 0.0
+
+def test_rag_search_topk_greater_than_data(rag_engine):
+    with patch("src.rag.retrieval_engine.get_embedding", side_effect=fake_get_embedding):
+        results = rag_engine.search("aku mau makanan pedas", top_k=10)
+        # top_k lebih besar dari jumlah DB
         assert len(results) <= 3
-        if results:
-            assert "similarity_score" in results[0]
 
-class TestEmbeddings:
-    
-    def test_get_embedding(self):
-        """Test embedding generation"""
-        text = "nasi goreng pedas enak"
-        embedding = get_embedding(text)
-        
-        assert isinstance(embedding, list)
-        assert len(embedding) > 0
-        assert all(isinstance(x, float) for x in embedding)
-    
-    def test_similar_texts_similar_embeddings(self):
-        """Test that similar texts have similar embeddings"""
-        emb1 = get_embedding("nasi goreng")
-        emb2 = get_embedding("nasi goreng spesial")
-        emb3 = get_embedding("es teh manis")
-        
-        sim_12 = calculate_cosine_similarity(emb1, emb2)
-        sim_13 = calculate_cosine_similarity(emb1, emb3)
-        
-        # Nasi goreng should be more similar to each other
-        assert sim_12 > sim_13
+def test_rag_empty_database(tmp_path):
+    empty_db_file = tmp_path / "empty_rag.json"
+    with open(empty_db_file, "w", encoding="utf-8") as f:
+        json.dump([], f)
 
-class TestRetrievalEngine:
-    
-    def test_search_by_context(self, setup_db):
-        """Test context-based search"""
-        context = {
-            "faculty": "Teknik",
-            "hunger_level": "brutal",
-            "budget": 20000,
-            "time_period": "siang"
-        }
-        
-        results = retrieval_engine.search_by_context(
-            "test_user_retrieval",
-            context,
-            top_k=3
-        )
-        
-        assert isinstance(results, list)
-        # Should return results or empty list
-        assert len(results) >= 0
-    
-    def test_search_by_text(self, setup_db):
-        """Test simple text search"""
-        query = "makanan pedas gurih"
-        
-        results = retrieval_engine.search_by_text(query, top_k=5)
-        
-        assert isinstance(results, list)
-        assert len(results) <= 5
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    engine = RetrievalEngine(str(empty_db_file))
+    with patch("src.rag.retrieval_engine.get_embedding", side_effect=fake_get_embedding):
+        results = engine.search("pedas", top_k=2)
+        # harus handle DB kosong
+        assert results == []

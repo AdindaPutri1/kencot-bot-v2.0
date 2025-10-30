@@ -23,7 +23,7 @@ def main():
         initialize_database()
 
         # --- Setup session ---
-        user_id = "user_123"
+        user_id = "user_test"
         session_id = "sess_1"
         session_mgr = SessionManager()
         session_mgr.create_session(session_id, user_id)
