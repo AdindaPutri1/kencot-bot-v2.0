@@ -15,12 +15,11 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 ---
 
 ## Link
-- **Demo Video:**
-  - [https://bit.ly/VideoDemoKencot-Bot](https://bit.ly/VideoDemoKencot-Bot)
+- **Video presentasi:**
+  - [Video Presentasi](https://drive.google.com/file/d/1FFHJ4dH3Lpofx1LCiidy4u-XlS8fw_w1/view?usp=sharing)
 
 - **Link PPT:**
-  - [PDF PPT Presentasi](https://drive.google.com/file/d/1KkjctXrmL1yCzlNhx7YkXp80rip9fY7a/view?usp=sharing)
-  - [PPT Presentasi](https://docs.google.com/presentation/d/14aagyh5VrmLZ-b4oezT8jvQyUHmKAQV5/edit?usp=sharing&ouid=110910143854406637416&rtpof=true&sd=true)
+  - [PDF PPT Presentasi](https://drive.google.com/file/d/1FFHJ4dH3Lpofx1LCiidy4u-XlS8fw_w1/view?usp=sharing)
 
 - **Demo Screenshot:**
 
@@ -40,12 +39,6 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 ---
 
 ## Arsitektur Proyek
-
-Bot ini menggunakan **arsitektur hybrid** yang efisien:
-
-1. **Backend (Python & Flask)**: Otak bot yang memproses pesan dan mencari rekomendasi dari database.
-2. **Konektor (Node.js & whatsapp-web.js)**: Jembatan yang menghubungkan WhatsApp ke backend API.
-3. **Integrasi LLM (Gemini)**: Return rekomendasi dari AI Gemini jika tidak ada data yang sesuai dari database.
 
 ![Arsitektur KencotBot](documentation/arsitektur.png)
 
@@ -87,7 +80,7 @@ pip install -r requirements.txt
 #### Jalankan Backend
 
 ```bash
-python main.py
+python wa_server.py
 ```
 
 > API server aktif di `http://localhost:5000`.
