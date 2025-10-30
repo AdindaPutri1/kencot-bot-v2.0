@@ -1,5 +1,5 @@
 from typing import Dict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 class SessionManager:
     """Short-Term Memory per session"""
@@ -8,7 +8,7 @@ class SessionManager:
         self.short_term_memory = {}
 
     def create_session(self, session_id: str, user_id: str, duration_minutes: int = 30):
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         self.short_term_memory[session_id] = {
             "user_id": user_id,
             "phase": "greetings",
@@ -27,7 +27,7 @@ class SessionManager:
         session.setdefault("conversation_history", []).append({
             "role": role,
             "message": message,
-            "timestamp": datetime.utcnow()
+            "timestamp": datetime.now(timezone.utc)
         })
     
     def get_messages(self, session_id: str):
