@@ -16,7 +16,7 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 
 ## Link
 - **Video presentasi:**
-  - [Video Presentasi](https://drive.google.com/file/d/1FFHJ4dH3Lpofx1LCiidy4u-XlS8fw_w1/view?usp=sharing)
+  - [Video Presentasi](https://drive.google.com/file/d/1XpPIqRFE3H2H2tnpxdHCFXZOe48AR2nA/view?usp=drive_link)
 
 - **Link PPT:**
   - [PDF PPT Presentasi](https://drive.google.com/file/d/1FFHJ4dH3Lpofx1LCiidy4u-XlS8fw_w1/view?usp=sharing)
