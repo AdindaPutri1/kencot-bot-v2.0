@@ -1,7 +1,7 @@
 import logging
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, Any
 
 from src.bot.agent import FoodAgent
@@ -17,10 +17,14 @@ class KencotBot:
         self.max_interactions = max_interactions
         self.cooldown_delta = timedelta(minutes=cooldown_minutes)
         self.greetings = [
-            "Halo bestie! Ada yang laper nih kayaknya 👀",
-            "Waduh ada yang kencot ya? Tenang, Mamang UGM siap bantu!",
-            "Yeay ada yang mau mam! Gaskeun cari makanan enak bareng Mamang UGM🍽️"
-        ]
+    "Halo bestie! Ada yang laper nih 👀 Mau makan apa hari ini? Kasih tau preferensi kamu ya—biar Mamang UGM racik rekomendasi yang cocok! Kamu juga bisa bilang makanan yang ga disuka atau alergi biar aman 🍽️✨",
+    "Waduhhh ada yang perutnya konser ya? 😆 Tenang, Mamang UGM siap bantu cari makan terenak buat kamu!",
+    "Yeay ada yang mau mam! 🍚🥗 Gaskeun kita berburu kuliner mantap bareng Mamang UGM! Mau sehat? Murah? Pedes? Tinggal bilang aja 🔥",
+    "Halo, calon anak kos kenyang! 😎 Lagi bingung makan apa? Mamang bantu pilih menu yang pas buat perut dan dompet kamu 💸🍛",
+    "Hoh! Ada yang kencot detected 🚨 Siap-siap, Mamang bakal rekomendasiin makanan bikin mood naik + kenyang maksimal 😋",
+    "Halo! Waktunya isi bensin perut nih ⛽🍜 Kasih tau maunya apa, atau bilang aja suasana makanmu gimana. Mamang siap bantu!",
+    ]
+
 
     def handle_user_input(self, user_id: str, session_id: str, text: str) -> Dict[str, Any]:
         stm = self.session.get_stm(session_id)
@@ -35,9 +39,17 @@ class KencotBot:
 
         # === Cooldown ===
         cooldown_until = stm.get("cooldown_until")
-        if cooldown_until and datetime.utcnow() < cooldown_until:
-            remaining = int((cooldown_until - datetime.utcnow()).total_seconds() // 60) + 1
-            return {"response": f"Token kamu habis. Coba lagi dalam {remaining} menit ya ⏳", "phase": "cooldown"}
+        if cooldown_until:
+            now = datetime.now(timezone.utc)
+            if now < cooldown_until:
+                remaining = int((cooldown_until - now).total_seconds() // 60) + 1
+                return {"response": f"Token kamu habis. Coba lagi dalam {remaining} menit ya ⏳", "phase": "cooldown"}
+            else:
+                # Cooldown selesai reset
+                stm["interaction_count"] = 0
+                stm["cooldown_until"] = None
+                stm["phase"] = "greetings"
+
 
         # === Reset Command ===
         text_lower = text.lower().strip()
@@ -70,7 +82,7 @@ class KencotBot:
         # Limit interaksi
         if count >= self.max_interactions:
             stm["phase"] = "cooldown"
-            stm["cooldown_until"] = datetime.utcnow() + self.cooldown_delta
+            stm["cooldown_until"] = datetime.now(timezone.utc) + self.cooldown_delta
             msg = f"Token kamu habis. Coba lagi {int(self.cooldown_delta.total_seconds()//60)} menit lagi ya 🕒"
             return {"response": msg, "phase": "cooldown"}
 
