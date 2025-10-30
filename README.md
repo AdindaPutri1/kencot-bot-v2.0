@@ -23,7 +23,9 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 
 - **Demo Screenshot:**
 
-    ![SS BOT](documentation/demo.png)
+    ![SS BOT](documentation/demo_1.png)
+
+    ![SS BOT](documentation/demo_2.png)
 
 - **Demo GIF:**
 
