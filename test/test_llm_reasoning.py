@@ -1,15 +1,14 @@
 from unittest.mock import MagicMock, patch
 from src.bot.agent import FoodAgent
 
-@patch("src.bot.agent.MemoryManager")   # <-- Mock BEFORE FoodAgent dibuat
+@patch("src.bot.agent.MemoryManager")   
 def test_llm_reasoning_spicy_preference(MockMemoryManager):
     # Mock MemoryManager instance
     mock_memory = MagicMock()
     mock_memory.get_context.return_value = {}
     MockMemoryManager.return_value = mock_memory
 
-    agent = FoodAgent()  # ✅ sekarang aman, ga load DB
-
+    agent = FoodAgent()  
     # Mock LLM
     agent.client_gemini = MagicMock()
     agent.client_gemini.chat.completions.create.return_value = type("obj", (), {
