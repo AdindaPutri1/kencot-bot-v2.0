@@ -8,7 +8,7 @@ const axios = require('axios');
 // URL API Python kamu
 const PYTHON_API_URL = 'http://localhost:5000/chat';
 
-console.log('Memulai inisialisasi client...');
+console.log('Memulai inisimalisasi client...');
 
 const client = new Client({
     authStrategy: new LocalAuth(), // Menggunakan LocalAuth untuk menyimpan sesi secara otomatis

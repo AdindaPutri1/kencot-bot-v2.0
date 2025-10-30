@@ -105,6 +105,6 @@ class KencotBot:
             "interaction_count": 0,
             "cooldown_until": None
         })
-        msg = "Oke! Memori percakapan direset, tapi preferensi kamu tetap aman 😎"
+        msg = "Oke! Memori percakapan direset, tapi preferensi kamu tetap aman kok😎"
         self.session.add_message(session_id, "bot", msg)
         return {"response": msg, "phase": "reset"}
