@@ -45,7 +45,7 @@ class FoodAgent:
             "raw_input": user_input
         }
 
-        # --- 1️⃣ Update memory (deteksi alergi/dislike) ---
+        # --- Update memory (deteksi alergi/dislike) ---
         memory_update_prompt = self.build_memory_update_prompt(user_input, combined_context)
         memory_update = self.call_llm(memory_update_prompt)
         self.apply_memory_update(user_id, memory_update)
