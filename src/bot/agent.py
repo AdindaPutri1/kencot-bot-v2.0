@@ -261,6 +261,8 @@ Tugas:
 3. Jika user bertanya "ingat ga tadi aku dapet rekomendasi makanan apa aja", sebutkan semua makanan yang sudah direkomendasikan sebelumnya dari STM.
 4. Sertakan alasan kenapa makanan itu cocok berdasarkan liked_foods, allergies, dan disliked_foods.
 5. Gunakan gaya ramah dan natural tanpa format JSON.
+6. Jika ada kata-kata yang ingin dibold (ditebalkan), return hanya dengan bintang satu * * bukan ** **
+7. Sebut dirimu sebagai Mamang, kasih emoji untuk memberikan detail makanan dan kalori supaya menarik, untuk protein tidak perlu disebutkan  
         """
 
     # ========================== LLM CALLS ==========================

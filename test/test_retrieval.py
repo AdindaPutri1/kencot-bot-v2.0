@@ -6,7 +6,7 @@ from src.rag.similarity import calculate_cosine_similarity, find_similar_foods_f
 from src.rag.embeddings import get_embedding
 from src.rag.retrieval_engine import retrieval_engine
 from src.database.connection import db_instance
-from src.database.models.food import Food
+from src.database.models.food_db import Food
 
 @pytest.fixture(scope="module")
 def setup_db():

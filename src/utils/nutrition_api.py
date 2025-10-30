@@ -20,7 +20,6 @@ class NutritionTool:
             translated = self.translator.translate(food_name)
             return translated
         except Exception:
-            # fallback kalau gagal translate
             return food_name
 
     def get_nutrition(self, food_name: str) -> Dict:
