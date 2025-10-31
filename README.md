@@ -136,14 +136,16 @@ kencot-bot-v2.0/
 │  ├─ llm/
 │  ├─ rag/
 │  ├─ memory/
-│  ├─ utils/
-│  └─ main.py
+│  ├─ database/
+│  └─ utils/
 ├─ whatsapp-connector/
 │  └─ index.js
 ├─ data/
 ├─ tests/
 ├─ requirements.txt
 ├─ .env.example
+├─ main.py
+├─ wa_server.py
 └─ README.md
 ```
 
