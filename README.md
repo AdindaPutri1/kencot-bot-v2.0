@@ -1,10 +1,11 @@
 # Kencot Bot - Mamang UGM 🤖🍽️
 
-Kencot Bot adalah chatbot WhatsApp **teman terbaikmu saat kencot (lapar berat)** di sekitar kampus UGM. Cukup chat "laper", dan Mamang UGM akan menanyakan lokasi, tingkat kelaparan, dan budget-mu untuk memberikan **rekomendasi makanan paling mantul**.
-
-Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cerdas.
+> **Kencot Bot V2.0** — Mamang AI: Context-aware LLM Agent untuk rekomendasi makanan kampus (CLI + WhatsApp). Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cerdas.
 
 ---
+Kencot Bot V2.0 adalah prototype chatbot agentic yang menggabungkan **LLM (multi-model: Groq / Gemini)**, **RAG (Retrieval-Augmented Generation)**, dan **memory (short-term & long-term)** untuk memberi rekomendasi makanan kontekstual. Bot ini punya mode **CLI** untuk testing dan integrasi **WhatsApp** (via Node.js / whatsapp-web.js) untuk demo pengguna real.
+
+README ini berisi panduan cepat: setup, konfigurasi, cara jalanin, testing, dan tips debugging.
 
 ## Nama Tim
 | No | Nama                        | NIM                |
@@ -20,6 +21,9 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 
 - **Link PPT:**
   - [PDF PPT Presentasi](https://drive.google.com/file/d/1FFHJ4dH3Lpofx1LCiidy4u-XlS8fw_w1/view?usp=sharing)
+ 
+- **Link Notion:**
+  - [Notion Report](https://gifted-rooster-06e.notion.site/Kencot-bot-V2-0-An-LLM-Powered-WhatsApp-Bot-for-Smart-Food-Recommendations-2966080924fb807bb27af28377f74892?source=copy_link)
 
 - **Demo Screenshot:**
 
@@ -33,10 +37,21 @@ Didesain dengan bahasa **Gen Z**, bot ini bikin percakapan santai tapi tetap cer
 
 ## Fitur Utama
 
-* **Rekomendasi Cerdas**: Disesuaikan dengan lokasi (fakultas), tingkat kelaparan, dan budget.
-* **Database Kantin UGM**: Lengkap dengan kantin populer di sekitar kampus.
-* **Santai & Seru**: Bahasa Gen Z yang bikin interaksi nggak kaku.
-* **Mudah Digunakan**: Chat langsung di WhatsApp seperti ngobrol biasa.
+- Rekomendasi makanan berbasis konteks: fakultas, tingkat lapar, budget, waktu.
+- RAG retrieval untuk mencari menu dari dataset kantin.
+- Layer reasoning dengan LLM (pilih model `groq` atau `gemini`).
+- Short-term memory (session) + long-term memory (personalization).
+- Mode CLI untuk dev/testing, mode WhatsApp untuk demo user-facing.
+- Fallback dan rule-based handler kalau LLM/GROQ/Gemini gagal.
+- Lengkap dengan Database Kantin UGM
+- Chat langsung di WhatsApp seperti ngobrol biasa. Bahasa Gen Z yang bikin interaksi nggak kaku.
+
+---
+## Requirement
+- Python 3.10+
+- Node.js 18+ (untuk whatsapp-connector)
+- `pip` packages (lihat `requirements.txt`)
+- Akun & API keys (Gemini) — letakkan di `.env`
 
 ---
 
@@ -107,37 +122,29 @@ npm run dev
 
 ## Cara Menggunakan (CLI / WhatsApp)
 
-1. Chat bot WhatsApp.
-2. Mulai dengan kata kunci: `laper`, `makan`, atau `rekomen`.
-3. Jawab pertanyaan bot: lokasi, tingkat kelaparan, budget.
-4. Nikmati rekomendasi makanan paling mantul!
+```bash
+python -m main --cli
+```
 
 ---
 
-## Struktur Folder
-
+## Struktur Singkat Repo
 ```
-kencot-bot/
-│
-├─ main.py              # Entry point backend Python
-├─ requirements.txt     # Dependencies Python
-├─ chatcli.py           # cli bot
-├─ .env                 # Rahasia & config
-├─ .env.example         # contoh .env
-├─ whatsapp-connector/  # Folder konektor Node.js
-│  ├─ index.js
-│  └─ package.json
-├─ app/                 # Logic bot
-│  ├─ bot.py
-│  ├─ config.py
-│  ├─ llm.py            # openai bot
-│  └─ utils.py
-├─ test/                # test code
-│  ├─ functional_test.py           
-│  └─ unit_test.py
-├─ data/            # Data kantin
-│  ├─ functional_test.py           
-└─ └─ unit_test.py
+kencot-bot-v2.0/
+├─ src/
+│  ├─ bot/
+│  ├─ llm/
+│  ├─ rag/
+│  ├─ memory/
+│  ├─ utils/
+│  └─ main.py
+├─ whatsapp-connector/
+│  └─ index.js
+├─ data/
+├─ tests/
+├─ requirements.txt
+├─ .env.example
+└─ README.md
 ```
 
 ---
